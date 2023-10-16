@@ -1,0 +1,74 @@
+ <div class="container mt-4">
+  <div class="row">
+      <div class="col-md-6">
+          <img src="assets/images/bu.png" class="img-fluid" alt="Your Image">
+          <div class="col-md-12 col-xs-12 col-sm-12 res3">
+    <ul class="sellCarInfolist dotted-list">
+
+       <li>
+         <div>
+           <h4>Genuine Buyers</h4>
+           <p>We let the buyers get in touch with you directly</p>
+         </div>
+       </li>
+
+       <br>
+       <li>
+         <div >
+           <h2>Your Homes/Rentals stays listed till the Building Materials is sold</h2>
+         </div>
+       </li>
+     </ul>
+                </div>
+      </div>
+      <div class="auctionMainForm col-md-6 login-form">
+          <h3 class="aucformTitle text-center">USER LOGIN</h3>
+          <form [formGroup]="formData" (ngSubmit)="loginProcess()">
+            <div class="aucformFieldsBox col-md-12 col-xs-12" style=" padding: 0 0;">
+              <div class="col-md-12 col-sm-12">
+              <label style="width: 100%;font-size: 17px;color: #020202; font-family: sans-serif;">Email/Mobile<span style="color: red">*</span></label>
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input class="form-control" type="text" placeholder="Enter Email Address" name="email" formControlName="username" required>
+              </div>
+              </div>
+            </div>
+            <div class="aucformFieldsBox col-xs-12 col-xs-12" style=" margin: 13px 0; padding: 0 0;">
+
+              <div class="col-md-12 col-sm-12">
+               <label style="width: 100%;font-size: 17px;color: #020202; font-family: sans-serif;">Password<span style="color: red">*</span></label>
+             <div class="input-group">
+             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input class="form-control" style=" border-radius: 0px 4px 4px 0px;" type="password" name="password" placeholder="Enter Password" formControlName="password" required>
+               </div>
+               </div>
+             </div>
+
+             <div class="aucformFieldsBox col-md-12 col-xs-12">
+              <div class="col-md-12 col-xs-12 text-center">
+              <br>
+            <h4>
+            <input class="btn" type="submit" value="SIGN IN" style="    width: 100px;
+                                background-color: #18aedf; color: white; padding-bottom: 6px;font-size: 17px; line-height: 19px; border: 1px solid #18aedf;">
+            </h4>
+              </div>
+            </div>
+
+              <div align="center" class="aucformFieldsBox col-xs-12 col-md-4" style="font-weight: 700">
+                <a style="color: #18aedf; font-weight: 500;    font-size: 16px;margin: 0 -6%;text-decoration: underline;">Forgot Password</a>
+              </div>
+              <div class="aucformFieldsBox  col-md-8 col-xs-12">
+
+                <span style="font-size: 14px;">If you are New user Click on
+                      &nbsp;
+                <a href="./register.jsp" style="color: #18aedf; font-weight: 500;font-size: 17px;"><u>Register</u></a></span>
+                <br><br>
+              </div>
+              <!-- <button class="btn btn-primary"  type="submit">Submit</button> -->
+          </form>
+
+      </div>
+  </div>
+</div>
+
+
