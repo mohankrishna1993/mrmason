@@ -68,6 +68,25 @@ ul {
   transform: scale(1.2); /* Zoom effect */
   /* margin-right: 20px; */
 }
+.heading {
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-no-border {
+  border: none; /* Remove the default border */
+  transition: border-color 0.3s; /* Add a transition for smooth highlighting */
+
+}
+
+.card-no-border:hover {
+  border: 1px solid #007bff; /* Add the border on hover, change color as needed */
+}
+.justify-text {
+  text-align: justify;
+}
+
 
 
 @media (max-width: 767px) {
