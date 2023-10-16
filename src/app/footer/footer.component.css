@@ -1,12 +1,10 @@
-.carousel {
-  height: 400px; /* Adjust the desired height */
+.custom-container {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
 
-.carousel-inner img {
-  height: 100%; /* Make the images fill the carousel height */
-  width: 100%; /* Make the images fill the carousel width */
-  object-fit: cover; /* Maintain aspect ratio and fill the available space */
-}
+
+
 
 .request-container {
   position: relative;
@@ -64,9 +62,19 @@ ul {
 .extra-sty {
   transform: rotate(360deg);
   border-radius: 50%;
-  /* box-shadow: 0 0 10px white;  */
+  /* box-shadow: 0 0 10px white; */
   transform: scale(1.2); /* Zoom effect */
   /* margin-right: 20px; */
+}
+.extra-sty:hover {
+    box-shadow: 0 0 10px white;
+}
+.foo-bg1 {
+  background-color: #18aedf;
+}
+
+p {
+  font-size: larger;
 }
 
 
@@ -88,3 +96,4 @@ ul {
 .min-height-contiainer {
   min-height: 468px;
 }
+
