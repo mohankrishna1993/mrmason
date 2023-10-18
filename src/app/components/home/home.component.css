@@ -1,12 +1,16 @@
 .carousel {
   height: 400px; /* Adjust the desired height */
 }
+.home-container {
+  margin-bottom: -400px;
+}
 
 .carousel-inner img {
   height: 100%; /* Make the images fill the carousel height */
   width: 100%; /* Make the images fill the carousel width */
   object-fit: cover; /* Maintain aspect ratio and fill the available space */
 }
+
 
 .request-container {
   position: relative;
@@ -79,13 +83,22 @@ ul {
   transition: border-color 0.3s; /* Add a transition for smooth highlighting */
 
 }
+.card:hover {
+  box-shadow: 0 0 20px rgba(24, 174, 223, 0.6); /* Add a box shadow on hover */
+  transition: box-shadow 0.3s; /* Add a smooth transition effect */
+}
 
 .card-no-border:hover {
-  border: 1px solid #007bff; /* Add the border on hover, change color as needed */
+  border: 1px solid #18aedf; /* Add the border on hover, change color as needed */
+  cursor: pointer;
 }
 .justify-text {
   text-align: justify;
 }
+.custom-bg {
+  background-color: #18aedf;
+}
+
 
 
 

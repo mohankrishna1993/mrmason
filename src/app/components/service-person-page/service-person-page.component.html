@@ -1,0 +1,81 @@
+
+          <div class="container-fluid mt-4 main-container">
+              <div class="card">
+                  <div class="card-header">
+                      <h1>Service Person</h1>
+                  </div>
+                  <div class="card-body border-right-primary border-left-primary">
+                      <form >
+                          <div class="form-row">
+                              <div class="col-md-3 form-group">
+                                  <label for="service-category" style="color: blue;">Service Category*</label>
+                                  <select class="form-control" id="service-category">
+                                      <option value="category1">Category 1</option>
+                                      <option value="category2">Category 2</option>
+                                      <option value="category3">Category 3</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-3 form-group">
+                                  <label for="field2" style="color: blue;">Service Name*</label>
+                                  <input type="text" class="form-control" id="field2" name="field2">
+                              </div>
+                              <div class="col-md-3 form-group">
+                                  <label for="field3" style="color: blue;">Location*</label>
+                                  <input type="text" class="form-control" id="field3" name="field3">
+                              </div>
+                              <div class="col-md-3 form-group">
+                                  <label for="request-status" style="color: blue;">Request Status*</label>
+                                  <select class="form-control" id="request-status">
+                                      <option value="pending">Pending</option>
+                                      <option value="approved">Approved</option>
+                                      <option value="rejected">Rejected</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-row mt-3">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                      </form>
+                  </div>
+              </div>
+               <!-- table -->
+            <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Srl. No.</th>
+                <th>Service Person Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>District</th>
+                <th>State</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add table data here -->
+            <tr *ngFor="let item of tableData">
+              <td>{{ item.SER_PER_SEQ_ID }}</td>
+              <td>{{ item.requestOrderNo }}</td>
+              <td>{{ item.CONTACT_NO }}</td>
+              <td>{{ item.EMAIL_ID }}</td>
+              <td>{{ item.CITY }}</td>
+              <td>{{ item.DISTRICT }}</td>
+              <td>{{ item.STATE }}</td>
+              <td>
+                <span [class]="'btn btn-sm ' + (item.active ? 'btn-success' : 'btn-danger')">
+                  {{ item.STATUS === "ACTIVE" ? 'Active' : 'Inactive' }}
+                </span>
+              </td>
+            </tr>
+        </tbody>
+
+            </table>
+
+          </div>
+
+
+
+

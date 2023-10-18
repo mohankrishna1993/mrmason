@@ -6,15 +6,31 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ServicePersonComponent } from './components/service-person/service-person.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { HomeComponent } from './components/home/home.component';
+import { TempComponent } from './components/temp/temp.component';
+import { DashboardPannelComponent } from './components/dashboard-pannel/dashboard-pannel.component';
+import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
+import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
 
 const routes: Routes = [
   {path: '',redirectTo: '/login',pathMatch: 'full'},
   {path: 'home',component: HomeComponent},
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent},
-  {path: 'dashboard',component: DashboardComponent},
-  {path: 'service-person',component: ServicePersonComponent},
-  {path: 'service-request',component: ServiceRequestComponent}
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard-pannel', pathMatch: 'full' },
+      { path: 'dashboard-pannel', component: DashboardPannelComponent },
+      { path: 'service-person-page', component: ServicePersonPageComponent},
+      { path: 'service-request-page', component: ServiceRequestPageComponent}
+
+    ]
+  },
+  {path: 'temp', component: TempComponent},
+  { path: 'service-person',component: ServicePersonComponent },
+  { path: 'service-request',component: ServiceRequestComponent }
+
 ];
 
 @NgModule({
