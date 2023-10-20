@@ -37,7 +37,7 @@
                     <input type="text" class="form-control" id="field3" name="field3">
                 </div>
               </div>
-             
+
               <div class="form-row mt-3">
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">Search</button>
@@ -52,35 +52,36 @@
 <tr>
   <th scope="col">Srl._No.</th>
   <th scope="col">Req._Order_No.</th>
-  <th scope="col">Mobile</th>
-  <th scope="col">Email</th>
-  <th scope="col">Location</th>
-  <th scope="col">Town</th>
-  <th scope="col">State</th>
-  <th scope="col">Status</th>
+  <th scope="col">Service Name</th>
+  <th scope="col">Service Request Date</th>
+  <th scope="col">Pincode</th>
   <th scope="col">Description</th>
+  <th scope="col">Status</th>
   <th scope="col">Action</th>
+
+
+
 </tr>
 </thead>
 <tbody>
 <!-- Add table data here -->
 <tr *ngFor="let item of tableData; let i = index">
   <td>{{ i + 1 }}</td>
-  <td>{{ item.reqOrderNo }}</td>
-  <td>{{ item.mobile }}</td>
-  <td>{{ item.email }}</td>
-  <td>{{ item.location }}</td>
-  <td>{{ item.town }}</td>
-  <td>{{ item.state }}</td>
+  <td>{{ item.REQ_SEQ_ID }}</td>
+  <td>{{ item.SERVICE_NAME }}</td>
+  <td>{{ item.SERVICE_REQUEST_DATE }}</td>
+  <td>{{ item.REQ_PINCODE }}</td>
+  <td>{{ item.DESCRIPTION }}</td>
+
+
   <td>
     <form action="">
       <select name="status" id="status" class="form-control">
-        <option value="active" [selected]="item.status === 'active'">Active</option>
-        <option value="deactive" [selected]="item.status === 'deactive'">Deactive</option>
+        <option value="active" [selected]="item.STATUS === 'active'">Active</option>
+        <option value="deactive" [selected]="item.STATUS === 'deactive'">Deactive</option>
       </select>
     </form>
   </td>
-  <td>{{ item.description }}</td>
   <td><span class="btn btn-sm btn-primary">Update</span></td>
 </tr>
 </tbody>

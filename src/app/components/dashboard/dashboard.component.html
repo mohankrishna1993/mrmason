@@ -6,9 +6,12 @@
     <!-- Sidebar -->
     <div class="sidebar" style="width:15%;">
       <div class="accordion" id="sidebarAccordion">
-        <a class="nav-link" routerLink="/dashboard/dashboard-pannel">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span >Dashboard</span></a>
+
+          <div class="accordion-item p-3 dashboard-item" >
+            <a class="nav-link " routerLink="/dashboard/dashboard-pannel">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span >Dashboard</span></a>
+          </div>
         <!-- Service Manager Accordion -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="serviceManagerHeading">
@@ -18,6 +21,7 @@
           </h2>
           <div id="serviceManagerCollapse" class="accordion-collapse collapse show" aria-labelledby="serviceManagerHeading">
             <div class="accordion-body">
+
               <!-- Service Person Option -->
               <div class="d-block m-2">
               <a href="/dashboard/service-person" routerLink="service-person-page">Service Person</a>

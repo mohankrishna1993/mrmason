@@ -34,8 +34,29 @@
       <div class="container min-height-contiainer">
         <div class="card">
           <div class="card-header custom-bg">
-            <button class="btn btn-link" style="color:#fff;" (click)="toggleForm('form1')" >Service Request</button>
+            <!-- <button class="btn btn-link" style="color:#fff;" (click)="toggleForm('form1')" >Service Request</button>
+            <div>
+              <i class="fas fa-tools"></i>
+            </div>
             <button class="btn btn-link" style="color:#fff;" (click)="toggleForm('form2')" >Search Works</button>
+            <div>
+              <i class="fas fa-search"></i>
+            </div> -->
+            <div class="d-flex align-items-center">
+              <button class="btn btn-link mr-3" style="color:#fff;" (click)="toggleForm('form1')">
+                <div>
+                    <i class="fa fa-database" style="font-size:36px"></i>
+                </div>
+                Service Request
+              </button>
+
+              <button class="btn btn-link mr-3" style="color:#fff;" (click)="toggleForm('form2')">
+                <div>
+                  <i class="fa fa-database" style="font-size:36px"></i>
+                </div>
+                Search Person
+              </button>
+            </div>
           </div>
 
           <div id="form1" class="collapse p-3" [class.show]="isForm1Visible">
@@ -193,19 +214,19 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-3">
-        <div class="card h-80 card">
-          <div class="card" style="width: 15.9rem;">
-            <img class="card-img-top" src="assets/images/bul1.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h6>Brand : consustation</h6>
-              <h6>Model: </h6>
+        <div class="card h-80">
+            <div class="card" style="width: 100%;">
+                <img class="card-img-top" src="assets/images/bul1.jpg" alt="Card image cap" style="max-width: 100%;">
+                <div class="card-body">
+                    <h6>Brand: consustation</h6>
+                    <h6>Model:</h6>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
       <div class="col-md-3">
-        <div class="card h-80 card">
-          <div class="card" style="width: 15.9rem;">
+        <div class="card h-80 ">
+          <div class="card" style="width: 100%;">
             <img class="card-img-top" src="assets/images/bul2.jpg" alt="Card image cap">
             <div class="card-body">
               <h6>Brand : consustation</h6>
@@ -217,7 +238,7 @@
 
       <div class="col-md-3">
         <div class="card h-80 card">
-          <div class="card" style="width: 15.9rem;">
+          <div class="card" style="width: 100%;">
             <img class="card-img-top" src="assets/images/bul3.jpg" alt="Card image cap">
             <div class="card-body">
               <h6>Brand : consustation</h6>
@@ -229,7 +250,7 @@
 
       <div class="col-md-3">
         <div class="card h-80">
-          <div class="card" style="width: 15.9rem;">
+          <div class="card" style="width: 100%;">
             <img class="card-img-top" src="assets/images/bul4.jpg" alt="Card image cap">
             <div class="card-body">
               <h6>Brand : consustation</h6>

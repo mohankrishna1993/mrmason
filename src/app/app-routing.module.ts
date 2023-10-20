@@ -10,15 +10,19 @@ import { TempComponent } from './components/temp/temp.component';
 import { DashboardPannelComponent } from './components/dashboard-pannel/dashboard-pannel.component';
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
 import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '',redirectTo: '/login',pathMatch: 'full'},
-  {path: 'home',component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home',component: HomeComponent,
+  canActivate: [AuthGuard],
+},
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent},
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard-pannel', pathMatch: 'full' },
       { path: 'dashboard-pannel', component: DashboardPannelComponent },

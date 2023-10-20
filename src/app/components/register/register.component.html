@@ -22,198 +22,128 @@
  </ul>
             </div>
   </div>
-      <div class="col-md-6 login-form">
-        <div class="auctionFormRight" style="margin-top: 0px;">
-          <h3 class="aucformTitle text-center">Register Here</h3>
-          <!-- <h2>Register Here</h2> -->
-          <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
-              <!-- <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" formControlName="name">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-                <div class="row form-group">
-                      <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">Name</label>
+        <div class="col-md-6 login-form card">
+            <div class="auctionFormRight" style="margin-top: 0px;">
+                <h3 class="aucformTitle text-center">Register Here Plan Your Land Mr.Mason</h3>
+                <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+
+                    <!-- Name Field -->
+                    <div class="form-group row mb-3">
+                        <label for="name" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Name</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required formControlName="name">
+                        </div>
+                    </div>
+
+                    <!-- Mobile Number Field -->
+                    <div class="form-group row mb-3">
+                        <label for="mobileNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Mobile<span style="color: red">*</span></label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="mobileNo" placeholder="Enter Your Mobile_No" pattern="[1-9]{1}[0-9]{9}" title="Enter 10-digit mobile number" maxlength="10" formControlName="mobile" required>
+                        </div>
+                    </div>
+
+                    <!-- Email ID Field -->
+                    <div class="form-group row mb-3">
+                        <label for="emailId" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Email ID<span style="color: red">*</span></label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="emailId" placeholder="Enter Your Email_Id" required formControlName="email">
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group row mb-3">
+                        <label for="password" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Password<span style="color: red">*</span></label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" name="password" placeholder="Enter Your Password" required formControlName="password">
+                        </div>
+                    </div>
+
+                    <!-- Pincode Field -->
+                    <div class="form-group row mb-3">
+                        <label for="pincodeNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Pincode<span style="color: red">*</span></label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="pincodeNo" placeholder="Enter Your Pincode No" title="Enter 6-digit pincode number" maxlength="6" required formControlName="pincode">
+                        </div>
+                    </div>
+
+                    <!-- D.No/Street Field -->
+                    <div class="form-group row mb-3">
+                        <label for="address" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">D.No/Street</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="address" placeholder="Enter Your D.No/Street" required formControlName="street">
+                        </div>
+                    </div>
+
+                    <!-- City Field -->
+                    <div class="form-group row mb-3">
+                        <label for="city" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">City</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="city" placeholder="Enter Your City" required formControlName="city">
+                        </div>
+                    </div>
+
+                    <!-- State Field -->
+                    <div class="form-group row mb-3">
+                        <label for="state" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">State</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="state" placeholder="Enter Your State" required formControlName="state">
+                        </div>
+                    </div>
+
+                    <!-- District Field -->
+                    <div class="form-group row mb-3">
+                        <label for="district" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">District</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="district" placeholder="Enter Your District" required formControlName="district">
+                        </div>
+                    </div>
+
+                    <!-- Bussiness Field -->
+                    <div class="form-group row mb-3">
+                      <label for="district" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Business Name</label>
                       <div class="col-md-8">
-               <div class="input-group">
-                      <input type="text" name="name" class="form-control" id="" value="" placeholder="Enter Your Name" required formControlName="name">
+                          <input type="text" class="form-control" name="district" placeholder="Enter Your Businessname" required formControlName="businessname">
                       </div>
-                      </div>
-                </div></div></div>
-
-
-          <!-- test -->
-
-              <!-- <div class="form-group">
-                <label for="name">Business_Name</label>
-                <input type="text" class="form-control" id="name" name="name" formControlName="businessname">
-            </div> -->
-
-              <!-- <div class="form-group">
-                  <label for="mobile">Mobile No</label>
-                  <input type="text" class="form-control" id="mobile" name="mobile" formControlName="mobile">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-               <div class="row form-group">
-                     <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">Mobile<span style="color: red">*</span></label>
-                     <div class="col-md-8">
-               <div class="input-group">
-                     <input type="mobile" name="mobileNo" class="form-control" id="" value="" placeholder="Enter Your Mobile_No"
-                          pattern="[1-9]{1}[0-9]{9}" title="Enter 10 digit mobile number" maxlength="10" required>
-                     </div>
-                     </div>
-               </div></div></div>
-
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-                <div class="row form-group">
-                      <label class="col-md-2 control-label" id="one" style="padding: 7px 14px">Email ID<span style="color: red">*</span></label>
-                      <div class="col-md-8">
-                <div class="input-group">
-                      <input type="text" name="emailId" class="form-control" id="txtEmail" value="" placeholder="Enter Your Email_Id" required formControlName="email">
-                      </div></div>
-                      </div>
-                      </div>
-                </div>
-
-              <!-- <div class="form-group">
-                  <label for="name">Password</label>
-                  <input type="text" class="form-control" id="name" name="name" formControlName="password">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-                <div class="row form-group">
-                      <label class="col-md-2 control-label" id="one" style="padding: 7px 14px">Password<span style="color: red">*</span></label>
-                      <div class="col-md-8">
-                <div class="input-group">
-                      <input type="password" name="password" class="form-control" id="txtpassword" value="" placeholder="Enter Your Email_Id" required formControlName="password">
-                      </div></div>
-                      </div>
-                      </div>
-                </div>
-
-
-              <!-- <div class="form-group">
-                 <label for="name">Pincode</label>
-                 <input type="text" class="form-control" id="name" name="name" formControlName="pincode">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-               <div class="row form-group">
-                     <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">Pincode<span style="color: red">*</span></label>
-                     <div class="col-md-8">
-               <div class="input-group">
-                    <input type="text" name="pincodeNo" class="form-control" id="pincodeNo"  value="" placeholder="Enter Your Pincode No"
-                         title="Enter 6 pincode number" maxlength="6" required formControlName="pincode">
-                     </div></div>
-                     </div>
-                     </div>
-               </div>
-
-             <!-- <div class="form-group">
-                 <label for="name">D.No/Street</label>
-                 <input type="text" class="form-control" id="name" name="name" formControlName="street" >
-             </div> -->
-             <div class="aucformFieldsBox">
-              <div class="col-md-12 col-sm-12">
-             <div class="row form-group">
-                   <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">D.No/street</label>
-                   <div class="col-md-8">
-             <div class="input-group">
-                   <input type="text" name="address" class="form-control" id="" value="" placeholder="Enter Your D.No/Street" required formControlName="street">
-                   </div></div>
-                   </div>
-                   </div>
-             </div>
-
-             <!-- <div class="form-group">
-              <label for="name">User_Type</label>
-              <input type="text" class="form-control" id="name" name="name"formControlName="usertype" >
-             </div> -->
-
-             <!-- <div class="form-group">
-              <label for="name">Address</label>
-              <input type="text" class="form-control" id="name" name="name"formControlName="address" >
-             </div> -->
-
-
-
-             <!-- <div class="form-group">
-                <label for="name">City</label>
-                <input type="text" class="form-control" id="name" name="name" formControlName="city">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-               <div class="row form-group">
-                     <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">City</label>
-                     <div class="col-md-8">
-               <div class="input-group">
-                     <input type="text" name="address" class="form-control" id="" value="" placeholder="Enter Your D.No/Street" required formControlName="city">
-                     </div></div>
-                     </div>
-                     </div>
-               </div>
-              <!-- <div class="form-group">
-                <label for="name">State</label>
-                <input type="text" class="form-control" id="name" name="name" formControlName="state">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-               <div class="row form-group">
-                     <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">State</label>
-                     <div class="col-md-8">
-               <div class="input-group">
-                     <input type="text" name="state" class="form-control" id="" value="" placeholder="Enter Your State" required formControlName="state">
-                     </div></div>
-                     </div>
-                     </div>
-               </div>
-
-              <!-- <div class="form-group">
-                <label for="name">District</label>
-                <input type="text" class="form-control" id="name" name="name" formControlName="district">
-              </div> -->
-              <div class="aucformFieldsBox">
-                <div class="col-md-12 col-sm-12">
-               <div class="row form-group">
-                     <label class="col-md-2 control-label" style="font-size: 17px;color: #020202; font-family: sans-serif;">District</label>
-                     <div class="col-md-8">
-               <div class="input-group">
-                     <input type="text" name="district" class="form-control" id="" value="" placeholder="Enter Your District" required formControlName="district">
-                     </div></div>
-                     </div>
-                     </div>
-               </div>
-
-                <div class="aucformFieldsBox">
-                  <div class="col-md-12 col-xs-12">
-                  <input type="checkbox" name="check_agree" id="check_agree"	required value="y" style="width: 20px; height: 20px;  float: left;">
-                                      <span class="">
-                  <a href="condtions.jsp" target="_blank" class="ul" style="color:#18aedf; font-size: 16px;
-                                      float: left;">
-                  &nbsp; i agree to the terms and conditions
-                  </a>
-                  </span>
-                  </div>
                   </div>
 
-                  <div class="aucformFieldsBox nomargin">
-                  <div class="aucformFieldsBox col-md-12 col-xs-12">
-                    <div class="col-md-12 col-xs-12 text-center">
-                  <h4>
-                  <input class="btn" type="submit" name="sub" value="REGISTER" style=" width: 120px;
-                                     background-color: #18aedf; color: white; padding-bottom: 6px;font-size: 17px; line-height: 19px; border: 1px solid #18aedf;">
-                   </h4>
-                   </div>
-                 </div>
-                 </div>
 
-              <!-- Add more registration fields here -->
+                   <!-- Address Field -->
+                   <div class="form-group row mb-3">
+                    <label for="district" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Address</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="district" placeholder="Enter Your address" required formControlName="address">
+                    </div>
+                </div>
 
-          </form>
+                <!-- usertype Field -->
+                <div class="form-group row mb-3">
+                  <label for="district" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">User Type</label>
+                  <div class="col-md-8">
+                      <input type="text" class="form-control" name="usertype" placeholder="Enter Your user type" required formControlName="usertype">
+                  </div>
+              </div>
+
+                    <!-- Terms and Conditions Checkbox -->
+                    <div class="form-group row mb-3">
+                        <div class="col-md-10 offset-md-2">
+                            <input type="checkbox" class="form-check-input" name="check_agree" id="check_agree" required value="y">
+                            <label class="form-check-label" for="check_agree">
+                                <a href="condtions.jsp" target="_blank" style="color: #18aedf; font-size: 16px;">I agree to the terms and conditions</a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Register Button -->
+                    <div class="form-group row mb-3">
+                        <div class="col-md-8 offset-md-2">
+                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;">REGISTER</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-  </div>
+    </div>
+
+
 </div>

@@ -56,9 +56,9 @@
         </thead>
         <tbody>
             <!-- Add table data here -->
-            <tr *ngFor="let item of tableData">
-              <td>{{ item.SER_PER_SEQ_ID }}</td>
-              <td>{{ item.requestOrderNo }}</td>
+            <tr *ngFor="let item of tableData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.NAME }}</td>
               <td>{{ item.CONTACT_NO }}</td>
               <td>{{ item.EMAIL_ID }}</td>
               <td>{{ item.CITY }}</td>

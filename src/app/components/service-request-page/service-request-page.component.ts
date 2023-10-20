@@ -12,15 +12,17 @@ export class ServiceRequestPageComponent implements OnInit{
   constructor(private apiService: ApiserviceService) {}
 
   ngOnInit(): void {
-     this.servicePersonData();
-  }
-  servicePersonData() {
-    console.log("*******1");
-    this.apiService.getServicePersonData().subscribe((res: any) => {
-      // console.log("****2");
-      console.log(res);
-      this.tableData = res.data;
-    });
-  }
+    this.serviceRequestData();
+ }
+
+
+
+ serviceRequestData() {
+   this.apiService.getServiceRequestData().subscribe((res:any) => {
+     console.log(res.data);
+     this.tableData = res.data;
+   });
+
+ }
 
 }

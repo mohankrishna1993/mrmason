@@ -33,11 +33,12 @@ export class RegisterComponent implements OnInit {
   });
 
   ngOnInit(){
-     this.signupSubmit();
   }
 
   signupSubmit() {
-    if(this.signupForm.valid){
+    console.log('*********************************');
+    console.log(this.signupForm);
+    // if(this.signupForm.valid){
       console.log(this.signupForm.value);
       const userData: userData = {
         NAME: this.signupForm.value.name ?? "",
@@ -51,12 +52,11 @@ export class RegisterComponent implements OnInit {
         PINCODE_NO: this.signupForm.value.pincode ?? "",
         USER_TYPE: this.signupForm.value.usertype ?? "",
         PASSWORD: this.signupForm.value.password ?? "",
-
-
       }
+      console.log('*********');
 
       this.authService.register(userData);
-    }
+    // }
 
 
 
