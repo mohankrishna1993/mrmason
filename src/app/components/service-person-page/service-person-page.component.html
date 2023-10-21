@@ -1,6 +1,6 @@
 
-          <div class="container-fluid mt-4 main-container">
-              <div class="card">
+          <div class="container-fluid main-container">
+              <div class="card card-container">
                   <div class="card-header">
                       <h1>Service Person</h1>
                   </div>
@@ -40,40 +40,40 @@
                       </form>
                   </div>
               </div>
-               <!-- table -->
-            <table class="table table-bordered table-striped mt-3">
-        <thead>
-            <tr>
-                <th>Srl. No.</th>
-                <th>Service Person Name</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>City</th>
-                <th>District</th>
-                <th>State</th>
-                <th>Availability</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Add table data here -->
-            <tr *ngFor="let item of tableData; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ item.NAME }}</td>
-              <td>{{ item.CONTACT_NO }}</td>
-              <td>{{ item.EMAIL_ID }}</td>
-              <td>{{ item.CITY }}</td>
-              <td>{{ item.DISTRICT }}</td>
-              <td>{{ item.STATE }}</td>
-              <td>
-                <span [class]="'btn btn-sm ' + (item.active ? 'btn-success' : 'btn-danger')">
-                  {{ item.STATUS === "ACTIVE" ? 'Active' : 'Inactive' }}
-                </span>
-              </td>
-            </tr>
-        </tbody>
+              <div class="table-container">
+                <table class="table table-bordered table-striped mt-3">
+                  <thead>
+                      <tr>
+                          <th>Srl. No.</th>
+                          <th>Service Person Name</th>
+                          <th>Mobile</th>
+                          <th>Email</th>
+                          <th>City</th>
+                          <th>District</th>
+                          <th>State</th>
+                          <th>Availability</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <!-- Add table data here -->
+                      <tr *ngFor="let item of tableData; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ item.NAME }}</td>
+                        <td>{{ item.CONTACT_NO }}</td>
+                        <td>{{ item.EMAIL_ID }}</td>
+                        <td>{{ item.CITY }}</td>
+                        <td>{{ item.DISTRICT }}</td>
+                        <td>{{ item.STATE }}</td>
+                        <td>
+                          <span [class]="'btn btn-sm ' + (item.active ? 'btn-success' : 'btn-danger')">
+                            {{ item.STATUS === "ACTIVE" ? 'Active' : 'Inactive' }}
+                          </span>
+                        </td>
+                      </tr>
+                  </tbody>
 
-            </table>
-
+                      </table>
+              </div>
           </div>
 
 

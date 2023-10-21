@@ -48,4 +48,11 @@ table {
     flex-flow: wrap;
     justify-content: space-between;
   }
+  .card-container {
+    height: 30%;
+  }
+  .table-container {
+    height: 70%;
+    overflow: auto;
+  }
 

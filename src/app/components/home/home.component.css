@@ -19,6 +19,34 @@
 
 }
 
+.line-1{
+  position: relative;
+  top: 50%;
+  width: 24em;
+  margin: 0 auto;
+  border-right: 2px solid rgba(255,255,255,.75);
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+/* Animation */
+.anim-typewriter{
+animation: typewriter 4s steps(44) 1s 1 normal both,
+           blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+from{width: 0;}
+to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+from{border-right-color: rgba(255,255,255,.75);}
+to{border-right-color: transparent;}
+}
+
+
 .bg-skyblue {
   background-color: skyblue;
   color: white; /* Set the text color to white */
@@ -75,6 +103,34 @@ ul {
 .heading {
   color: #fff;
   font-size: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.typewriter {
+  color:#0000;
+  background:
+    linear-gradient(-90deg,#00DFFC 5px,#0000 0) 10px 0,
+    linear-gradient(#00DFFC 0 0) 0 0;
+  background-size:calc(var(--n)*1ch) 200%;
+  -webkit-background-clip:padding-box,text;
+  background-clip:padding-box,text;
+  background-repeat:no-repeat;
+  animation:
+   b .7s infinite steps(1),
+   t calc(var(--n)*.3s) steps(var(--n)) forwards;
+}
+
+@keyframes t{
+  from {background-size:0 200%}
+}
+@keyframes b{
+  50% {background-position:0 -100%,0 0}
+}
+
+.subheading {
+  color: #fff;
+  font-size: 25px;
+  line-height: 26pt;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 

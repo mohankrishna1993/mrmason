@@ -20,6 +20,13 @@ export class ServiceRequestPageComponent implements OnInit{
  serviceRequestData() {
    this.apiService.getServiceRequestData().subscribe((res:any) => {
      console.log(res.data);
+
+    //  const repeatedArray = [];
+    //   for (let i = 0; i < 20; i++) {
+    //     repeatedArray.push(res.data[0]);
+    //   }
+    //   this.tableData = repeatedArray;
+
      this.tableData = res.data;
    });
 

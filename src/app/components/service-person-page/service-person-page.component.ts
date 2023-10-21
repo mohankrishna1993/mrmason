@@ -16,10 +16,14 @@ export class ServicePersonPageComponent implements OnInit{
      this.servicePersonData();
   }
   servicePersonData() {
-    console.log("*******1");
     this.apiService.getServicePersonData().subscribe((res: any) => {
       // console.log("****2");
       console.log(res);
+      // const repeatedArray = [];
+    // for (let i = 0; i < 20; i++) {
+      //   repeatedArray.push(res.data[0]);
+      // }
+      // this.tableData = repeatedArray;
       this.tableData = res.data;
     });
   }

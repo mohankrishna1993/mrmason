@@ -19,6 +19,10 @@ import { TempComponent } from './components/temp/temp.component';
 import { DashboardPannelComponent } from './components/dashboard-pannel/dashboard-pannel.component';
 import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { ServicePersonPageComponent } from './components/service-person-page/ser
     TempComponent,
     DashboardPannelComponent,
     ServiceRequestPageComponent,
-    ServicePersonPageComponent
+    ServicePersonPageComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import { ServicePersonPageComponent } from './components/service-person-page/ser
     ReactiveFormsModule,
     HttpClientModule,
     NgOptimizedImage,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

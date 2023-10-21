@@ -1,14 +1,25 @@
 import { Component, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('startTypewriter', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ width: 0, opacity: 0 }),
+        animate('2s ease-in')
+      ])
+    ])
+  ]
 })
 export class HomeComponent implements AfterViewInit {
   // @ViewChild('carousel') carousel: ElementRef;
   isForm1Visible: boolean = true;
   isForm2Visible: boolean = false;
+  text = "sample";
 
   slides = [
     {
@@ -40,7 +51,7 @@ export class HomeComponent implements AfterViewInit {
       this.isForm2Visible = true;
       console.log('*******')
     }
-    
+
   }
 
 }

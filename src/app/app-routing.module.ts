@@ -11,12 +11,12 @@ import { DashboardPannelComponent } from './components/dashboard-pannel/dashboar
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
 import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
 import { AuthGuard } from './auth.guard';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home',component: HomeComponent,
-  canActivate: [AuthGuard],
-},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'home',component: HomeComponent},
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent},
   {

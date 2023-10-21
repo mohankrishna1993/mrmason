@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class LoginComponent implements OnInit{
 
   formData!: FormGroup;
+  
 
   constructor(private apiService: ApiserviceService,
      private authService: AuthService,
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit{
     if(this.formData?.valid) {
       console.log(this.formData.value);
       this.authService.login(this.formData.value.username,this.formData.value.password);
+
     }
   }
 

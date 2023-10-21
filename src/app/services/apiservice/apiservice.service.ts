@@ -15,13 +15,13 @@ export class ApiserviceService {
   constructor(private http:HttpClient) { }
 
   public login(username: string,password: string):Observable<any> {
-    return this.http.post(`${this.baseUrl}/Users/login`, {
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const data = JSON.stringify({
       EMAIL_ID: username,
       PASSWORD: password,
-      },
-      {
-        responseType : 'text'
-      }
+      });
+    return this.http.post(`${this.baseUrl}/Users/login`, data,
+    { headers: headers, responseType: 'json' }
     );
   }
 
@@ -29,26 +29,10 @@ export class ApiserviceService {
     userData: userData
   ): Observable<object> {
     console.log(userData);
-    const data = {
-      "ADDRESS": userData.ADDRESS,
-      "BUSINESS_NAME": userData.BUSINESS_NAME,
-      "CITY": userData.CITY,
-      "DISTRICT": userData.DISTRICT,
-      "EMAIL_ID": userData.EMAIL_ID,
-      "MOBILE_NO": userData.MOBILE_NO,
-      "NAME":userData.NAME,
-      "PASSWORD":userData.PASSWORD,
-      "PINCODE_NO":userData.PINCODE_NO,
-      "STATE":userData.STATE,
-      "USER_TYPE":userData.USER_TYPE
-    };
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-    const options = { headers: headers, responseType: 'text' };
-
-    // const dataToSend = JSON.stringify(data);
-    const jsonData = JSON.stringify(userData);
+    const data = JSON.stringify(userData);
     return this.http.post<any>(`${this.baseUrl}/Users/register`,
-    jsonData,  { headers: headers, responseType: 'json' });
+    data,  { headers: headers, responseType: 'json' });
   }
 
   //gettoken
@@ -64,6 +48,17 @@ export class ApiserviceService {
   getServicePersonData(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/Staff/getFilteredReport?SERVICE_NAME=carpenter&CITY=Hyde&AVAILABLE_STATUS`);
   }
+
+  sendPasswordResetEmail(email: string, password: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const data = JSON.stringify({
+      EMAIL_ID: email,
+      PASSWORD: password,
+      });
+    return this.http.post<any[]>(`${this.baseUrl}/Users/forgotPassword`,data, { headers: headers, responseType: 'json' });
+  }
+
+
 
 
 }
