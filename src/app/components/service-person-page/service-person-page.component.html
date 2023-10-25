@@ -56,7 +56,7 @@
                   </thead>
                   <tbody>
                       <!-- Add table data here -->
-                      <tr *ngFor="let item of tableData; let i = index">
+                      <tr *ngFor="let item of tableData | paginate: {itemsPerPage:2,currentPage:page,totalItems:totalLength}; let i = index">
                         <td>{{ i + 1 }}</td>
                         <td>{{ item.NAME }}</td>
                         <td>{{ item.CONTACT_NO }}</td>
@@ -73,6 +73,9 @@
                   </tbody>
 
                       </table>
+                      <div class="pagination">
+                        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                      </div>
               </div>
           </div>
 

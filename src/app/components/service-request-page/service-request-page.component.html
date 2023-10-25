@@ -48,6 +48,7 @@
   </div>
    <!-- table -->
    <div class="table-container">
+
       <table class="table table-bordered table-striped mt-3">
    <thead>
     <tr>
@@ -63,8 +64,9 @@
    </thead>
 <tbody>
 <!-- Add table data here -->
-<tr *ngFor="let item of tableData; let i = index">
-  <td>{{ i + 1 }}</td>
+<tr *ngFor="let item of tableData | paginate: {itemsPerPage:2,currentPage:page,totalItems:totalLength}; let i = index">
+
+  <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
   <td>{{ item.REQ_SEQ_ID }}</td>
   <td>{{ item.SERVICE_NAME }}</td>
   <td>{{ item.SERVICE_REQUEST_DATE }}</td>
@@ -85,5 +87,10 @@
 </tbody>
 
       </table>
+
+      <div class="pagination">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+
    </div>
 </div>

@@ -1,5 +1,7 @@
-import { Component, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, Renderer2, OnInit  } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+// import { Autocomplete } from 'googlemaps';
+
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class HomeComponent implements AfterViewInit {
-  // @ViewChild('carousel') carousel: ElementRef;
+
+
+
   isForm1Visible: boolean = true;
   isForm2Visible: boolean = false;
   text = "sample";
@@ -41,6 +45,8 @@ export class HomeComponent implements AfterViewInit {
     //   interval: 3000, // Adjust the interval time in milliseconds
     // });
   }
+
+
 
   toggleForm(formName: string) {
     if (formName === 'form1') {

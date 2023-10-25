@@ -9,6 +9,9 @@ import { ApiserviceService } from 'src/app/services/apiservice/apiservice.servic
 export class ServicePersonPageComponent implements OnInit{
 
   tableData: any[] = [];
+  totalLength: any;
+  page: number = 1;
+  itemsPerPage: number = 2;
 
   constructor(private apiService: ApiserviceService) {}
 

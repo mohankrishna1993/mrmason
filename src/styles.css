@@ -1,3 +1,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pagination {
+  padding: 20px 16px;
+  float: right;
+  text-align: center; /* Center-align the content */
+  font-size: 18px;
+}
+

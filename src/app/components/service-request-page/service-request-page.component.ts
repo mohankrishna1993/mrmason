@@ -7,13 +7,23 @@ import { ApiserviceService } from 'src/app/services/apiservice/apiservice.servic
   styleUrls: ['./service-request-page.component.css']
 })
 export class ServiceRequestPageComponent implements OnInit{
+
   tableData: any[] = [];
+  totalLength: any;
+  page: number = 1;
+  itemsPerPage: number = 2;
 
   constructor(private apiService: ApiserviceService) {}
 
   ngOnInit(): void {
     this.serviceRequestData();
  }
+
+ get pagedData(): any[] {
+  const start = this.page * this.totalLength;
+  const end = start + this.totalLength;
+  return this.tableData.slice(start, end);
+}
 
 
 

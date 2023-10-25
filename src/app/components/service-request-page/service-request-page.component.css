@@ -56,3 +56,25 @@ table {
     overflow: auto;
   }
 
+  .pagination::ng-deep .ngx-pagination .current {
+    background: brown;
+  }
+  /* Default styles for larger screens */
+.container-fluid {
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Tablet and smaller screens */
+@media screen and (max-width: 768px) {
+  .container-fluid {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling for tables on smaller screens */
+  }
+  .pagination {
+    text-align: center; /* Center-align pagination controls on smaller screens */
+  }
+}
+

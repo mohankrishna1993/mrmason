@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ServicePersonComponent } from './components/service-person/service-person.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component'
-import {NgOptimizedImage} from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,9 @@ import { ServiceRequestPageComponent } from './components/service-request-page/s
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+
 
 
 @NgModule({
@@ -39,7 +41,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     DashboardPannelComponent,
     ServiceRequestPageComponent,
     ServicePersonPageComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NgOptimizedImage,
     NgbModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxPaginationModule
 
   ],
   providers: [],

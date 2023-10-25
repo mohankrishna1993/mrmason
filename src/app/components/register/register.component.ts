@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
 
 
   signupForm = new FormGroup({
+    usertype: new FormControl('',Validators.required),
     name: new FormControl('',Validators.required),
     mobile: new FormControl('',Validators.required),
     email: new FormControl('',Validators.required),
@@ -28,8 +29,7 @@ export class RegisterComponent implements OnInit {
     state: new FormControl('',Validators.required),
     district: new FormControl('',Validators.required),
     businessname: new FormControl('',Validators.required),
-    address: new FormControl('',Validators.required),
-    usertype: new FormControl('',Validators.required)
+    address: new FormControl('',Validators.required)
   });
 
   ngOnInit(){

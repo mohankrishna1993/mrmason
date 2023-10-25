@@ -19,6 +19,9 @@
   height: 70%;
   overflow: auto;
 }
+.pagination::ng-deep .ngx-pagination .current {
+  background: brown;
+}
 
 .form-row > .col,
 .form-row > [class*="col-"] {
