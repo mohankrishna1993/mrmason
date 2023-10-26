@@ -23,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-
+import { NgxGpAutocompleteModule } from "@angular-magic/ngx-gp-autocomplete";
+import { Loader } from '@googlemaps/js-api-loader';
 
 
 @NgModule({
@@ -53,10 +54,19 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NgbModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxGpAutocompleteModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: Loader,
+      useValue: new Loader({
+        apiKey: 'AIzaSyBE49eJ-hTzLNA7IKZ2DOnW-4BBHDzDXlA',
+        libraries: ['places']
+      })
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

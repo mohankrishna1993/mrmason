@@ -18,7 +18,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class HomeComponent implements AfterViewInit {
-
+  options: any = {
+    componentRestrictions: { country: 'IN' }
+  }
 
 
   isForm1Visible: boolean = true;
@@ -38,6 +40,10 @@ export class HomeComponent implements AfterViewInit {
     },
     // Add more slides as needed
   ];
+
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    // Do some stuff
+  }
 
   ngAfterViewInit() {
     // Start the carousel automatically
