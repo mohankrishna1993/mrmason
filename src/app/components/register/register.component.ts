@@ -35,6 +35,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(){
   }
 
+  sendOTP() {
+    
+  }
+
   signupSubmit() {
     console.log('*********************************');
     console.log(this.signupForm);

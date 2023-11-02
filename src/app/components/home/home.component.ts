@@ -1,6 +1,11 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, Renderer2, OnInit  } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-// import { Autocomplete } from 'googlemaps';
+import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
+import { ServiceRequest } from 'src/app/interfaces/service.modal';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+
 
 
 @Component({
@@ -17,7 +22,26 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ]
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit,OnInit {
+
+  isLoggedIn = false;
+
+  constructor(private apiService: ApiserviceService,
+              private toast: ToastService,
+              private authService: AuthService
+              ){}
+
+  ngOnInit() {
+    this.authService.isLoggedIn$.subscribe((t) => this.isLoggedIn = t);
+  }
+
+  submitForm = new FormGroup({
+    servicetype: new FormControl('',Validators.required),
+    location: new FormControl('',Validators.required),
+    servicedate: new FormControl('',Validators.required),
+    description: new FormControl('',Validators.required),
+  });
+
   options: any = {
     componentRestrictions: { country: 'IN' }
   }
@@ -42,14 +66,30 @@ export class HomeComponent implements AfterViewInit {
   ];
 
   public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place);
     // Do some stuff
+  }
+  onSubmitRequestForm() {
+
+    console.log(this.submitForm);
+    const data: ServiceRequest = {
+      SERVICE_NAME: this.submitForm.value.servicetype ?? "",
+      REQUESTED_BY: this.submitForm.value.servicedate ?? "",
+      DESCRIPTION: this.submitForm.value.description ?? "",
+      REQ_PINCODE: this.submitForm.value.location ?? "",
+      REMARKS: ""
+    }
+     this.apiService.sendSubmitRequestData(data).subscribe((res)=> {
+      console.log(res);
+      if(res['status']) {
+        this.toast.show("Service Request submited Successfully");
+      } else {
+        this.toast.show("Service Request failed!")
+      }
+     })
   }
 
   ngAfterViewInit() {
-    // Start the carousel automatically
-    // const carouselInstance = new bootstrap.Carousel(this.carousel.nativeElement, {
-    //   interval: 3000, // Adjust the interval time in milliseconds
-    // });
   }
 
 

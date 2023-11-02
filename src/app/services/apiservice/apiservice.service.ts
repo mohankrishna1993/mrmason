@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {userData} from '../../interfaces/user.modal';
+import { userData } from '../../interfaces/user.modal';
+import { ServiceRequest } from 'src/app/interfaces/service.modal';
+import { ToastService } from '../toast/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class ApiserviceService {
 
   baseUrl = "http://65.1.178.54/app/index.php";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private toast: ToastService) { }
 
   public login(username: string,password: string):Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
@@ -55,9 +57,16 @@ export class ApiserviceService {
       EMAIL_ID: email,
       PASSWORD: password,
       });
-    return this.http.post<any[]>(`${this.baseUrl}/Users/forgotPassword`,data, { headers: headers, responseType: 'json' });
+    return this.http.post<any[]>(`${this.baseUrl}/Users/forgotPassword`,
+    data, { headers: headers, responseType: 'json' });
   }
 
+  sendSubmitRequestData(serviceRequest: ServiceRequest): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const data = JSON.stringify(serviceRequest);
+      return this.http.post<any[]>(`${this.baseUrl}/ServiceRequest/insert`,
+      data, { headers: headers, responseType: 'json' });
+  }
 
 
 

@@ -33,6 +33,10 @@
   padding: 20px; /* Optional padding for content inside the container */
   height: 100%;
 }
+/* .container-fluid {
+  max-width: 1200px;
+  margin: 0 auto;
+} */
 
 .table-hover tbody tr:hover {
   color: #858796;

@@ -62,36 +62,36 @@
           <div id="form1" class="collapse p-3" [class.show]="isForm1Visible">
 
             <div id="form1">
-              <form>
+              <form [formGroup]="submitForm" (ngSubmit)="onSubmitRequestForm()">
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="serviceType">Service Type</label>
-                    <select class="form-control" id="serviceType">
+                    <select class="form-control" id="serviceType" formControlName="servicetype">
 
                       <option value="">Select Service Type</option>
-                       <option value="Option 1">Carpenter</option>
-                       <option value="Option 2">Electrician</option>
-                       <option value="Option 3">Masonry Worker</option>
-                       <option value="Option 4">Painter</option>
-                       <option value="Option 5">Plumber</option>
+                       <option value="Carpenter">Carpenter</option>
+                       <option value="Electrician">Electrician</option>
+                       <option value="Masonry Worker">Masonry Worker</option>
+                       <option value="Painter">Painter</option>
+                       <option value="Plumber">Plumber</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label for="location">Location</label>
-                    <input class="form-control" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)"/>
+                    <input class="form-control" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' formControlName="location" (onAddressChange)="handleAddressChange($event)"/>
                     <!-- <input type="text" class="form-control" id="location"> -->
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="serviceDate">Service Date</label>
-                  <input type="date" class="form-control" id="serviceDate">
+                  <input type="date" class="form-control" id="serviceDate" formControlName="servicedate">
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea class="form-control" id="description" rows="3"></textarea>
+                  <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
                 </div>
                 <div class="text-center">
-                 <button type="submit" class="btn btn-success mx-auto">Submit Request</button>
+                 <button type="submit" class="btn btn-success mx-auto" [disabled]="!isLoggedIn">Submit Request</button>
                 </div>
               </form>
 

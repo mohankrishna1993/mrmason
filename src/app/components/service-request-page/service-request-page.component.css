@@ -20,6 +20,7 @@
   background-color: #f0f0f0; /* Set your desired background color here */
   padding: 20px; /* Optional padding for content inside the container */
   height: 100%;
+
 }
 
 .table-hover tbody tr:hover {
@@ -60,21 +61,22 @@ table {
     background: brown;
   }
   /* Default styles for larger screens */
-.container-fluid {
-  max-width: 1200px; /* Set a maximum width for the container */
-  margin: 0 auto; /* Center the container horizontally */
-}
+/* .container-fluid {
+  max-width: 1200px;
+  margin: 0 auto;
+} */
 
 /* Tablet and smaller screens */
-@media screen and (max-width: 768px) {
+
+/* @media screen and (max-width: 768px) {
   .container-fluid {
-    padding: 10px; /* Reduce padding for smaller screens */
+    padding: 10px;
   }
   .table-container {
-    overflow-x: auto; /* Enable horizontal scrolling for tables on smaller screens */
+    overflow-x: auto;
   }
   .pagination {
-    text-align: center; /* Center-align pagination controls on smaller screens */
+    text-align: center;
   }
-}
+} */
 
