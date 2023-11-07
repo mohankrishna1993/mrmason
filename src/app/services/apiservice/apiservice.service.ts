@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { userData } from '../../interfaces/user.modal';
 import { ServiceRequest } from 'src/app/interfaces/service.modal';
@@ -13,10 +13,12 @@ export class ApiserviceService {
 
 
   baseUrl = "http://65.1.178.54/app/index.php";
+  baseUrl1 = "http://43.204.168.30/register.php";
+  // baseUrl1 = "https://adroitcoder.com/projects/api/register.php";
 
   constructor(private http:HttpClient,private toast: ToastService) { }
 
-  public login(username: string,password: string):Observable<any> {
+   login(username: string,password: string):Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify({
       EMAIL_ID: username,
@@ -27,13 +29,13 @@ export class ApiserviceService {
     );
   }
 
-  public register(
+ register(
     userData: userData
   ): Observable<object> {
     console.log(userData);
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify(userData);
-    return this.http.post<any>(`${this.baseUrl}/Users/register`,
+    return this.http.post<any>(`${this.baseUrl1}`,
     data,  { headers: headers, responseType: 'json' });
   }
 
@@ -47,8 +49,8 @@ export class ApiserviceService {
     return this.http.get<any[]>(`${this.baseUrl}/ServiceRequest/getFilteredReport?SERVICE_NAME=carpenter&LOCATION=kandu`);
   }
 
-  getServicePersonData(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/Staff/getFilteredReport?SERVICE_NAME=carpenter&CITY=Hyde&AVAILABLE_STATUS`);
+  getServicePersonData(servicePerson: string, city: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/Staff/getFilteredReport?SERVICE_NAME=${servicePerson}&CITY=${city}&AVAILABLE_STATUS`);
   }
 
   sendPasswordResetEmail(email: string, password: string): Observable<any> {
@@ -66,6 +68,28 @@ export class ApiserviceService {
     const data = JSON.stringify(serviceRequest);
       return this.http.post<any[]>(`${this.baseUrl}/ServiceRequest/insert`,
       data, { headers: headers, responseType: 'json' });
+  }
+
+  sendOtpByEmail(email: string): Observable<any> {
+    const apiUrl = 'http://43.204.168.30/send-otp.php';
+
+    const params = new HttpParams().set('email', email);
+
+    const options = {
+      headers: new HttpHeaders(),
+      params: params,
+      observe: 'response' as const,
+      responseType: 'json' as const,
+      withCredentials: true,
+    };
+
+    return this.http.get(apiUrl, options);
+  }
+
+
+
+  sendOtpByMobile(mobile: string) {
+    return this.http.get(`http://43.204.168.30/send-otp.php?mobile=${mobile}`);
   }
 
 

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ServicePersonComponent } from './components/service-person/service-person.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { HomeComponent } from './components/home/home.component';
 import { TempComponent } from './components/temp/temp.component';
@@ -12,6 +11,7 @@ import { ServicePersonPageComponent } from './components/service-person-page/ser
 import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
 import { AuthGuard } from './auth.guard';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -31,9 +31,9 @@ const routes: Routes = [
 
     ]
   },
-  {path: 'temp', component: TempComponent},
-  { path: 'service-person',component: ServicePersonComponent },
-  { path: 'service-request',component: ServiceRequestComponent }
+  { path: 'temp', component: TempComponent},
+  { path: 'service-request',component: ServiceRequestComponent },
+  { path: 'verify-otp',component: VerfiyOtpComponent}
 
 ];
 

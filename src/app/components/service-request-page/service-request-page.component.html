@@ -5,12 +5,12 @@
           <h1>Service Request</h1>
       </div>
       <div class="card-body border-right-primary border-left-primary">
-          <form >
+          <form [formGroup]="serviceRequestForm" (ngSubmit)="serviceRequestData()">
               <div class="form-row">
 
                   <div class="col-md-2 form-group">
                       <label for="service-category" style="color: blue;">Service Category*</label>
-                      <select class="form-control" id="service-category">
+                      <select class="form-control" id="service-category" formControlName="serviceCategory">
                           <option value="category1">Category 1</option>
                           <option value="category2">Category 2</option>
                           <option value="category3">Category 3</option>
@@ -18,15 +18,15 @@
                   </div>
                   <div class="col-md-2 form-group">
                       <label for="field2" style="color: blue;">Service Name*</label>
-                      <input type="text" class="form-control" id="field2" name="field2">
+                      <input type="text" class="form-control" id="field2" name="field2" formControlName="serviceName">
                   </div>
                   <div class="col-md-2 form-group">
                       <label for="field3" style="color: blue;">Location*</label>
-                      <input type="text" class="form-control" id="field3" name="field3">
+                      <input type="text" class="form-control" id="field3" name="field3" formArrayName="location">
                   </div>
                   <div class="col-md-2 form-group">
                       <label for="request-status" style="color: blue;">Request Status*</label>
-                      <select class="form-control" id="request-status">
+                      <select class="form-control" id="request-status" formArrayName="requestStatus">
                           <option value="pending">Pending</option>
                           <option value="approved">Approved</option>
                           <option value="rejected">Rejected</option>
@@ -34,7 +34,7 @@
                   </div>
                   <div class="col-md-2 form-group">
                     <label for="field3" style="color: blue;">Phone Number*</label>
-                    <input type="text" class="form-control" id="field3" name="field3">
+                    <input type="text" class="form-control" id="field3" name="field3" formControlName="phoneNo">
                 </div>
               </div>
 

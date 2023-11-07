@@ -8,7 +8,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ServicePersonComponent } from './components/service-person/service-person.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component'
 import { NgOptimizedImage } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
@@ -25,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NgxGpAutocompleteModule } from "@angular-magic/ngx-gp-autocomplete";
 import { Loader } from '@googlemaps/js-api-loader';
+import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component';
 
 
 @NgModule({
@@ -33,7 +33,6 @@ import { Loader } from '@googlemaps/js-api-loader';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ServicePersonComponent,
     ServiceRequestComponent,
     HomeComponent,
     NavbarComponent,
@@ -43,6 +42,7 @@ import { Loader } from '@googlemaps/js-api-loader';
     ServiceRequestPageComponent,
     ServicePersonPageComponent,
     ForgotPasswordComponent,
+    VerfiyOtpComponent,
   ],
   imports: [
     BrowserModule,

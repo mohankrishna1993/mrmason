@@ -1,31 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiserviceService } from '../../services/apiservice/apiservice.service'
-import { Router } from '@angular/router'
-import { AuthService } from '../../services/auth/auth.service';
-import {userData} from '../../interfaces/user.modal';
+import { Router } from '@angular/router';
+import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-verfiy-otp',
+  templateUrl: './verfiy-otp.component.html',
+  styleUrls: ['./verfiy-otp.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class VerfiyOtpComponent implements OnInit{
   constructor(private apiService : ApiserviceService,
     private router: Router,
     private authService: AuthService) {}
 
 
   signupForm = new FormGroup({
-    name: new FormControl('',Validators.required),
+
     mobile: new FormControl('',[Validators.required]),
     email: new FormControl('',[Validators.required, Validators.email]),
-    password: new FormControl('',Validators.required),
-    pincode: new FormControl('',Validators.required),
-    city: new FormControl('',Validators.required),
-    state: new FormControl('',Validators.required),
-    district: new FormControl('',Validators.required),
+
 
   });
 
@@ -64,23 +58,20 @@ export class RegisterComponent implements OnInit {
     console.log('*********************************');
     console.log(this.signupForm);
       console.log(this.signupForm.value);
-      const userData: userData = {
-        uName: this.signupForm.value.name ?? "",
+      const userData = {
+
         mobile: this.signupForm.value.mobile ?? "",
         email: this.signupForm.value.email ?? "",
-        password: this.signupForm.value.password ?? "",
-        town: this.signupForm.value.city ?? "",
-        state: this.signupForm.value.state ?? "",
-        district: this.signupForm.value.district ?? "",
-        pincode: this.signupForm.value.pincode ?? "",
+
       }
       console.log('*********');
 
-      this.authService.register(userData);
+      // this.authService.register(userData);
     // }
 
 
 
 
 }
+
 }
