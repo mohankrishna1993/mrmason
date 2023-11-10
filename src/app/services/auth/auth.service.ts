@@ -38,19 +38,8 @@ export class AuthService {
   });
   }
 
-  public register(userData: userData) {
-    this.apiService
-      .register(userData)
-      .subscribe((res: any) => {
-        if(res['status']) {
-          localStorage.setItem(this.tokenKey, 'true');
-          this.router.navigate(['/dashboard']);
-          this.isLoggedIn$.next(true);
-
-        } else {
-          this.toast.show("Registration failed! Please enter correct details");
-        }
-      });
+  public register(userData: userData): Observable<any> {
+    return this.apiService.register(userData);
   }
 
   public logout() {

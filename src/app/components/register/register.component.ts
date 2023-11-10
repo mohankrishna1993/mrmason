@@ -3,7 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService } from '../../services/apiservice/apiservice.service'
 import { Router } from '@angular/router'
 import { AuthService } from '../../services/auth/auth.service';
-import {userData} from '../../interfaces/user.modal';
+import { userData } from '../../interfaces/user.modal';
+import { ToastService } from 'src/app/services/toast/toast.service';
+
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(private apiService : ApiserviceService,
     private router: Router,
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private toast: ToastService
+   ) {}
 
 
   signupForm = new FormGroup({
@@ -61,9 +65,6 @@ export class RegisterComponent implements OnInit {
   }
 
   signupSubmit() {
-    console.log('*********************************');
-    console.log(this.signupForm);
-      console.log(this.signupForm.value);
       const userData: userData = {
         uName: this.signupForm.value.name ?? "",
         mobile: this.signupForm.value.mobile ?? "",
@@ -74,13 +75,31 @@ export class RegisterComponent implements OnInit {
         district: this.signupForm.value.district ?? "",
         pincode: this.signupForm.value.pincode ?? "",
       }
-      console.log('*********');
 
-      this.authService.register(userData);
-    // }
+      this.authService.register(userData).subscribe((res: any) => {
+        console.log("testing*****");
+        console.log(res);
 
+        this.router.navigate(['/verify-otp'], {
+          queryParams: {
+            email: this.signupForm.value.email,
+            mobile: this.signupForm.value.mobile,
+          },
+        });
+          if(res['status'])
+          {
+            this.toast.show("Registered Successfully!")
+            this.router.navigate(['/verify-otp'], {
+              queryParams: {
+                email: this.signupForm.value.email,
+                mobile: this.signupForm.value.mobile,
+              },
+            });
 
-
+          } else {
+            this.toast.show("Registration failed! Please enter correct details");
+          }
+        });
 
 }
 }

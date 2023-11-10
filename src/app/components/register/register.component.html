@@ -27,7 +27,7 @@
                 <h3 class="aucformTitle text-center">Register Here Plan Your Land Mr.Mason</h3>
                 <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
 
-                  
+
 
                     <!-- Name Field -->
                     <div class="form-group row mb-3">
@@ -41,21 +41,10 @@
                     <div class="form-group row mb-3">
                       <label for="mobileNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Mobile<span style="color: red">*</span></label>
 
-                      <div class="col-md-4 d-flex align-items-center">
+                      <div class="col-md-10 d-flex align-items-center">
                           <input type="text" class="form-control" name="mobileNo" placeholder="Enter Your Mobile_No" pattern="[1-9]{1}[0-9]{9}" title="Enter 10-digit mobile number" maxlength="10" formControlName="mobile" required>
                       </div>
 
-                      <div class="col d-flex align-items-center">
-                          <button type="button" class="btn btn-warning btn-block wide-button" (click)="sendMobileOTP()">Send OTP</button>
-                      </div>
-
-                      <div class="col d-flex align-items-center">
-                          <input type="text" class="form-control" name="enterOTP" placeholder="Enter OTP">
-                      </div>
-
-                      <div class="col d-flex align-items-center ">
-                          <button type="button" class="btn btn-success btn-block wide-button">Verify</button>
-                      </div>
                     </div>
 
 
@@ -63,18 +52,10 @@
                     <!-- Email ID Field -->
                     <div class="form-group row mb-3">
                         <label for="emailId" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Email ID<span style="color: red">*</span></label>
-                        <div class="col-md-4 d-flex align-items-center">
+                        <div class="col-md-10 d-flex align-items-center">
                             <input type="text" class="form-control" name="emailId" placeholder="Enter Your Email_Id" required formControlName="email">
                         </div>
-                        <div class="col">
-                          <button type="button" class="btn btn-warning btn-block wide-button" (click)="sendEmailOTP()">Send OTP</button>
-                      </div>
-                      <div class="col">
-                          <input type="text" class="form-control" name="enterOTP" placeholder="Enter OTP">
-                      </div>
-                      <div class="col">
-                          <button type="button" class="btn btn-success btn-block wide-button">Verify</button>
-                      </div>
+
                     </div>
 
                     <!-- Password Field -->
@@ -94,14 +75,7 @@
                         </div>
                     </div>
 
-                    <!-- D.No/Street Field -->
 
-                    <!-- <div class="form-group row mb-3">
-                        <label for="address" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">D.No/Street</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="address" placeholder="Enter Your D.No/Street" required formControlName="street">
-                        </div>
-                    </div> -->
 
                     <!-- City Field -->
 
@@ -130,26 +104,6 @@
                         </div>
                     </div>
 
-                    <!-- Bussiness Field -->
-
-                    <!-- <div class="form-group row mb-3">
-                      <label for="district" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Business Name</label>
-                      <div class="col-md-10">
-                          <input type="text" class="form-control" name="district" placeholder="Enter Your Businessname" required formControlName="businessname">
-                      </div>
-                  </div> -->
-
-
-                   <!-- Address Field -->
-
-                   <!-- <div class="form-group row mb-3">
-                    <label for="district" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Address</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" name="district" placeholder="Enter Your address" required formControlName="address">
-                    </div>
-                   </div> -->
-
-
 
                     <!-- Terms and Conditions Checkbox -->
                     <div class="form-group row mb-3">
@@ -164,7 +118,7 @@
                     <!-- Register Button -->
                     <div class="form-group row mb-3">
                         <div class="col-md-10 offset-md-2">
-                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;">REGISTER</button>
+                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;"  [disabled]="!signupForm.get('mobile')?.value || !signupForm.get('email')?.value || !signupForm.get('password')?.value">REGISTER</button>
                         </div>
                     </div>
                 </form>

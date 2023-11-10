@@ -5,7 +5,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { HomeComponent } from './components/home/home.component';
-import { TempComponent } from './components/temp/temp.component';
 import { DashboardPannelComponent } from './components/dashboard-pannel/dashboard-pannel.component';
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
 import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
 
     ]
   },
-  { path: 'temp', component: TempComponent},
   { path: 'service-request',component: ServiceRequestComponent },
   { path: 'verify-otp',component: VerfiyOtpComponent}
 

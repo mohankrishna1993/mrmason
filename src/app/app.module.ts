@@ -14,7 +14,6 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
-import { TempComponent } from './components/temp/temp.component';
 import { DashboardPannelComponent } from './components/dashboard-pannel/dashboard-pannel.component';
 import { ServiceRequestPageComponent } from './components/service-request-page/service-request-page.component';
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
@@ -37,7 +36,6 @@ import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    TempComponent,
     DashboardPannelComponent,
     ServiceRequestPageComponent,
     ServicePersonPageComponent,

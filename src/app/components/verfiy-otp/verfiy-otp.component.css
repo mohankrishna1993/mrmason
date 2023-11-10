@@ -8,7 +8,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin-top: 50px;
-  
+
 }
 
 .aucformTitle {
@@ -51,6 +51,7 @@ a:hover {
   border: 1px solid #ddd;
   padding: 20px;
   border-radius: 5px;
+  height: fit-content;
 
 }
 

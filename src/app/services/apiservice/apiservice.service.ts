@@ -13,18 +13,19 @@ export class ApiserviceService {
 
 
   baseUrl = "http://65.1.178.54/app/index.php";
-  baseUrl1 = "http://43.204.168.30/register.php";
-  // baseUrl1 = "https://adroitcoder.com/projects/api/register.php";
+  // baseUrl1 = "http://43.204.168.30";
+  // baseUrl1 = "http://13.235.76.132/";
+  baseUrl1 = "https://adroitcoder.com/projects/api";
 
   constructor(private http:HttpClient,private toast: ToastService) { }
 
    login(username: string,password: string):Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify({
-      EMAIL_ID: username,
-      PASSWORD: password,
+      email: username,
+      password: password,
       });
-    return this.http.post(`${this.baseUrl}/Users/login`, data,
+    return this.http.post(`${this.baseUrl1}/login`, data,
     { headers: headers, responseType: 'json' }
     );
   }
@@ -33,10 +34,16 @@ export class ApiserviceService {
     userData: userData
   ): Observable<object> {
     console.log(userData);
+    const data = {
+      "email": userData.email,
+      "mobile": userData.mobile,
+      "password": userData.password
+    }
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-    const data = JSON.stringify(userData);
-    return this.http.post<any>(`${this.baseUrl1}`,
-    data,  { headers: headers, responseType: 'json' });
+    const datanew = JSON.stringify(data);
+    return this.http.post<any>(`${this.baseUrl1}/register.php`, datanew, {
+      headers: headers
+    });
   }
 
   //gettoken
@@ -71,8 +78,11 @@ export class ApiserviceService {
   }
 
   sendOtpByEmail(email: string): Observable<any> {
-    const apiUrl = 'http://43.204.168.30/send-otp.php';
 
+    console.log("****");
+    // const apiUrl = 'http://43.204.168.30/send-otp.php?email=';
+    const apiUrl = 'https://adroitcoder.com/projects/api/send-otp.php?email=';
+    console.log("****api");
     const params = new HttpParams().set('email', email);
 
     const options = {
@@ -83,15 +93,52 @@ export class ApiserviceService {
       withCredentials: true,
     };
 
-    return this.http.get(apiUrl, options);
+    return this.http.post(apiUrl, options);
+
   }
 
 
 
-  sendOtpByMobile(mobile: string) {
-    return this.http.get(`http://43.204.168.30/send-otp.php?mobile=${mobile}`);
+  sendOtpByMobile(mobile: string): Observable<any>{
+
+    // const apiUrl = 'http://43.204.168.30/send-otp.php?mobile=';
+    // const apiUrl = 'https://adroitcoder.com/projects/api/send-otp.php';
+
+    // const params = new HttpParams().set('mobile', mobile);
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const datanew = JSON.stringify({mobile: mobile});
+    return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
+      headers: headers
+    });
+
+    // const options = {
+    //   headers: new HttpHeaders(),
+    //   params: params,
+    //   observe: 'response' as const,
+    //   responseType: 'json' as const,
+    //   withCredentials: true,
+    // };
+
+    // return this.http.post(apiUrl, options);
+
   }
 
+  verifyOtpByMobile(mobile: string, otp: string): Observable<any> {
+    const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
+    const data = {
+      mobile: mobile,
+      otp: otp
+    }
+    return this.http.post<any>(apiUrl, data);
+  }
 
+  verifyOtpByEmail(email: string, otp: string): Observable<any> {
+    const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
+    const data = {
+      email: email,
+      otp: otp
+    }
+    return this.http.post<any>(apiUrl, data);
+  }
 
 }

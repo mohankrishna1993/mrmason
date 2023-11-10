@@ -25,9 +25,8 @@
     </div>
     <div class="col-md-7 login-form card">
             <div class="auctionFormRight" style="margin-top: 0px;">
-                <h3 class="aucformTitle text-center">Register Here Plan Your Land Mr.Mason</h3>
-                <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
-
+                <h3 class="aucformTitle text-center">Please verfiy your Email and Mobile Number</h3>
+                <form [formGroup]="verifyForm" (ngSubmit)="verifySubmit()">
 
                     <!-- Mobile Number Field -->
                     <div class="form-group row mb-3">
@@ -42,15 +41,13 @@
                       </div>
 
                       <div class="col d-flex align-items-center">
-                          <input type="text" class="form-control" name="enterOTP" placeholder="Enter OTP">
+                          <input type="text" class="form-control" name="enterOTP" placeholder="Enter OTP" formControlName="enterMobileOTP">
                       </div>
 
                       <div class="col d-flex align-items-center ">
-                          <button type="button" class="btn btn-success btn-block wide-button">Verify</button>
+                          <button type="button" class="btn btn-success btn-block wide-button" (click)="verifyMobileOTP()">Verify</button>
                       </div>
                     </div>
-
-
 
                     <!-- Email ID Field -->
                     <div class="form-group row mb-3">
@@ -62,30 +59,12 @@
                           <button type="button" class="btn btn-warning btn-block wide-button" (click)="sendEmailOTP()">Send OTP</button>
                       </div>
                       <div class="col">
-                          <input type="text" class="form-control" name="enterOTP" placeholder="Enter OTP">
+                          <input type="text" class="form-control" name="enterOTP" placeholder="Enter OTP" formControlName="enterEmailOTP">
                       </div>
                       <div class="col">
-                          <button type="button" class="btn btn-success btn-block wide-button">Verify</button>
+                          <button type="button" class="btn btn-success btn-block wide-button" (click)="verifyEmailOTP()" >Verify</button>
                       </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <!-- Terms and Conditions Checkbox -->
                     <div class="form-group row mb-3">
                         <div class="col-md-10 offset-md-2">
@@ -99,7 +78,7 @@
                     <!-- Register Button -->
                     <div class="form-group row mb-3">
                         <div class="col-md-10 offset-md-2">
-                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;">SAVE</button>
+                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;" routerLink="/login" [disabled]="!isMobileVerified || !isEmailVerified">Login</button>
                         </div>
                     </div>
                 </form>
