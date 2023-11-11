@@ -15,12 +15,19 @@ export class AuthService {
   }
   private tokenKey = 'token';
   public isLoggedIn$ = new BehaviorSubject(false);
+  public isAdmin$ = new BehaviorSubject(false);
   public login(username: string, password: string): void {
     this.apiService.login(username, password).subscribe({
       next :(res) => {
         if(res['status']) {
           localStorage.setItem(this.tokenKey, 'true');
-          this.router.navigate(['/dashboard']);
+          if(res.data.USER_TYPE === 'EC') {
+            this.isAdmin$.next(false);
+            this.router.navigate(['/ec-dashboard']);
+          } else {
+            this.isAdmin$.next(true);
+            this.router.navigate(['/dashboard']);
+          }
           this.isLoggedIn$.next(true);
 
         } else {

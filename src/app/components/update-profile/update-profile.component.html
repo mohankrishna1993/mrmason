@@ -1,31 +1,15 @@
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-5">
-      <img src="assets/images/bu.png" class="img-fluid" alt="Your Image">
-      <div class="col-md-12 col-xs-12 col-sm-12 res3">
-<ul class="sellCarInfolist dotted-list">
 
-   <li>
-     <div>
-       <h4>Genuine Buyers</h4>
-       <p>We let the buyers get in touch with you directly</p>
-     </div>
-   </li>
+<div class="container mt-4 d-flex justify-content-center">
 
-   <br>
-   <li>
-     <div >
-       <h2>Your Homes/Rentals stays listed till the Building Materials is sold</h2>
-     </div>
-   </li>
- </ul>
-            </div>
-    </div>
+
     <div class="col-md-7 login-form card">
             <div class="auctionFormRight" style="margin-top: 0px;">
-                <h3 class="aucformTitle text-center">Register Here For Your Home Services</h3>
+                <h3 class="aucformTitle text-center">Updata Profile For Your Home Services</h3>
                 <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+
+
+
                     <!-- Name Field -->
                     <div class="form-group row mb-3">
                         <label for="name" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Name</label>
@@ -51,14 +35,7 @@
                         <label for="emailId" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Email ID<span style="color: red">*</span></label>
                         <div class="col-md-10 d-flex align-items-center">
                             <input type="text" class="form-control" name="emailId" placeholder="Enter Your Email_Id" required formControlName="email">
-
-                          </div>
-
-                          <div class="text-danger mt-2 text-end" *ngIf="signupForm.get('email')?.errors &&
-                            signupForm.get('email')?.hasError('email')">
-                               Please enter a valid email.
-                          </div>
-
+                        </div>
 
                     </div>
 
@@ -122,13 +99,13 @@
                     <!-- Register Button -->
                     <div class="form-group row mb-3">
                         <div class="col-md-10 offset-md-2">
-                            <button type="submit" class="btn btn-success" style="width: 120px;"  [disabled]="!signupForm.get('mobile')?.value || !signupForm.get('email')?.value || !signupForm.get('password')?.value">REGISTER</button>
+                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;"  [disabled]="!signupForm.get('mobile')?.value || !signupForm.get('email')?.value || !signupForm.get('password')?.value">Update</button>
                         </div>
                     </div>
                 </form>
             </div>
     </div>
-  </div>
-
-
 </div>
+
+
+

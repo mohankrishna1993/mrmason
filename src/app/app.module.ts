@@ -24,6 +24,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { NgxGpAutocompleteModule } from "@angular-magic/ngx-gp-autocomplete";
 import { Loader } from '@googlemaps/js-api-loader';
 import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component';
+import { EcDashboardComponent } from './components/ec-dashboard/ec-dashboard.component';
+import { EcDashboardPannelComponent } from './components/ec-dashboard-pannel/ec-dashboard-pannel.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 
 
 @NgModule({
@@ -41,6 +44,9 @@ import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component
     ServicePersonPageComponent,
     ForgotPasswordComponent,
     VerfiyOtpComponent,
+    EcDashboardComponent,
+    EcDashboardPannelComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,

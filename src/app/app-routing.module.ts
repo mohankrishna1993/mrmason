@@ -11,6 +11,9 @@ import { ServiceRequestPageComponent } from './components/service-request-page/s
 import { AuthGuard } from './auth.guard';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component';
+import { EcDashboardComponent } from './components/ec-dashboard/ec-dashboard.component';
+import { EcDashboardPannelComponent } from './components/ec-dashboard-pannel/ec-dashboard-pannel.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -31,7 +34,14 @@ const routes: Routes = [
     ]
   },
   { path: 'service-request',component: ServiceRequestComponent },
-  { path: 'verify-otp',component: VerfiyOtpComponent}
+  { path: 'verify-otp',component: VerfiyOtpComponent},
+  { path: 'ec-dashboard',component: EcDashboardComponent,
+     children: [
+      {path: '',redirectTo: 'ec-dashboard-pannel', pathMatch: 'full' },
+      {path: 'ec-dashboard-pannel',component: EcDashboardPannelComponent},
+      {path: 'update-profile',component: UpdateProfileComponent},
+      { path: 'service-request-page', component: ServiceRequestPageComponent}
+     ]}
 
 ];
 

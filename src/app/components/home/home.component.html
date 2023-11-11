@@ -17,9 +17,7 @@
     <div class="carousel-item">
       <img width="1500" height="450"  preserveAspectRatio="xMidYMid slice" src="assets/images/ravi3.jpg" class="d-block w-100 img-fluid" alt="...">
     </div>
-    <div class="carousel-item">
-      <img width="1500" height="450"  preserveAspectRatio="xMidYMid slice" src="assets/images/ravi4.jpg" class="d-block w-100 img-fluid" alt="...">
-    </div>
+
     <div class="carousel-item">
       <img width="1500" height="450"  preserveAspectRatio="xMidYMid slice" src="assets/images/ravi5.jpg" class="d-block w-100 img-fluid" alt="...">
     </div>
@@ -28,20 +26,13 @@
     </div>
   </div>
 </div>
+
 <div class="container-fluid request-container ">
   <div class="row">
     <div class="col-lg-5 col-md-7 col-xs-12 col-12">
       <div class="container min-height-contiainer">
-        <div class="card">
+        <div class="card shadow-lg p-2 bg-white rounded">
           <div class="card-header custom-bg">
-            <!-- <button class="btn btn-link" style="color:#fff;" (click)="toggleForm('form1')" >Service Request</button>
-            <div>
-              <i class="fas fa-tools"></i>
-            </div>
-            <button class="btn btn-link" style="color:#fff;" (click)="toggleForm('form2')" >Search Works</button>
-            <div>
-              <i class="fas fa-search"></i>
-            </div> -->
             <div class="d-flex align-items-center">
               <button class="btn btn-link mr-3" style="color:#fff;" (click)="toggleForm('form1')">
                 <div>
@@ -65,7 +56,7 @@
               <form [formGroup]="submitForm" (ngSubmit)="onSubmitRequestForm()">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="serviceType">Service Type</label>
+                    <label for="serviceType" class="my-2">Service Type</label>
                     <select class="form-control" id="serviceType" formControlName="servicetype">
 
                       <option value="">Select Service Type</option>
@@ -77,21 +68,21 @@
                     </select>
                   </div>
                   <div class="col-md-6">
-                    <label for="location">Location</label>
+                    <label for="location" class="my-2">Location</label>
                     <input class="form-control" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' formControlName="location" (onAddressChange)="handleAddressChange($event)"/>
                     <!-- <input type="text" class="form-control" id="location"> -->
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="serviceDate">Service Date</label>
+                  <label for="serviceDate" class="my-2">Service Date</label>
                   <input type="date" class="form-control" id="serviceDate" formControlName="servicedate">
                 </div>
                 <div class="form-group">
-                  <label for="description">Description</label>
+                  <label for="description" class="my-2">Description</label>
                   <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
                 </div>
                 <div class="text-center">
-                 <button type="submit" class="btn btn-success mx-auto" [disabled]="!isLoggedIn">Submit Request</button>
+                 <button type="submit" class="btn btn-success mx-auto mt-3" [disabled]="!isLoggedIn">Submit Request</button>
                 </div>
               </form>
 
@@ -104,7 +95,7 @@
               <form>
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="serviceType">Service Type</label>
+                    <label for="serviceType" class="my-2">Service Type</label>
                     <select class="form-control" id="serviceType">
 
                       <option value="">Select Service Type</option>
@@ -116,13 +107,14 @@
                     </select>
                   </div>
                   <div class="col-md-6">
-                    <label for="location">Location</label>
+                    <label for="location" class="my-2">Location</label>
                     <input type="text" class="form-control" id="location">
                   </div>
                 </div>
 
-
-                <button type="submit" class="btn btn-primary">Search Work</button>
+                <div class="text-center">
+                <button type="submit" class="btn btn-success mt-3" [disabled]="!isLoggedIn">Search Work</button>
+              </div>
               </form>
 
             </div>
@@ -134,7 +126,7 @@
       </div>
 
     </div>
-    <div class="col-lg-7 col-md-5 col-12 text-container text-center ">
+    <div class="col-lg-7 col-md-5 col-12 text-container text-center pt-3">
       <div class="heading">Available On Call</div>
       <div class="mt-4 subheading typewriter">MASONRY WORKERS - PAINTERS - PLUMBERS ELECTRICIANS - CARPENTERS ALL BUILDING SERVICES UNDER ONE UMBRELLA GET QUOTES FROM OUR TRUSTED BUSINESS PARTNERS GET SERVICE FROM OUR PROFESSIONALS</div>
     </div>

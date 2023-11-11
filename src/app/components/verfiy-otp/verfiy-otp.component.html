@@ -65,20 +65,10 @@
                           <button type="button" class="btn btn-success btn-block wide-button" (click)="verifyEmailOTP()" >Verify</button>
                       </div>
                     </div>
-                    <!-- Terms and Conditions Checkbox -->
-                    <div class="form-group row mb-3">
-                        <div class="col-md-10 offset-md-2">
-                            <input type="checkbox" class="form-check-input" name="check_agree" id="check_agree" required value="y">
-                            <label class="form-check-label" for="check_agree">
-                                <a href="condtions.jsp" target="_blank" style="color: #18aedf; font-size: 16px;">I agree to the terms and conditions</a>
-                            </label>
-                        </div>
-                    </div>
-
                     <!-- Register Button -->
                     <div class="form-group row mb-3">
                         <div class="col-md-10 offset-md-2">
-                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;" routerLink="/login" [disabled]="!isMobileVerified || !isEmailVerified">Login</button>
+                            <button type="submit" class="btn btn-primary" style="width: 120px; background-color: #18aedf; color: white; font-size: 17px;" routerLink="/login" [disabled]="!isMobileVerified && !isEmailVerified">Login</button>
                         </div>
                     </div>
                 </form>

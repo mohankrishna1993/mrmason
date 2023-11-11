@@ -11,12 +11,16 @@ import { Subject } from 'rxjs';
 export class NavbarComponent implements OnInit,OnDestroy {
   constructor(private authService: AuthService) {}
   isLoggedIn = false;
+  isAdmin = false;
   private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
      this.authService.isLoggedIn$.subscribe((t) => this.isLoggedIn = t);
+     this.authService.isAdmin$.subscribe((t) => this.isAdmin = t);
   }
-
+  scrollDown(): void {
+    window.scrollTo(0,document.body.scrollHeight);
+  }
 
 
   logout() {

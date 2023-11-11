@@ -1,0 +1,67 @@
+/* Add this CSS in your styles.css or styles.scss file */
+
+/* @keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 15px;
+
+}
+
+.nav-item1 {
+  display: inline-block;
+  margin-right: 15px;
+  animation: slideIn 0.5s ease-out;
+}
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #18aedf;
+} */
+
+/* Add this CSS in your styles.css or styles.scss file */
+
+.nav-item {
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 10px; /* Adjust padding as needed */
+  font-weight: bold;
+  font-size: 16px;
+  color: #583838; /* Adjust the color as needed */
+  text-decoration: none; /* Remove underline from links */
+  transition: color 0.3s ease;
+
+}
+
+.nav-link:hover {
+  color: #49b8d6; /* Change the color on hover */
+}
+

@@ -3,6 +3,7 @@
     <a class="navbar-brand" routerLink="/home">
       <img ngSrc="assets/images/mainlogo.png" width="200" height="40" alt="Company Logo" class="company-logo">
     </a>
+    <span class="brand-text collapse navbar-collapse pt-2">All Service workers join with us!</span>
 
     <button
       class="navbar-toggler"
@@ -16,9 +17,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" >
-          <a class="nav-link" routerLink="/dashboard" *ngIf="isLoggedIn">Dashboard</a>
+          <a class="nav-link" routerLink="/dashboard" *ngIf="isLoggedIn && isAdmin">Dashboard</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/ec-dashboard" *ngIf="isLoggedIn && !isAdmin">Dashboard</a>
+        </li>
+        <!-- <li class="nav-item marquee" *ngIf="!isLoggedIn">
+          <a class="nav-link" >All Service Engineers join with us</a>
+        </li> -->
+
+        <li class="nav-item" >
+          <a class="nav-link"  routerLink="#">Download Mobile App</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="#" (click)="scrollDown()">Contact us</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="/login">Login</a>
