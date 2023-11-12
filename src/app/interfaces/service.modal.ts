@@ -1,7 +1,7 @@
 export interface ServiceRequest {
-  SERVICE_NAME : string,
-  REQUESTED_BY: string,
-  DESCRIPTION: string,
-  REQ_PINCODE: string,
-  REMARKS?: string
+  service_name : string,
+  location: string,
+  description: string,
+  service_date: string,
+  user_id: string
 }

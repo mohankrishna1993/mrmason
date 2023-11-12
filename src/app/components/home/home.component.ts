@@ -25,6 +25,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class HomeComponent implements AfterViewInit,OnInit {
 
   isLoggedIn = false;
+  userId = "";
+  choosenLocation = "";
 
   constructor(private apiService: ApiserviceService,
               private toast: ToastService,
@@ -33,6 +35,7 @@ export class HomeComponent implements AfterViewInit,OnInit {
 
   ngOnInit() {
     this.authService.isLoggedIn$.subscribe((t) => this.isLoggedIn = t);
+    this.authService.userId$.subscribe((u) => this.userId = u);
   }
 
   submitForm = new FormGroup({
@@ -66,23 +69,28 @@ export class HomeComponent implements AfterViewInit,OnInit {
   ];
 
   public handleAddressChange(place: google.maps.places.PlaceResult) {
-    console.log(place);
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? "";
     // Do some stuff
+
   }
   onSubmitRequestForm() {
+    const userId = localStorage.getItem('USER_ID') ?? "";
 
-    console.log(this.submitForm);
+    // console.log(this.submitForm);
     const data: ServiceRequest = {
-      SERVICE_NAME: this.submitForm.value.servicetype ?? "",
-      REQUESTED_BY: this.submitForm.value.servicedate ?? "",
-      DESCRIPTION: this.submitForm.value.description ?? "",
-      REQ_PINCODE: this.submitForm.value.location ?? "",
-      REMARKS: ""
+      service_name: this.submitForm.value.servicetype ?? "",
+      service_date: this.submitForm.value.servicedate ?? "",
+      description: this.submitForm.value.description ?? "",
+      location: this.choosenLocation,
+      user_id: userId
     }
+    console.log(data);
      this.apiService.sendSubmitRequestData(data).subscribe((res)=> {
       console.log(res);
       if(res['status']) {
         this.toast.show("Service Request submited Successfully");
+        this.submitForm.reset();
       } else {
         this.toast.show("Service Request failed!")
       }

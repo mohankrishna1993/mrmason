@@ -73,7 +73,7 @@ export class ApiserviceService {
   sendSubmitRequestData(serviceRequest: ServiceRequest): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify(serviceRequest);
-      return this.http.post<any[]>(`${this.baseUrl}/ServiceRequest/insert`,
+      return this.http.post<any[]>(`${this.baseUrl1}/service-request.php`,
       data, { headers: headers, responseType: 'json' });
   }
 
