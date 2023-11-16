@@ -52,13 +52,16 @@ export class VerfiyOtpComponent implements OnInit{
     const mobile = this.verifyForm.value.mobile ?? ""; // Get the mobile number from your form
     this.apiService.sendOtpByMobile(mobile).subscribe(
       (response) => {
-        if(response['status']){
+        console.log("status success");
+        if(response['sendstatus']){
           this.toast.show("Mobile OTP sent successfully!");
         }else {
           this.toast.show(response.message);
         }
       },
       (error) => {
+        console.log(error);
+        console.log("status failed")
         this.toast.show("Failed to send mobile OTP!");
       }
     );
@@ -98,6 +101,7 @@ export class VerfiyOtpComponent implements OnInit{
     this.apiService.verifyOtpByMobile(mobileData, enterOTP).subscribe(
       (response) => {
         if (response['status']){
+          this.isMobileVerified = true;
           this.toast.show("Mobile OTP verification successful");
         }else {
           this.toast.show(response.message);
@@ -123,15 +127,20 @@ export class VerfiyOtpComponent implements OnInit{
     this.apiService.verifyOtpByEmail(email, enterOTP).subscribe(
       (response) => {
         if (response['status']){
-          this.toast.show("Mobile OTP verification successful");
+          this.isEmailVerified = true;
+          this.toast.show("Email OTP verification successful");
         }
 
       },
       (error) => {
-        this.toast.show("Failed to verify mobile OTP");
+        this.toast.show("Failed to verify email OTP");
       }
     );
 
+  }
+
+  isLoginEnabled(): boolean {
+    return this.isMobileVerified || this.isEmailVerified;
   }
 
   verifySubmit() {

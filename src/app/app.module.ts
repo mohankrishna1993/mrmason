@@ -8,7 +8,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ServiceRequestComponent } from './components/service-request/service-request.component'
 import { NgOptimizedImage } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -27,6 +26,7 @@ import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component
 import { EcDashboardComponent } from './components/ec-dashboard/ec-dashboard.component';
 import { EcDashboardPannelComponent } from './components/ec-dashboard-pannel/ec-dashboard-pannel.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { EcServiceRequestComponent } from './ec-service-request/ec-service-request.component';
 
 
 @NgModule({
@@ -35,7 +35,6 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ServiceRequestComponent,
     HomeComponent,
     NavbarComponent,
     FooterComponent,
@@ -47,6 +46,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
     EcDashboardComponent,
     EcDashboardPannelComponent,
     UpdateProfileComponent,
+    EcServiceRequestComponent,
   ],
   imports: [
     BrowserModule,

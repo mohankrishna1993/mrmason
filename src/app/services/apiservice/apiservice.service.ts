@@ -16,13 +16,15 @@ export class ApiserviceService {
   // baseUrl1 = "http://43.204.168.30";
   // baseUrl1 = "http://13.235.76.132/";
   baseUrl1 = "https://adroitcoder.com/projects/api";
+  user_id = "";
+
 
   constructor(private http:HttpClient,private toast: ToastService) { }
 
    login(username: string,password: string):Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify({
-      email: username,
+      username: username,
       password: password,
       });
     return this.http.post(`${this.baseUrl1}/login`, data,
@@ -100,26 +102,11 @@ export class ApiserviceService {
 
 
   sendOtpByMobile(mobile: string): Observable<any>{
-
-    // const apiUrl = 'http://43.204.168.30/send-otp.php?mobile=';
-    // const apiUrl = 'https://adroitcoder.com/projects/api/send-otp.php';
-
-    // const params = new HttpParams().set('mobile', mobile);
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const datanew = JSON.stringify({mobile: mobile});
-    return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
+    return this.http.post<any>(`${this.baseUrl1}/send-otp`, datanew, {
       headers: headers
     });
-
-    // const options = {
-    //   headers: new HttpHeaders(),
-    //   params: params,
-    //   observe: 'response' as const,
-    //   responseType: 'json' as const,
-    //   withCredentials: true,
-    // };
-
-    // return this.http.post(apiUrl, options);
 
   }
 
@@ -139,6 +126,11 @@ export class ApiserviceService {
       otp: otp
     }
     return this.http.post<any>(apiUrl, data);
+  }
+
+  getEcServiceRequestData(user_id: string): Observable<any> {
+    const url = `${this.baseUrl1}/get-service-request?user_id=${user_id}`;
+    return this.http.get<any[]>(url);
   }
 
 }

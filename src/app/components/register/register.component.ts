@@ -80,12 +80,7 @@ export class RegisterComponent implements OnInit {
         console.log("testing*****");
         console.log(res);
 
-        this.router.navigate(['/verify-otp'], {
-          queryParams: {
-            email: this.signupForm.value.email,
-            mobile: this.signupForm.value.mobile,
-          },
-        });
+
           if(res['status'])
           {
             this.toast.show("Registered Successfully!")
@@ -97,7 +92,7 @@ export class RegisterComponent implements OnInit {
             });
 
           } else {
-            this.toast.show("Registration failed! Please enter correct details");
+            this.toast.show(res['message']);
           }
         });
 

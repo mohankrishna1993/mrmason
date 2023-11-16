@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardPannelComponent } from './components/dashboard-pannel/dashboard-pannel.component';
 import { ServicePersonPageComponent } from './components/service-person-page/service-person-page.component';
@@ -14,6 +13,7 @@ import { VerfiyOtpComponent } from './components/verfiy-otp/verfiy-otp.component
 import { EcDashboardComponent } from './components/ec-dashboard/ec-dashboard.component';
 import { EcDashboardPannelComponent } from './components/ec-dashboard-pannel/ec-dashboard-pannel.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { EcServiceRequestComponent } from './ec-service-request/ec-service-request.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -33,14 +33,13 @@ const routes: Routes = [
 
     ]
   },
-  { path: 'service-request',component: ServiceRequestComponent },
   { path: 'verify-otp',component: VerfiyOtpComponent},
   { path: 'ec-dashboard',component: EcDashboardComponent,
      children: [
       {path: '',redirectTo: 'ec-dashboard-pannel', pathMatch: 'full' },
       {path: 'ec-dashboard-pannel',component: EcDashboardPannelComponent},
       {path: 'update-profile',component: UpdateProfileComponent},
-      { path: 'service-request-page', component: ServiceRequestPageComponent}
+      {path: 'ec-service-request', component: EcServiceRequestComponent}
      ]}
 
 ];

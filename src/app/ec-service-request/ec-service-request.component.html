@@ -1,0 +1,97 @@
+
+<div class="container main-container">
+  <div class="card card-container">
+      <div class="card-header">
+          <h1>Service Request</h1>
+      </div>
+      <div class="card-body border-right-primary border-left-primary">
+          <form [formGroup]="serviceRequestForm" (ngSubmit)="serviceRequestData()">
+              <div class="form-row">
+
+                  <div class="col-md-2 form-group">
+                      <label for="service-category" style="color: blue;">Service Category*</label>
+                      <select class="form-control" id="service-category" formControlName="serviceCategory">
+                          <option value="category1">Category 1</option>
+                          <option value="category2">Category 2</option>
+                          <option value="category3">Category 3</option>
+                      </select>
+                  </div>
+                  <div class="col-md-2 form-group">
+                      <label for="field2" style="color: blue;">Service Name*</label>
+                      <input type="text" class="form-control" id="field2" name="field2" formControlName="serviceName">
+                  </div>
+                  <div class="col-md-2 form-group">
+                      <label for="field3" style="color: blue;">Location*</label>
+                      <input type="text" class="form-control" id="field3" name="field3" formArrayName="location">
+                  </div>
+                  <div class="col-md-2 form-group">
+                      <label for="request-status" style="color: blue;">Request Status*</label>
+                      <select class="form-control" id="request-status" formArrayName="requestStatus">
+                          <option value="pending">Pending</option>
+                          <option value="approved">Approved</option>
+                          <option value="rejected">Rejected</option>
+                      </select>
+                  </div>
+                  <div class="col-md-2 form-group">
+                    <label for="field3" style="color: blue;">Phone Number*</label>
+                    <input type="text" class="form-control" id="field3" name="field3" formControlName="phoneNo">
+                </div>
+              </div>
+
+              <div class="form-row mt-3">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+          </form>
+      </div>
+  </div>
+   <!-- table -->
+   <div class="table-container">
+
+      <table class="table table-bordered table-striped mt-3">
+   <thead>
+    <tr>
+       <th scope="col">Srl._No.</th>
+       <th scope="col">Req._Order_No.</th>
+       <th scope="col">Service Name</th>
+       <th scope="col">Service Request Date</th>
+       <th scope="col">Pincode</th>
+       <th scope="col">Description</th>
+       <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+   </thead>
+<tbody>
+<!-- Add table data here -->
+<tr *ngFor="let item of tableData | paginate: {itemsPerPage:2,currentPage:page,totalItems:totalLength}; let i = index">
+
+  <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
+  <td>{{ item.REQ_SEQ_ID }}</td>
+  <td>{{ item.SERVICE_NAME }}</td>
+  <td>{{ item.SERVICE_REQUEST_DATE }}</td>
+  <td>{{ item.REQ_PINCODE }}</td>
+  <td>{{ item.DESCRIPTION }}</td>
+
+
+  <td>
+    <form action="">
+      <select name="status" id="status" class="form-control">
+        <option value="active" [selected]="item.STATUS === 'active'">Active</option>
+        <option value="deactive" [selected]="item.STATUS === 'deactive'">Deactive</option>
+      </select>
+    </form>
+  </td>
+  <td><span class="btn btn-sm btn-primary">Update</span></td>
+</tr>
+</tbody>
+
+      </table>
+
+      <div class="pagination">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+
+   </div>
+</div>
+

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiserviceService } from '../apiservice/apiservice.service';
 import { userData } from '../../interfaces/user.modal';
+import { UserDetails } from '../../interfaces/user-details.modal'
 import { ToastService } from '../toast/toast.service';
 
 @Injectable({
@@ -17,16 +18,23 @@ export class AuthService {
   public isLoggedIn$ = new BehaviorSubject(false);
   public isAdmin$ = new BehaviorSubject(false);
   public userId$ = new BehaviorSubject('');
+  private user_id = '';
+
+  private user = new BehaviorSubject<any>(null);
+  user$ = this.user.asObservable();
+
   public login(username: string, password: string): void {
     this.apiService.login(username, password).subscribe({
       next :(res) => {
         if(res['status']) {
           localStorage.setItem(this.tokenKey, 'true');
           localStorage.setItem('USER_ID', res.data.USER_ID);
+          // this.user_id = res.data.USER_ID;
           // this.userId$.next(res.data.USER_ID);
           if(res.data.USER_TYPE === 'EC') {
             this.isAdmin$.next(false);
             this.router.navigate(['/ec-dashboard']);
+            this.user.next({ username: username, role: 'user' });
           } else {
             this.isAdmin$.next(true);
             this.router.navigate(['/dashboard']);
@@ -50,6 +58,10 @@ export class AuthService {
 
   public register(userData: userData): Observable<any> {
     return this.apiService.register(userData);
+  }
+
+  getUserId(){
+    return this.user_id;
   }
 
   public logout() {
@@ -80,4 +92,9 @@ export class AuthService {
   public getToken(): string | null {
     return this.isLoggedIn() ? localStorage.getItem(this.tokenKey) : null;
   }
+
+
+
+
+
 }
