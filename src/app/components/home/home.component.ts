@@ -35,7 +35,7 @@ export class HomeComponent implements AfterViewInit,OnInit {
 
   ngOnInit() {
     this.authService.isLoggedIn$.subscribe((t) => this.isLoggedIn = t);
-    this.authService.userId$.subscribe((u) => this.userId = u);
+    // this.authService.userId$.subscribe((u) => this.userId = u);
   }
 
   submitForm = new FormGroup({

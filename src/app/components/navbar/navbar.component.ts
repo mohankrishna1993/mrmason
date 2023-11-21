@@ -10,15 +10,18 @@ import { Subject } from 'rxjs';
 })
 export class NavbarComponent implements OnInit,OnDestroy {
   constructor(private authService: AuthService) {}
-  user: any;
   isLoggedIn: boolean = false;
+  userName = '';
   isAdmin = false;
   private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
      this.authService.isLoggedIn$.subscribe((t) => this.isLoggedIn = t);
      this.authService.isAdmin$.subscribe((t) => this.isAdmin = t);
-     this.authService.user$.subscribe((user) => this.user = user);
+     this.authService.userName$.subscribe((r) => this.userName = r);
+    //  this.authService.user$.subscribe((user) => this.user = user);
+    //  this.user = localStorage.getItem('username');
+
   }
   scrollDown(): void {
     window.scrollTo(0,document.body.scrollHeight);

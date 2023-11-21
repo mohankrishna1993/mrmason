@@ -14,6 +14,8 @@ import { ToastService } from 'src/app/services/toast/toast.service';
 })
 export class RegisterComponent implements OnInit {
 
+  choosenLocation = "";
+
   constructor(private apiService : ApiserviceService,
     private router: Router,
     private authService: AuthService,
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
     mobile: new FormControl('',[Validators.required]),
     email: new FormControl('',[Validators.required, Validators.email]),
     password: new FormControl('',Validators.required),
-    pincode: new FormControl('',Validators.required),
+    location: new FormControl('',Validators.required),
     city: new FormControl('',Validators.required),
     state: new FormControl('',Validators.required),
     district: new FormControl('',Validators.required),
@@ -34,6 +36,10 @@ export class RegisterComponent implements OnInit {
   });
 
   ngOnInit(){
+  }
+
+  options: any = {
+    componentRestrictions: { country: 'IN' }
   }
 
   sendMobileOTP() {
@@ -64,6 +70,11 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? "";
+  }
+
   signupSubmit() {
       const userData: userData = {
         uName: this.signupForm.value.name ?? "",
@@ -73,17 +84,13 @@ export class RegisterComponent implements OnInit {
         town: this.signupForm.value.city ?? "",
         state: this.signupForm.value.state ?? "",
         district: this.signupForm.value.district ?? "",
-        pincode: this.signupForm.value.pincode ?? "",
+        pincode: this.choosenLocation,
       }
 
       this.authService.register(userData).subscribe((res: any) => {
-        console.log("testing*****");
-        console.log(res);
-
-
           if(res['status'])
           {
-            this.toast.show("Registered Successfully!")
+            this.toast.show("Registered Successfully!");
             this.router.navigate(['/verify-otp'], {
               queryParams: {
                 email: this.signupForm.value.email,

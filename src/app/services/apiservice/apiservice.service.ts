@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { userData } from '../../interfaces/user.modal';
 import { ServiceRequest } from 'src/app/interfaces/service.modal';
 import { ToastService } from '../toast/toast.service';
+import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiserviceService {
 
   baseUrl = "http://65.1.178.54/app/index.php";
   // baseUrl1 = "http://43.204.168.30";
-  // baseUrl1 = "http://13.235.76.132/";
+  // baseUrl1 = "http://13.235.76.132";
   baseUrl1 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
@@ -32,14 +33,17 @@ export class ApiserviceService {
     );
   }
 
- register(
-    userData: userData
-  ): Observable<object> {
-    console.log(userData);
+ register(userData: userData): Observable<any> {
     const data = {
       "email": userData.email,
       "mobile": userData.mobile,
-      "password": userData.password
+      "password": userData.password,
+      "uName": userData.uName,
+      "town": userData.town,
+      "district": userData.district,
+      "state": userData.state,
+      "pincode": userData.pincode
+
     }
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const datanew = JSON.stringify(data);
@@ -81,21 +85,11 @@ export class ApiserviceService {
 
   sendOtpByEmail(email: string): Observable<any> {
 
-    console.log("****");
-    // const apiUrl = 'http://43.204.168.30/send-otp.php?email=';
-    const apiUrl = 'https://adroitcoder.com/projects/api/send-otp.php?email=';
-    console.log("****api");
-    const params = new HttpParams().set('email', email);
-
-    const options = {
-      headers: new HttpHeaders(),
-      params: params,
-      observe: 'response' as const,
-      responseType: 'json' as const,
-      withCredentials: true,
-    };
-
-    return this.http.post(apiUrl, options);
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const datanew = JSON.stringify({email: email});
+    return this.http.post<any>(`${this.baseUrl1}/send-otp`, datanew, {
+      headers: headers
+    });
 
   }
 
@@ -131,6 +125,16 @@ export class ApiserviceService {
   getEcServiceRequestData(user_id: string): Observable<any> {
     const url = `${this.baseUrl1}/get-service-request?user_id=${user_id}`;
     return this.http.get<any[]>(url);
+  }
+
+  getUserProfile(userId: string): Observable<any> {
+    const url = `${this.baseUrl1}/profile?user_id=${userId}`;
+    return this.http.get(url);
+  }
+
+  updateUserProfile(user_id: string, updatedProfile: updateProfile): Observable<any> {
+    const url = `${this.baseUrl1}/update-profile?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}`;
+    return this.http.put(url, updatedProfile);
   }
 
 }

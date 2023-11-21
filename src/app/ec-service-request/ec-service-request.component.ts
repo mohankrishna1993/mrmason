@@ -42,7 +42,7 @@ export class EcServiceRequestComponent implements OnInit{
 
 
 serviceRequestData() {
-   const user_id = localStorage.getItem('USER_ID') || '';
+  const user_id = localStorage.getItem('USER_ID') || '';
   console.log(user_id);
   this.apiService.getEcServiceRequestData(user_id).subscribe((res: any) => {
     console.log(res.data);

@@ -6,6 +6,7 @@ import { ApiserviceService } from '../apiservice/apiservice.service';
 import { userData } from '../../interfaces/user.modal';
 import { UserDetails } from '../../interfaces/user-details.modal'
 import { ToastService } from '../toast/toast.service';
+import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class AuthService {
   private tokenKey = 'token';
   public isLoggedIn$ = new BehaviorSubject(false);
   public isAdmin$ = new BehaviorSubject(false);
-  public userId$ = new BehaviorSubject('');
+  public userName$ = new BehaviorSubject('');
   private user_id = '';
 
   private user = new BehaviorSubject<any>(null);
@@ -26,11 +27,18 @@ export class AuthService {
   public login(username: string, password: string): void {
     this.apiService.login(username, password).subscribe({
       next :(res) => {
+        console.log(res);
         if(res['status']) {
+          const userDetails = {
+            username: username
+          };
+
+          localStorage.setItem('username', res.data.NAME);
           localStorage.setItem(this.tokenKey, 'true');
           localStorage.setItem('USER_ID', res.data.USER_ID);
-          // this.user_id = res.data.USER_ID;
-          // this.userId$.next(res.data.USER_ID);
+          this.userName$.next(res.data.NAME);
+
+
           if(res.data.USER_TYPE === 'EC') {
             this.isAdmin$.next(false);
             this.router.navigate(['/ec-dashboard']);
@@ -42,11 +50,12 @@ export class AuthService {
           this.isLoggedIn$.next(true);
 
         } else {
-          this.toast.show("Login failed! Please enter correct credentials");
+          this.toast.show(res.message);
         }
 
     },
    error: (error) => {
+
       // Handle the error and display a toast message
       // this.toastr.error('An error occurred while logging in. Please try again.', 'Error', {
       //   closeButton: true,
@@ -85,16 +94,15 @@ export class AuthService {
 
   public isLoggedIn(): boolean {
     let token = localStorage.getItem(this.tokenKey);
+    let userName = localStorage.getItem('username') ?? "";
     console.log('is logged in', token != null);
     this.isLoggedIn$.next(token != null);
+    this.userName$.next(userName);
     return token != null;
   }
+
   public getToken(): string | null {
     return this.isLoggedIn() ? localStorage.getItem(this.tokenKey) : null;
   }
-
-
-
-
 
 }

@@ -6,7 +6,7 @@
     <div class="col-md-7 login-form card">
             <div class="auctionFormRight" style="margin-top: 0px;">
                 <h3 class="aucformTitle text-center">Updata Profile For Your Home Services</h3>
-                <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+                <form [formGroup]="updateForm" (ngSubmit)="updateSubmitForm()">
 
 
 
@@ -19,11 +19,11 @@
                     </div>
 
                     <div class="form-group row mb-3">
-                        <label for="pincodeNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Pincode<span style="color: red">*</span></label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="pincodeNo" placeholder="Enter Your Pincode No" title="Enter 6-digit pincode number" maxlength="6" required formControlName="pincode">
-                        </div>
-                    </div>
+                      <label for="pincodeNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Location</label>
+                      <div class="col-md-10">
+                          <input type="text" class="form-control" name="pincodeNo" placeholder="Enter Your Location" title="Enter 6-digit pincode number" maxlength="6" required formControlName="location" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)">
+                      </div>
+                  </div>
 
 
 

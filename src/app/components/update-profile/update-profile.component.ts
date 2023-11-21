@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { userData } from '../../interfaces/user.modal';
 import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-update-profile',
@@ -13,19 +14,23 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class UpdateProfileComponent implements OnInit{
 
+  choosenLocation = "";
+
   constructor(private apiService : ApiserviceService,
     private router: Router,
     private authService: AuthService,
-    private toast: ToastService
+    private toast: ToastService,
+    private route: ActivatedRoute
    ) {}
 
+   options: any = {
+    componentRestrictions: { country: 'IN' }
+  }
 
-  signupForm = new FormGroup({
+
+  updateForm = new FormGroup({
     name: new FormControl('',Validators.required),
-    mobile: new FormControl('',[Validators.required]),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    password: new FormControl('',Validators.required),
-    pincode: new FormControl('',Validators.required),
+    location: new FormControl('',Validators.required),
     city: new FormControl('',Validators.required),
     state: new FormControl('',Validators.required),
     district: new FormControl('',Validators.required),
@@ -33,19 +38,76 @@ export class UpdateProfileComponent implements OnInit{
   });
 
   ngOnInit(){
+    console.log("****testing");
+    // const userId = this.route.snapshot.params['user_id'];
+    const user_id = localStorage.getItem('USER_ID') || '';
+   console.log(user_id);
+
+    this.apiService.getUserProfile(user_id).pipe(take(1)).subscribe(
+      (userData: any) => {
+        console.log("test567");
+        console.log(userData);
+        this.updateForm.patchValue({
+          name: userData.data.NAME,
+          location: userData.data.PINCODE_NO,
+          city: userData.data.TOWN,
+          state: userData.data.STATE,
+          district: userData.data.DISTRICT
+        });
+        console.log(this.updateForm);
+      },
+      (error) => {
+        console.error('Error fetching user profile:', error);
+      }
+    );
   }
 
-  signupSubmit() {
-      const userData: userData = {
-        uName: this.signupForm.value.name ?? "",
-        mobile: this.signupForm.value.mobile ?? "",
-        email: this.signupForm.value.email ?? "",
-        password: this.signupForm.value.password ?? "",
-        town: this.signupForm.value.city ?? "",
-        state: this.signupForm.value.state ?? "",
-        district: this.signupForm.value.district ?? "",
-        pincode: this.signupForm.value.pincode ?? "",
-      }
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? "";
+  }
 
-}
+  updateSubmitForm() {
+      const updateprofile: updateProfile = {
+        uName: this.updateForm.value.name ?? "",
+        town: this.updateForm.value.city ?? "",
+        state: this.updateForm.value.state ?? "",
+        district: this.updateForm.value.district ?? "",
+        location: this.choosenLocation,
+      }
+      console.log("*****location test");
+      console.log(this.choosenLocation);
+
+      const user_id = localStorage.getItem('USER_ID') || '';
+      this.apiService.updateUserProfile(user_id, updateprofile).pipe(take(1)).subscribe(
+        (response) => {
+          console.log(response);
+          if(response){
+            this.toast.show(response.message);
+            // this.refreshFormData(user_id);
+          }
+        },
+        (error) => {
+          console.error('Error updating user profile:', error);
+
+        }
+      );
+    }
+
+    // refreshFormData(user_id: string) {
+    //   this.apiService.getUserProfile(user_id).subscribe(
+    //     (userData: any) => {
+    //       this.updateForm.patchValue({
+    //         name: userData.data.NAME,
+    //         location: userData.data.PINCODE_NO,
+    //         city: userData.data.TOWN,
+    //         state: userData.data.STATE,
+    //         district: userData.data.DISTRICT
+    //       });
+    //     },
+    //     (error) => {
+    //       console.error('Error fetching user profile:', error);
+    //     }
+    //   );
+    // }
 }

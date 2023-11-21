@@ -28,7 +28,7 @@
                 <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
                     <!-- Name Field -->
                     <div class="form-group row mb-3">
-                        <label for="name" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Name</label>
+                        <label for="name" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Name<span style="color: red">*</span></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required formControlName="name">
                         </div>
@@ -70,12 +70,12 @@
                         </div>
                     </div>
 
-                    <!-- Pincode Field -->
+                    <!-- Location Field -->
 
                     <div class="form-group row mb-3">
-                        <label for="pincodeNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Pincode<span style="color: red">*</span></label>
+                        <label for="pincodeNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Location</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="pincodeNo" placeholder="Enter Your Pincode No" title="Enter 6-digit pincode number" maxlength="6" required formControlName="pincode">
+                            <input type="text" class="form-control" name="pincodeNo" placeholder="Enter Your Location" title="Enter 6-digit pincode number" maxlength="6" required formControlName="location" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)">
                         </div>
                     </div>
 

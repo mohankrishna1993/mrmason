@@ -3,7 +3,7 @@
     <a class="navbar-brand" routerLink="/home">
       <img ngSrc="assets/images/mainlogo.png" width="200" height="40" alt="Company Logo" class="company-logo">
     </a>
-    <span class="brand-text collapse navbar-collapse pt-2">All Service workers join with us!</span>
+    <span class="brand-text collapse navbar-collapse pt-2" *ngIf="!isLoggedIn">All Service workers join with us!</span>
 
     <button
       class="navbar-toggler"
@@ -38,7 +38,7 @@
         </li>
         <li class="nav-item">
           <div *ngIf="isLoggedIn">
-            <p class="nav-link">Welcome, {{ user.name }}!</p>
+            <p class="nav-link">Welcome {{ userName }}!</p>
             <!-- <p *ngIf="isAdmin">You are an admin.</p> -->
           </div>
 
