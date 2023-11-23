@@ -1,41 +1,4 @@
-/*
 
-li {
-  list-style-type: none;
-  padding: 0px;
-}
-
-h4, h2 {
-  padding-top: 20px;
-  font-size: large;
-  font-weight: bold;
-  color: black;
-}
-p {
-  color: black;
-}
-
-.dotted-list li {
-  border-bottom: 1px dotted #ccc;
-  padding-bottom: 10px;
-
-}
-.login-form h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-  padding: 10px 0;
-}
-.login-form p {
-  color: #555;
-}
-.login-form label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 16px;
-  padding-right: 30px;
-} */
 body {
   background-color: #f4f4f4;
 }
@@ -92,11 +55,11 @@ a:hover {
 }
 
 .aucformTitle {
-  background-color: #4caf50; /* Green background color */
-  color: #fff; /* White text color */
+  background-color: #4caf50;
+  color: #fff;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 20px; /* Add margin to the bottom of h3 */
+  margin-bottom: 20px;
 }
 
 .dotted-list li {
@@ -125,8 +88,5 @@ p {
 .wide-button {
   width: 100%;
 }
-
-
-
 
 

@@ -25,21 +25,17 @@
         <li class="nav-item" >
           <a class="nav-link" routerLink="/ec-dashboard" *ngIf="isLoggedIn && !isAdmin">Dashboard</a>
         </li>
-        <!-- <li class="nav-item marquee" *ngIf="!isLoggedIn">
-          <a class="nav-link" >All Service Engineers join with us</a>
-        </li> -->
 
 
-        <li class="nav-item" >
+        <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link"  routerLink="#">Download Mobile App</a>
         </li>
-        <li class="nav-item" >
-          <a class="nav-link" routerLink="#" (click)="scrollDown()">Contact us</a>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="#" (click)="scrollDown()" >Contact us</a>
         </li>
         <li class="nav-item">
           <div *ngIf="isLoggedIn">
-            <p class="nav-link">Welcome {{ userName }}!</p>
-            <!-- <p *ngIf="isAdmin">You are an admin.</p> -->
+            <p class="nav-link">Welcome {{ userName }}</p>
           </div>
 
         </li>

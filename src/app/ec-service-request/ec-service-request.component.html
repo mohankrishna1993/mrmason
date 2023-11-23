@@ -59,7 +59,7 @@
        <th scope="col">Pincode</th>
        <th scope="col">Description</th>
        <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <!-- <th scope="col">Action</th> -->
     </tr>
    </thead>
 <tbody>
@@ -72,17 +72,18 @@
   <td>{{ item.SERVICE_REQUEST_DATE }}</td>
   <td>{{ item.REQ_PINCODE }}</td>
   <td>{{ item.DESCRIPTION }}</td>
+  <td>{{ item.STATUS}}</td>
 
 
-  <td>
+  <!-- <td>
     <form action="">
       <select name="status" id="status" class="form-control">
         <option value="active" [selected]="item.STATUS === 'active'">Active</option>
         <option value="deactive" [selected]="item.STATUS === 'deactive'">Deactive</option>
       </select>
     </form>
-  </td>
-  <td><span class="btn btn-sm btn-primary">Update</span></td>
+  </td> -->
+  <!-- <td><span class="btn btn-sm btn-primary">Update</span></td> -->
 </tr>
 </tbody>
 
