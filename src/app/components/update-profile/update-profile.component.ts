@@ -38,15 +38,11 @@ export class UpdateProfileComponent implements OnInit{
   });
 
   ngOnInit(){
-    console.log("****testing");
-    // const userId = this.route.snapshot.params['user_id'];
+
     const user_id = localStorage.getItem('USER_ID') || '';
-   console.log(user_id);
 
     this.apiService.getUserProfile(user_id).pipe(take(1)).subscribe(
       (userData: any) => {
-        console.log("test567");
-        console.log(userData);
         this.updateForm.patchValue({
           name: userData.data.NAME,
           location: userData.data.PINCODE_NO,
@@ -75,6 +71,7 @@ export class UpdateProfileComponent implements OnInit{
         district: this.updateForm.value.district ?? "",
         location: this.choosenLocation,
       }
+
       console.log("*****location test");
       console.log(this.choosenLocation);
 

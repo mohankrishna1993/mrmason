@@ -36,8 +36,11 @@ export class AuthService {
           localStorage.setItem('username', res.data.NAME);
           localStorage.setItem(this.tokenKey, 'true');
           localStorage.setItem('USER_ID', res.data.USER_ID);
-          this.userName$.next(res.data.NAME);
+          localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
+          console.log("*** populate");
+          console.log('PINCODE_NO stored in localStorage:', res.data.PINCODE_NO);
 
+          this.userName$.next(res.data.NAME);
 
           if(res.data.USER_TYPE === 'EC') {
             this.isAdmin$.next(false);

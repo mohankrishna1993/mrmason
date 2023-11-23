@@ -69,7 +69,9 @@
                   </div>
                   <div class="col-md-6">
                     <label for="location" class="my-2">Location</label>
-                    <input class="form-control" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' formControlName="location" (onAddressChange)="handleAddressChange($event)"/>
+                    <input class="form-control" formControlName="location" id="location"/>
+                    <!-- #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)" -->
+
                     <!-- <input type="text" class="form-control" id="location"> -->
                   </div>
                 </div>

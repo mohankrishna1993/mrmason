@@ -18,13 +18,16 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" >
+      <ul class="navbar-nav ml-auto" >
+        <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard" *ngIf="isLoggedIn && isAdmin">Dashboard</a>
         </li>
         <li class="nav-item" >
           <a class="nav-link" routerLink="/ec-dashboard" *ngIf="isLoggedIn && !isAdmin">Dashboard</a>
         </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" *ngIf="showDashboardLink">Dashboard</a>
+        </li> -->
 
 
         <li class="nav-item" *ngIf="!isLoggedIn">

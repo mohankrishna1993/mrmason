@@ -5,6 +5,7 @@ import { ServiceRequest } from 'src/app/interfaces/service.modal';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { take } from 'rxjs';
 
 
 
@@ -26,17 +27,39 @@ export class HomeComponent implements AfterViewInit,OnInit {
 
   isLoggedIn = false;
   userId = "";
-  choosenLocation = "";
+  location = "";
+  // choosenLocation = "";
 
   constructor(private apiService: ApiserviceService,
               private toast: ToastService,
               private authService: AuthService
               ){}
 
-  ngOnInit() {
-    this.authService.isLoggedIn$.subscribe((t) => this.isLoggedIn = t);
-    // this.authService.userId$.subscribe((u) => this.userId = u);
-  }
+              ngOnInit() {
+
+                const location = localStorage.getItem('PINCODE_NO');
+                this.submitForm.patchValue({
+                        location: location
+                      });
+
+                 this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+                 this.isLoggedIn = isLoggedIn;
+
+                //   if (this.isLoggedIn) {
+                    // this.authService.user$.pipe(take(1)).subscribe((user) => {
+                    //   if (user && user.data.PINCODE_NO) {
+                    //     this.userId = user.data.USER_ID ?? "";
+
+                    //     // Prepopulate the location field with PINCODE_NO from the user data
+                    //     this.submitForm.patchValue({
+                    //       location: user.data.PINCODE_NO
+                    //     });
+                    //   }
+                    // });
+                //   }
+                 });
+              }
+
 
   submitForm = new FormGroup({
     servicetype: new FormControl('',Validators.required),
@@ -46,9 +69,9 @@ export class HomeComponent implements AfterViewInit,OnInit {
     user_id: new FormControl('')
   });
 
-  options: any = {
-    componentRestrictions: { country: 'IN' }
-  }
+  // options: any = {
+  //   componentRestrictions: { country: 'IN' }
+  // }
 
 
   isForm1Visible: boolean = true;
@@ -69,12 +92,12 @@ export class HomeComponent implements AfterViewInit,OnInit {
     // Add more slides as needed
   ];
 
-  public handleAddressChange(place: google.maps.places.PlaceResult) {
-    console.log(place.formatted_address);
-    this.choosenLocation = place.formatted_address ?? "";
-    // Do some stuff
+  // public handleAddressChange(place: google.maps.places.PlaceResult) {
+  //   console.log(place.formatted_address);
+  //   this.choosenLocation = place.formatted_address ?? "";
 
-  }
+  // }
+
   onSubmitRequestForm() {
     const userId = localStorage.getItem('USER_ID') ?? "";
 
@@ -83,7 +106,8 @@ export class HomeComponent implements AfterViewInit,OnInit {
       service_name: this.submitForm.value.servicetype ?? "",
       service_date: this.submitForm.value.servicedate ?? "",
       description: this.submitForm.value.description ?? "",
-      location: this.choosenLocation,
+      // location: this.choosenLocation,
+      location: this.submitForm.value.location ?? "",
       user_id: userId
     }
     console.log(data);
