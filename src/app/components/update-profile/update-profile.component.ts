@@ -91,20 +91,4 @@ export class UpdateProfileComponent implements OnInit{
       );
     }
 
-    // refreshFormData(user_id: string) {
-    //   this.apiService.getUserProfile(user_id).subscribe(
-    //     (userData: any) => {
-    //       this.updateForm.patchValue({
-    //         name: userData.data.NAME,
-    //         location: userData.data.PINCODE_NO,
-    //         city: userData.data.TOWN,
-    //         state: userData.data.STATE,
-    //         district: userData.data.DISTRICT
-    //       });
-    //     },
-    //     (error) => {
-    //       console.error('Error fetching user profile:', error);
-    //     }
-    //   );
-    // }
 }

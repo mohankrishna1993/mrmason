@@ -14,9 +14,8 @@ export class ApiserviceService {
 
 
   baseUrl = "http://65.1.178.54/app/index.php";
-  // baseUrl1 = "http://43.204.168.30";
-  // baseUrl1 = "http://13.235.76.132";
-  baseUrl1 = "https://adroitcoder.com/projects/api";
+  baseUrl1 = "http://13.235.76.132";
+  // baseUrl1 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
 
@@ -105,7 +104,7 @@ export class ApiserviceService {
   }
 
   verifyOtpByMobile(mobile: string, otp: string): Observable<any> {
-    const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
+    const apiUrl = 'http://13.235.76.132/verify-otp.php';
     const data = {
       mobile: mobile,
       otp: otp
@@ -114,7 +113,7 @@ export class ApiserviceService {
   }
 
   verifyOtpByEmail(email: string, otp: string): Observable<any> {
-    const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
+    const apiUrl = 'http://13.235.76.132/verify-otp.php';
     const data = {
       email: email,
       otp: otp

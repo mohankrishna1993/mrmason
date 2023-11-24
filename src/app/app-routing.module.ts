@@ -14,6 +14,8 @@ import { EcDashboardComponent } from './components/ec-dashboard/ec-dashboard.com
 import { EcDashboardPannelComponent } from './components/ec-dashboard-pannel/ec-dashboard-pannel.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { EcServiceRequestComponent } from './ec-service-request/ec-service-request.component';
+import { AddAssetsComponent } from './components/add-assets/add-assets.component';
+import { EditAssetsComponent } from './components/edit-assets/edit-assets.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -39,7 +41,9 @@ const routes: Routes = [
       {path: '',redirectTo: 'ec-dashboard-pannel', pathMatch: 'full' },
       {path: 'ec-dashboard-pannel',component: EcDashboardPannelComponent},
       {path: 'update-profile',component: UpdateProfileComponent},
-      {path: 'ec-service-request', component: EcServiceRequestComponent}
+      {path: 'ec-service-request', component: EcServiceRequestComponent},
+      {path:'add-assets',component: AddAssetsComponent},
+      {path:'edit-assets',component: EditAssetsComponent}
      ]}
 
 ];

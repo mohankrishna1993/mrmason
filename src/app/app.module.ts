@@ -27,6 +27,9 @@ import { EcDashboardComponent } from './components/ec-dashboard/ec-dashboard.com
 import { EcDashboardPannelComponent } from './components/ec-dashboard-pannel/ec-dashboard-pannel.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { EcServiceRequestComponent } from './ec-service-request/ec-service-request.component';
+import { AddAssetsComponent } from './components/add-assets/add-assets.component';
+import { EditAssetsComponent } from './components/edit-assets/edit-assets.component';
+
 
 
 @NgModule({
@@ -47,6 +50,8 @@ import { EcServiceRequestComponent } from './ec-service-request/ec-service-reque
     EcDashboardPannelComponent,
     UpdateProfileComponent,
     EcServiceRequestComponent,
+    AddAssetsComponent,
+    EditAssetsComponent,
   ],
   imports: [
     BrowserModule,
