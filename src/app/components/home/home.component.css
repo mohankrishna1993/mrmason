@@ -6,9 +6,9 @@
 }
 
 .carousel-inner img {
-  height: 100%; /* Make the images fill the carousel height */
-  width: 100%; /* Make the images fill the carousel width */
-  object-fit: cover; /* Maintain aspect ratio and fill the available space */
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 
@@ -67,8 +67,6 @@ to{border-right-color: transparent;}
   padding-left: 10% !important;
   padding-right: 10% !important;
 
-  /* display: flex; */
-  /* flex-direction: row; */
 }
 ul {
   list-style-type: none;
@@ -96,9 +94,8 @@ ul {
 .extra-sty {
   transform: rotate(360deg);
   border-radius: 50%;
-  /* box-shadow: 0 0 10px white;  */
   transform: scale(1.2); /* Zoom effect */
-  /* margin-right: 20px; */
+
 }
 .heading {
   color: #fff;
@@ -106,19 +103,7 @@ ul {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.typewriter {
-  color:#0000;
-  background:
-    linear-gradient(-90deg,#00DFFC 5px,#0000 0) 10px 0,
-    linear-gradient(#00DFFC 0 0) 0 0;
-  background-size:calc(var(--n)*1ch) 200%;
-  -webkit-background-clip:padding-box,text;
-  background-clip:padding-box,text;
-  background-repeat:no-repeat;
-  animation:
-   b .7s infinite steps(1),
-   t calc(var(--n)*.3s) steps(var(--n)) forwards;
-}
+
 
 @keyframes t{
   from {background-size:0 200%}
@@ -135,17 +120,17 @@ ul {
 }
 
 .card-no-border {
-  border: none; /* Remove the default border */
-  transition: border-color 0.3s; /* Add a transition for smooth highlighting */
+  border: none;
+  transition: border-color 0.3s;
 
 }
 .card:hover {
-  box-shadow: 0 0 20px rgba(24, 174, 223, 0.6); /* Add a box shadow on hover */
-  transition: box-shadow 0.3s; /* Add a smooth transition effect */
+  box-shadow: 0 0 20px rgba(24, 174, 223, 0.6);
+  transition: box-shadow 0.3s;
 }
 
 .card-no-border:hover {
-  border: 1px solid #18aedf; /* Add the border on hover, change color as needed */
+  border: 1px solid #18aedf;
   cursor: pointer;
 }
 .justify-text {
@@ -155,8 +140,40 @@ ul {
   background-color: #18aedf;
 }
 
+.single-place-image:hover {
+  transform: scale(1.2);
+}
 
 
+.single-place-image {
+  /* transition: 0.5s;
+  transform: scale(1); */
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  position: relative;
+}
+.single-place-content {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 0.5rem;
+  width: 100%;
+  padding: 0 1.875rem;
+  z-index: 10;
+
+}
+
+.single-place-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transform: translateY(30px);
+}
+
+.single-place-title:hover {
+  transform: translateY(-5px); /* Adjust the value as needed for the desired move-up effect */
+}
 
 
 
@@ -177,4 +194,9 @@ ul {
 
 .min-height-contiainer {
   min-height: 468px;
+}
+
+.card {
+  /* Your existing card styles */
+  overflow: hidden; /* Add this line to clip content that overflows */
 }

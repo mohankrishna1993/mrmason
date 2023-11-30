@@ -1,4 +1,5 @@
 export interface userData {
+  appKey: string,
   email: string;
   mobile: string,
   password: string,

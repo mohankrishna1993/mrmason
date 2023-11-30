@@ -5,9 +5,6 @@ import { ServiceRequest } from 'src/app/interfaces/service.modal';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { take } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-home',
@@ -44,19 +41,6 @@ export class HomeComponent implements AfterViewInit,OnInit {
 
                  this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
                  this.isLoggedIn = isLoggedIn;
-
-                //   if (this.isLoggedIn) {
-                    // this.authService.user$.pipe(take(1)).subscribe((user) => {
-                    //   if (user && user.data.PINCODE_NO) {
-                    //     this.userId = user.data.USER_ID ?? "";
-
-                    //     // Prepopulate the location field with PINCODE_NO from the user data
-                    //     this.submitForm.patchValue({
-                    //       location: user.data.PINCODE_NO
-                    //     });
-                    //   }
-                    // });
-                //   }
                  });
               }
 
@@ -100,8 +84,7 @@ export class HomeComponent implements AfterViewInit,OnInit {
 
   onSubmitRequestForm() {
     const userId = localStorage.getItem('USER_ID') ?? "";
-
-    // console.log(this.submitForm);
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
     const data: ServiceRequest = {
       service_name: this.submitForm.value.servicetype ?? "",
       service_date: this.submitForm.value.servicedate ?? "",
@@ -110,8 +93,7 @@ export class HomeComponent implements AfterViewInit,OnInit {
       location: this.submitForm.value.location ?? "",
       user_id: userId
     }
-    console.log(data);
-     this.apiService.sendSubmitRequestData(data).subscribe((res)=> {
+     this.apiService.sendSubmitRequestData(data,appKey).subscribe((res)=> {
       console.log(res);
       if(res['status']) {
         this.toast.show("Service Request submited Successfully");

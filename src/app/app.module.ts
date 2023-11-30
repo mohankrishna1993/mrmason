@@ -29,6 +29,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { EcServiceRequestComponent } from './ec-service-request/ec-service-request.component';
 import { AddAssetsComponent } from './components/add-assets/add-assets.component';
 import { EditAssetsComponent } from './components/edit-assets/edit-assets.component';
+import { EditAssetsPageComponent } from './components/edit-assets-page/edit-assets-page.component';
 
 
 
@@ -52,6 +53,7 @@ import { EditAssetsComponent } from './components/edit-assets/edit-assets.compon
     EcServiceRequestComponent,
     AddAssetsComponent,
     EditAssetsComponent,
+    EditAssetsPageComponent,
   ],
   imports: [
     BrowserModule,

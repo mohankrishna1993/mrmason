@@ -16,6 +16,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { EcServiceRequestComponent } from './ec-service-request/ec-service-request.component';
 import { AddAssetsComponent } from './components/add-assets/add-assets.component';
 import { EditAssetsComponent } from './components/edit-assets/edit-assets.component';
+import { EditAssetsPageComponent } from './components/edit-assets-page/edit-assets-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -36,15 +37,18 @@ const routes: Routes = [
     ]
   },
   { path: 'verify-otp',component: VerfiyOtpComponent},
-  { path: 'ec-dashboard',component: EcDashboardComponent,
+  { path: 'ec-dashboard',
+    component: EcDashboardComponent,
      children: [
       {path: '',redirectTo: 'ec-dashboard-pannel', pathMatch: 'full' },
       {path: 'ec-dashboard-pannel',component: EcDashboardPannelComponent},
       {path: 'update-profile',component: UpdateProfileComponent},
       {path: 'ec-service-request', component: EcServiceRequestComponent},
-      {path:'add-assets',component: AddAssetsComponent},
-      {path:'edit-assets',component: EditAssetsComponent}
-     ]}
+      {path: 'add-assets',component: AddAssetsComponent},
+      {path: 'edit-assets',component: EditAssetsComponent},
+      {path: 'edit-asset/:id', component: EditAssetsPageComponent},
+     ]},
+
 
 ];
 
@@ -52,4 +56,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+ }

@@ -50,7 +50,8 @@ export class VerfiyOtpComponent implements OnInit{
   sendMobileOTP() {
     console.log(this.verifyForm.value.mobile);
     const mobile = this.verifyForm.value.mobile ?? ""; // Get the mobile number from your form
-    this.apiService.sendOtpByMobile(mobile).subscribe(
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    this.apiService.sendOtpByMobile(mobile,appKey).subscribe(
       (response) => {
         console.log("status success");
         if(response['sendstatus']){
@@ -71,7 +72,8 @@ export class VerfiyOtpComponent implements OnInit{
   sendEmailOTP() {
     console.log(this.verifyForm.value.email);
     const email = this.verifyForm.value.email ?? "";
-    this.apiService.sendOtpByEmail(email).subscribe(
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    this.apiService.sendOtpByEmail(email,appKey).subscribe(
       (response) => {
         if(response['status']){
           this.toast.show("Email OTP sent successfully!");
@@ -92,13 +94,14 @@ export class VerfiyOtpComponent implements OnInit{
 
     const enterOTP = this.verifyForm.value.enterMobileOTP;
     const mobileData = this.verifyForm.value.mobile ?? '';
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
     if (!enterOTP) {
       this.toast.show("Please enter the OTP");
       return;
     }
 
 
-    this.apiService.verifyOtpByMobile(mobileData, enterOTP).subscribe(
+    this.apiService.verifyOtpByMobile(mobileData, enterOTP,appKey).subscribe(
       (response) => {
         if (response['status']){
           this.isMobileVerified = true;
@@ -120,11 +123,12 @@ export class VerfiyOtpComponent implements OnInit{
 
     const enterOTP = this.verifyForm.value.enterEmailOTP;
     const email = this.verifyForm.value.email ?? '';
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
     if (!enterOTP) {
       this.toast.show("Please enter the OTP");
       return;
     }
-    this.apiService.verifyOtpByEmail(email, enterOTP).subscribe(
+    this.apiService.verifyOtpByEmail(email, enterOTP,appKey).subscribe(
       (response) => {
         if (response['status']){
           this.isEmailVerified = true;

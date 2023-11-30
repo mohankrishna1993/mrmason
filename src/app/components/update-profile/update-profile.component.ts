@@ -40,8 +40,9 @@ export class UpdateProfileComponent implements OnInit{
   ngOnInit(){
 
     const user_id = localStorage.getItem('USER_ID') || '';
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
 
-    this.apiService.getUserProfile(user_id).pipe(take(1)).subscribe(
+    this.apiService.getUserProfile(user_id,appKey).pipe(take(1)).subscribe(
       (userData: any) => {
         this.updateForm.patchValue({
           name: userData.data.NAME,
@@ -76,7 +77,8 @@ export class UpdateProfileComponent implements OnInit{
       console.log(this.choosenLocation);
 
       const user_id = localStorage.getItem('USER_ID') || '';
-      this.apiService.updateUserProfile(user_id, updateprofile).pipe(take(1)).subscribe(
+      const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
+      this.apiService.updateUserProfile(user_id, updateprofile,appKey).pipe(take(1)).subscribe(
         (response) => {
           console.log(response);
           if(response){

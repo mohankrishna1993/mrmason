@@ -1,1 +1,57 @@
-<p>edit-assets works!</p>
+
+
+<div class="container main-container">
+  <div class="card card-container">
+      <div class="card-header">
+          <h1>Assets Data</h1>
+      </div>
+  </div>
+   <!-- table -->
+   <div class="table-container">
+
+  <table class="table table-bordered table-striped mt-3">
+   <thead>
+    <tr>
+       <th scope="col">Srl._No.</th>
+       <th scope="col">Category</th>
+       <th scope="col">Sub-Category</th>
+       <th scope="col">Location</th>
+       <th scope="col">Street</th>
+       <th scope="col">Door_no</th>
+       <th scope="col">Town</th>
+       <th scope="col">District</th>
+       <th scope="col">State</th>
+       <th scope="col">Pin_code</th>
+       <th scope="col">Edit</th>
+      <!-- <th scope="col">Action</th> -->
+    </tr>
+   </thead>
+<tbody>
+<!-- Add table data here -->
+<tr *ngFor="let item of assetData | paginate: {itemsPerPage:2,currentPage:page,totalItems:totalLength}; let i = index">
+
+  <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
+  <td>{{ item.asset_cat}}</td>
+  <td>{{ item.asset_sub_cat}}</td>
+  <td>{{ item.location }}</td>
+  <td>{{ item.street }}</td>
+  <td>{{ item.door_no }}</td>
+  <td>{{ item.town}}</td>
+  <td>{{ item.district }}</td>
+  <td>{{ item.state }}</td>
+  <td>{{ item.pin_code}}</td>
+  <td>
+    <button class="btn btn-primary" (click)="editAsset(item.asset_id)">Edit</button>
+  </td>
+
+</tr>
+</tbody>
+
+      </table>
+
+      <div class="pagination">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+
+   </div>
+</div>

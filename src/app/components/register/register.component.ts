@@ -45,7 +45,8 @@ export class RegisterComponent implements OnInit {
   sendMobileOTP() {
     console.log(this.signupForm.value.mobile);
     const mobile = this.signupForm.value.mobile ?? ""; // Get the mobile number from your form
-    this.apiService.sendOtpByEmail(mobile).subscribe(
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    this.apiService.sendOtpByEmail(mobile,appKey).subscribe(
       (response) => {
         console.log('Mobile OTP sent successfully', response);
       },
@@ -59,7 +60,8 @@ export class RegisterComponent implements OnInit {
   sendEmailOTP() {
     console.log(this.signupForm.value.email);
     const email = this.signupForm.value.email ?? "";
-    this.apiService.sendOtpByEmail(email).subscribe(
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    this.apiService.sendOtpByEmail(email,appKey).subscribe(
       (response) => {
         console.log('Email OTP sent successfully', response);
       },
@@ -76,6 +78,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signupSubmit() {
+    console.log("test")
       const userData: userData = {
         uName: this.signupForm.value.name ?? "",
         mobile: this.signupForm.value.mobile ?? "",
@@ -85,6 +88,7 @@ export class RegisterComponent implements OnInit {
         state: this.signupForm.value.state ?? "",
         district: this.signupForm.value.district ?? "",
         pincode: this.choosenLocation,
+        appKey: 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
       }
 
       this.authService.register(userData).subscribe((res: any) => {

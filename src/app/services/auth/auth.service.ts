@@ -24,8 +24,9 @@ export class AuthService {
   private user = new BehaviorSubject<any>(null);
   user$ = this.user.asObservable();
 
-  public login(username: string, password: string): void {
-    this.apiService.login(username, password).subscribe({
+  public login(username: string, password: string,appKey: string): void {
+    
+    this.apiService.login(username, password,appKey).subscribe({
       next :(res) => {
         console.log(res);
         if(res['status']) {
