@@ -1,0 +1,45 @@
+
+
+<div class="container main-container">
+  <div class="card card-container">
+      <div class="card-header">
+          <h1>Assets Categories Data</h1>
+      </div>
+  </div>
+   <!-- table -->
+   <div class="table-container">
+
+  <table class="table table-bordered table-striped mt-3">
+   <thead>
+    <tr>
+       <th scope="col">Srl._No.</th>
+       <th scope="col">Category</th>
+       <th scope="col">Sub-Category</th>
+       <th scope="col">Addedby</th>
+       <th scope="col">Edit</th>
+    </tr>
+   </thead>
+<tbody>
+
+<tr *ngFor="let item of serviceCategoryData | paginate: {itemsPerPage:5,currentPage:page,totalItems:totalLength}; let i = index">
+
+  <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
+  <td>{{ item.serviceCategory}}</td>
+  <td>{{ item.serviceSubCategory}}</td>
+  <td>{{ item.addedBy }}</td>
+  <td>
+    <button class="btn btn-primary" (click)="editServiceCategory(item.id)">Edit</button>
+  </td>
+
+</tr>
+</tbody>
+
+      </table>
+
+      <div class="pagination">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+
+   </div>
+</div>
+

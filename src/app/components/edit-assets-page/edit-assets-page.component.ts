@@ -18,7 +18,7 @@ export class EditAssetsPageComponent implements OnInit{
 
   assetId: string = '';
   appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-  userId = localStorage.getItem('USER_ID') ?? "";
+  userId =  localStorage.getItem('USER_ID') ?? "";
 
   constructor(private apiService: ApiserviceService,
               private toast: ToastService,

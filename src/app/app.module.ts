@@ -30,6 +30,13 @@ import { EcServiceRequestComponent } from './ec-service-request/ec-service-reque
 import { AddAssetsComponent } from './components/add-assets/add-assets.component';
 import { EditAssetsComponent } from './components/edit-assets/edit-assets.component';
 import { EditAssetsPageComponent } from './components/edit-assets-page/edit-assets-page.component';
+import { AddAssetsCategoriesComponent } from './components/add-assets-categories/add-assets-categories.component';
+import { ShowAssetsCategoriesComponent } from './components/show-assets-categories/show-assets-categories.component';
+import { EditAssetsCategoriesComponent } from './components/edit-assets-categories/edit-assets-categories.component';
+import { AddServiceCategoryComponent } from './components/add-service-category/add-service-category.component';
+import { ShowServiceCategoryComponent } from './components/show-service-category/show-service-category.component';
+import { EditServiceCategoryComponent } from './components/edit-service-category/edit-service-category.component';
+
 
 
 
@@ -54,6 +61,12 @@ import { EditAssetsPageComponent } from './components/edit-assets-page/edit-asse
     AddAssetsComponent,
     EditAssetsComponent,
     EditAssetsPageComponent,
+    AddAssetsCategoriesComponent,
+    ShowAssetsCategoriesComponent,
+    EditAssetsCategoriesComponent,
+    AddServiceCategoryComponent,
+    ShowServiceCategoryComponent,
+    EditServiceCategoryComponent,
   ],
   imports: [
     BrowserModule,

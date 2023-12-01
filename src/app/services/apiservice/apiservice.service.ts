@@ -16,7 +16,8 @@ export class ApiserviceService {
 
   baseUrl = "http://65.1.178.54/app/index.php";
   // baseUrl1 = "http://13.235.76.132";
-  baseUrl1 = "https://adroitcoder.com/projects/api";
+  baseUrl1= "http://15.207.114.112"
+  // baseUrl1 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
 
@@ -108,8 +109,8 @@ export class ApiserviceService {
 
   verifyOtpByMobile(mobile: string, otp: string,appKey: string): Observable<any> {
 
-    const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
-    // const apiUrl = 'http://13.235.76.132/verify-otp.php';
+    // const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
+    const apiUrl = 'http://15.207.114.112/verify-otp.php';
     const data = {
       mobile: mobile,
       otp: otp,
@@ -119,8 +120,8 @@ export class ApiserviceService {
   }
 
   verifyOtpByEmail(email: string, otp: string,appKey: string): Observable<any> {
-    const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
-    // const apiUrl = 'http://13.235.76.132/verify-otp.php';
+    // const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
+    const apiUrl = 'http://15.207.114.112/verify-otp.php';
     const data = {
       email: email,
       otp: otp,
@@ -185,8 +186,131 @@ export class ApiserviceService {
     console.log(payload);
 
      return this.http.put(url,payload, {headers});
+  }
 
+  addAssetsCategory(appKey: string, data: any): Observable<any> {
+
+    const url = `${this.baseUrl1}/addAcategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const payload = {
+      appKey: appKey,
+      ...data
+    };
+    return this.http.post(url, payload, { headers });
   }
+  addServiceCategory(appKey: string, data: any): Observable<any> {
+
+    const url = `${this.baseUrl1}/addScategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const payload = {
+      appKey: appKey,
+      ...data
+    };
+    return this.http.post(url, payload, { headers });
   }
+
+
+
+  getAcategory(appKey: string): Observable<any> {
+    const url = `${this.baseUrl1}/getAcategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const params = { appKey: appKey };
+
+    return this.http.get(url, { headers, params });
+  }
+
+  getScategory(appKey: string): Observable<any> {
+    const url = `${this.baseUrl1}/getScategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const params = { appKey: appKey };
+
+    return this.http.get(url, { headers, params });
+  }
+
+
+  getAssetCategoryDetails(appKey: string, assetId: string): Observable<any> {
+    const url = `${this.baseUrl1}/getAcategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const params = {
+      appKey: appKey,
+      id: assetId
+    };
+
+    return this.http.get(url, { headers, params });
+  }
+
+  getServiceCategoryDetails(appKey: string, assetId: string): Observable<any> {
+    const url = `${this.baseUrl1}/getScategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const params = {
+      appKey: appKey,
+      id: assetId
+    };
+
+    return this.http.get(url, { headers, params });
+  }
+
+  editAssetCategory(appKey: string, data: any): Observable<any> {
+    const url = `${this.baseUrl1}/updateAcategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const payload = {
+      appKey: appKey,
+      ...data,
+    };
+
+    return this.http.put(url, payload, { headers });
+  }
+
+  editServiceCategory(appKey: string, data: any): Observable<any> {
+    const url = `${this.baseUrl1}/upScategory`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const payload = {
+      appKey: appKey,
+      ...data,
+    };
+
+    return this.http.put(url, payload, { headers });
+  }
+
+  searchPerson(appKey: string, location: string, category: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey': appKey
+    });
+
+    const params = new HttpParams()
+      .set('location', location)
+      .set('category', category);
+
+    return this.http.get<any>(`${this.baseUrl1}service-person`, { headers, params });
+  }
+}
+
+
+
+
+
 
 

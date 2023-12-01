@@ -17,6 +17,13 @@ import { EcServiceRequestComponent } from './ec-service-request/ec-service-reque
 import { AddAssetsComponent } from './components/add-assets/add-assets.component';
 import { EditAssetsComponent } from './components/edit-assets/edit-assets.component';
 import { EditAssetsPageComponent } from './components/edit-assets-page/edit-assets-page.component';
+import { AddAssetsCategoriesComponent } from './components/add-assets-categories/add-assets-categories.component';
+import { ShowAssetsCategoriesComponent } from './components/show-assets-categories/show-assets-categories.component';
+import { EditAssetsCategoriesComponent } from './components/edit-assets-categories/edit-assets-categories.component';
+import { AddServiceCategoryComponent } from './components/add-service-category/add-service-category.component';
+import { ShowServiceCategoryComponent } from './components/show-service-category/show-service-category.component';
+import { EditServiceCategoryComponent } from './components/edit-service-category/edit-service-category.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -27,12 +34,18 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard-pannel', pathMatch: 'full' },
       { path: 'dashboard-pannel', component: DashboardPannelComponent },
       { path: 'service-person-page', component: ServicePersonPageComponent},
-      { path: 'service-request-page', component: ServiceRequestPageComponent}
+      { path: 'service-request-page', component: ServiceRequestPageComponent},
+      { path: 'add-asset-categories',component: AddAssetsCategoriesComponent},
+      { path: 'show-asset-categories',component: ShowAssetsCategoriesComponent},
+      { path: 'edit-asset-category/:id',component: EditAssetsCategoriesComponent},
+      { path: 'add-service-category',component: AddServiceCategoryComponent},
+      { path: 'show-service-category',component: ShowServiceCategoryComponent},
+      { path: 'edit-service-category/:id',component: EditServiceCategoryComponent}
 
     ]
   },
@@ -47,6 +60,9 @@ const routes: Routes = [
       {path: 'add-assets',component: AddAssetsComponent},
       {path: 'edit-assets',component: EditAssetsComponent},
       {path: 'edit-asset/:id', component: EditAssetsPageComponent},
+      // {path: 'add-asset-categories',component: AddAssetsCategoriesComponent},
+      // {path: 'show-asset-categories',component: ShowAssetsCategoriesComponent},
+      // {path: 'edit-asset-category/:id',component: EditAssetsCategoriesComponent}
      ]},
 
 
