@@ -5,6 +5,7 @@ import { ServiceRequest } from 'src/app/interfaces/service.modal';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -27,9 +28,11 @@ export class HomeComponent implements AfterViewInit,OnInit {
   location = "";
   // choosenLocation = "";
 
+
   constructor(private apiService: ApiserviceService,
               private toast: ToastService,
-              private authService: AuthService
+              private authService: AuthService,
+              private router: Router
               ){}
 
               ngOnInit() {
@@ -51,6 +54,11 @@ export class HomeComponent implements AfterViewInit,OnInit {
     servicedate: new FormControl('',Validators.required),
     description: new FormControl('',Validators.required),
     user_id: new FormControl('')
+  });
+
+  submitForm1 = new FormGroup({
+    servicetype: new FormControl('',Validators.required),
+    location: new FormControl('',Validators.required),
   });
 
   // options: any = {
@@ -103,6 +111,19 @@ export class HomeComponent implements AfterViewInit,OnInit {
       }
      })
   }
+
+  onSearchPerson() {
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    const location = this.submitForm1.value.location || '';
+    const category = this.submitForm1.value.servicetype || '';
+
+    this.router.navigate(['/search-person-details'], {
+      queryParams: { appKey: appKey, location: location, category: category }
+    });
+  }
+
+
+
 
   ngAfterViewInit() {
   }

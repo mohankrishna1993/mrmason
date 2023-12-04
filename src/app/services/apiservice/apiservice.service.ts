@@ -20,7 +20,6 @@ export class ApiserviceService {
   // baseUrl1 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
-
   constructor(private http:HttpClient,private toast: ToastService) { }
 
    login(username: string,password: string,appKey: string):Observable<any> {
@@ -30,7 +29,7 @@ export class ApiserviceService {
       password: password,
       appKey: appKey
       });
-    return this.http.post(`${this.baseUrl1}/login`, data,
+    return this.http.post(`${this.baseUrl1}/login.php`, data,
     { headers: headers, responseType: 'json' }
     );
   }
@@ -90,7 +89,7 @@ export class ApiserviceService {
 
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const datanew = JSON.stringify({email: email,appKey: appKey});
-    return this.http.post<any>(`${this.baseUrl1}/send-otp`, datanew, {
+    return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
       headers: headers
     });
 
@@ -101,7 +100,7 @@ export class ApiserviceService {
   sendOtpByMobile(mobile: string,appKey: string): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const datanew = JSON.stringify({mobile: mobile,appKey: appKey});
-    return this.http.post<any>(`${this.baseUrl1}/send-otp`, datanew, {
+    return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
       headers: headers
     });
 
@@ -131,22 +130,22 @@ export class ApiserviceService {
   }
 
   getEcServiceRequestData(user_id: string,appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/get-service-request?user_id=${user_id}&appKey=${appKey}`;
+    const url = `${this.baseUrl1}/get-service-request.php?user_id=${user_id}&appKey=${appKey}`;
     return this.http.get<any[]>(url);
   }
 
   getUserProfile(userId: string,appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/profile?user_id=${userId}&appKey=${appKey}`;
+    const url = `${this.baseUrl1}/profile.php?user_id=${userId}&appKey=${appKey}`;
     return this.http.get(url);
   }
 
   updateUserProfile(user_id: string, updatedProfile: updateProfile,appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/update-profile?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
+    const url = `${this.baseUrl1}/update-profile.php?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
     return this.http.put(url, updatedProfile);
   }
 
   addAsset(appKey: string, userId: string, data: addAssetsData): Observable<any> {
-    const url = `${this.baseUrl1}/addAsset`;
+    const url = `${this.baseUrl1}/add-asset.php`;
     const requestBody = {
       appKey: appKey,
       user_id: userId,
@@ -159,14 +158,14 @@ export class ApiserviceService {
   getAssetData(appKey: string, userId: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.get<any>(`${this.baseUrl1}/getAsset?appKey=${appKey}&user_id=${userId}`, {
+    return this.http.get<any>(`${this.baseUrl1}/get-asset.php?appKey=${appKey}&user_id=${userId}`, {
       headers: headers,
     });
   }
 
   getAssetDataById(appKey: string, userId: string,assetId: string) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get<any>(`${this.baseUrl1}/getAsset?appKey=${appKey}&user_id=${userId}&asset_id=${assetId}`, {
+    return this.http.get<any>(`${this.baseUrl1}/get-asset.php?appKey=${appKey}&user_id=${userId}&asset_id=${assetId}`, {
       headers: headers,
     });
   }
@@ -175,7 +174,7 @@ export class ApiserviceService {
 
     // const url = `${this.baseUrl1}/update-profile?appKey=${appkey}&&asset_id=${assetId}&&category=${data.category}&&subcategory=${data.subcategory}&&location=${data.location}&&street=${data.street}&&door_no=${data.door_no}&&town=${data.town}&&district=${data.district}&&state=${data.state}&&pin_code=${data.pin_code}`
 
-    const url = `${this.baseUrl1}/updateAsset`;
+    const url = `${this.baseUrl1}/update-asset.php`;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const payload = {
       appKey: appkey,
@@ -190,7 +189,7 @@ export class ApiserviceService {
 
   addAssetsCategory(appKey: string, data: any): Observable<any> {
 
-    const url = `${this.baseUrl1}/addAcategory`;
+    const url = `${this.baseUrl1}/add-asset-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -203,7 +202,7 @@ export class ApiserviceService {
   }
   addServiceCategory(appKey: string, data: any): Observable<any> {
 
-    const url = `${this.baseUrl1}/addScategory`;
+    const url = `${this.baseUrl1}/add-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -218,7 +217,7 @@ export class ApiserviceService {
 
 
   getAcategory(appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/getAcategory`;
+    const url = `${this.baseUrl1}/get-asset-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -228,7 +227,7 @@ export class ApiserviceService {
   }
 
   getScategory(appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/getScategory`;
+    const url = `${this.baseUrl1}/get-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -239,7 +238,7 @@ export class ApiserviceService {
 
 
   getAssetCategoryDetails(appKey: string, assetId: string): Observable<any> {
-    const url = `${this.baseUrl1}/getAcategory`;
+    const url = `${this.baseUrl1}/get-asset-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -253,7 +252,7 @@ export class ApiserviceService {
   }
 
   getServiceCategoryDetails(appKey: string, assetId: string): Observable<any> {
-    const url = `${this.baseUrl1}/getScategory`;
+    const url = `${this.baseUrl1}/get-serv-cat.php `;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -267,7 +266,7 @@ export class ApiserviceService {
   }
 
   editAssetCategory(appKey: string, data: any): Observable<any> {
-    const url = `${this.baseUrl1}/updateAcategory`;
+    const url = `${this.baseUrl1}/up-asset-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -281,7 +280,7 @@ export class ApiserviceService {
   }
 
   editServiceCategory(appKey: string, data: any): Observable<any> {
-    const url = `${this.baseUrl1}/upScategory`;
+    const url = `${this.baseUrl1}/up-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -294,18 +293,21 @@ export class ApiserviceService {
     return this.http.put(url, payload, { headers });
   }
 
-  searchPerson(appKey: string, location: string, category: string): Observable<any> {
+  searchPerson(appKey: string,location: string,category: string ): Observable<any> {
+    const url = `${this.baseUrl1}/get-service-person.php`;
+    
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'appKey': appKey
     });
-
-    const params = new HttpParams()
-      .set('location', location)
-      .set('category', category);
-
-    return this.http.get<any>(`${this.baseUrl1}service-person`, { headers, params });
+    const params = {
+      appKey: appKey,
+      category: category,
+      location: location
+    }
+      return this.http.get(url, {headers, params})
   }
+
+
 }
 
 

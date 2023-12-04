@@ -36,6 +36,7 @@ import { EditAssetsCategoriesComponent } from './components/edit-assets-categori
 import { AddServiceCategoryComponent } from './components/add-service-category/add-service-category.component';
 import { ShowServiceCategoryComponent } from './components/show-service-category/show-service-category.component';
 import { EditServiceCategoryComponent } from './components/edit-service-category/edit-service-category.component';
+import { SearchPersonDetailsComponent } from './components/search-person-details/search-person-details.component';
 
 
 
@@ -67,6 +68,7 @@ import { EditServiceCategoryComponent } from './components/edit-service-category
     AddServiceCategoryComponent,
     ShowServiceCategoryComponent,
     EditServiceCategoryComponent,
+    SearchPersonDetailsComponent,
   ],
   imports: [
     BrowserModule,

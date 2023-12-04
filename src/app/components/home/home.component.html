@@ -41,7 +41,7 @@
                 Service Request
               </button>
 
-              <button class="btn btn-link mr-3" style="color:#fff;" (click)="toggleForm('form2')">
+              <button class="btn btn-link mr-3" style="color:#fff;" (click)="toggleForm('form2')" >
                 <div>
                   <i class="fa fa-database" style="font-size:36px"></i>
                 </div>
@@ -103,11 +103,12 @@
           <div id="form2" class="collapse p-3" [class.show]="isForm2Visible">
 
             <div id="form2">
-              <form>
+              <form [formGroup]="submitForm1" (ngSubmit)="onSearchPerson()">
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="serviceType" class="my-2">Service Type</label>
-                    <select class="form-control" id="serviceType">
+                    <input type="text" class="form-control" id="servicetype" formControlName="servicetype">
+                    <!-- <select class="form-control" id="serviceType" formControlName="servicetype">
 
                       <option value="">Select Service Type</option>
                        <option value="Option 1">Carpenter</option>
@@ -115,16 +116,16 @@
                        <option value="Option 3">Masonry Worker</option>
                        <option value="Option 4">Painter</option>
                        <option value="Option 5">Plumber</option>
-                    </select>
+                    </select> -->
                   </div>
                   <div class="col-md-6">
                     <label for="location" class="my-2">Location</label>
-                    <input type="text" class="form-control" id="location">
+                    <input type="text" class="form-control" id="location" formControlName="location">
                   </div>
                 </div>
 
                 <div class="text-center">
-                <button type="submit" class="btn btn-success mt-3" [disabled]="!isLoggedIn">Search Work</button>
+                <button type="submit" class="btn btn-success mt-3" [disabled]="!isLoggedIn" (click)="onSearchPerson()">Search Work</button>
               </div>
               </form>
 
@@ -319,6 +320,7 @@
   </div>
 
 </div>
+
 </section>
 
 
