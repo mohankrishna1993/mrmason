@@ -295,7 +295,7 @@ export class ApiserviceService {
 
   searchPerson(appKey: string,location: string,category: string ): Observable<any> {
     const url = `${this.baseUrl1}/get-service-person.php`;
-    
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
