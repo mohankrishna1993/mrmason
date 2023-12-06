@@ -252,7 +252,7 @@ export class ApiserviceService {
   }
 
   getServiceCategoryDetails(appKey: string, assetId: string): Observable<any> {
-    const url = `${this.baseUrl1}/get-serv-cat.php `;
+    const url = `${this.baseUrl1}/get-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });

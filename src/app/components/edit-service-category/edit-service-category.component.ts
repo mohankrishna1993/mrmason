@@ -59,8 +59,6 @@ fetchServiceCategoryDetails() {
        this.apiService.getServiceCategoryDetails(this.appKey, this.assetId).subscribe(
              (data) => {
             const serviceCategoryDetails = data.data[0];
-            console.log("******");
-            console.log(serviceCategoryDetails);// Assuming your API response has a 'data' property
             this.addServiceCategoryForm.patchValue({
             category: serviceCategoryDetails.serviceCategory,
             subcategory: serviceCategoryDetails.serviceSubCategory,
