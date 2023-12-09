@@ -12,7 +12,7 @@ export class EcServiceRequestComponent implements OnInit{
   tableData: any[] = [];
   totalLength: any;
   page: number = 1;
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 6;
 
 
   serviceRequestForm = new FormGroup({

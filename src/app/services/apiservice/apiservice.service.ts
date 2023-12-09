@@ -170,6 +170,7 @@ export class ApiserviceService {
     });
   }
 
+
   editAsset(appkey: string,assetId: string,data: addAssetsData):Observable<any> {
 
     // const url = `${this.baseUrl1}/update-profile?appKey=${appkey}&&asset_id=${assetId}&&category=${data.category}&&subcategory=${data.subcategory}&&location=${data.location}&&street=${data.street}&&door_no=${data.door_no}&&town=${data.town}&&district=${data.district}&&state=${data.state}&&pin_code=${data.pin_code}`

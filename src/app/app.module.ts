@@ -37,6 +37,7 @@ import { AddServiceCategoryComponent } from './components/add-service-category/a
 import { ShowServiceCategoryComponent } from './components/show-service-category/show-service-category.component';
 import { EditServiceCategoryComponent } from './components/edit-service-category/edit-service-category.component';
 import { SearchPersonDetailsComponent } from './components/search-person-details/search-person-details.component';
+import { ServiceRequestComponent } from './components/service-request/service-request.component';
 
 
 
@@ -69,6 +70,7 @@ import { SearchPersonDetailsComponent } from './components/search-person-details
     ShowServiceCategoryComponent,
     EditServiceCategoryComponent,
     SearchPersonDetailsComponent,
+    ServiceRequestComponent,
   ],
   imports: [
     BrowserModule,

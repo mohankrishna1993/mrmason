@@ -3,5 +3,6 @@ export interface ServiceRequest {
   location: string,
   description: string,
   service_date: string,
-  user_id: string
+  user_id: string,
+  asset_id: string,
 }

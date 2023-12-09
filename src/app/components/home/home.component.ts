@@ -26,7 +26,7 @@ export class HomeComponent implements AfterViewInit,OnInit {
   isLoggedIn = false;
   userId = "";
   location = "";
-  // choosenLocation = "";
+  choosenLocation = "";
 
 
   constructor(private apiService: ApiserviceService,
@@ -34,13 +34,11 @@ export class HomeComponent implements AfterViewInit,OnInit {
               private authService: AuthService,
               private router: Router
               ){}
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
               ngOnInit() {
-
-                const location = localStorage.getItem('PINCODE_NO');
-                this.submitForm.patchValue({
-                        location: location
-                      });
 
                  this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
                  this.isLoggedIn = isLoggedIn;
@@ -48,98 +46,30 @@ export class HomeComponent implements AfterViewInit,OnInit {
               }
 
 
-  submitForm = new FormGroup({
-    servicetype: new FormControl('',Validators.required),
-    location: new FormControl('',Validators.required),
-    servicedate: new FormControl('',Validators.required),
-    description: new FormControl('',Validators.required),
-    user_id: new FormControl('')
-  });
-
   submitForm1 = new FormGroup({
     servicetype: new FormControl('',Validators.required),
     location: new FormControl('',Validators.required),
   });
 
-  // options: any = {
-  //   componentRestrictions: { country: 'IN' }
-  // }
+  options: any = {
+    componentRestrictions: { country: 'IN' }
+  }
 
 
-  isForm1Visible: boolean = true;
-  isForm2Visible: boolean = false;
-  text = "sample";
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? "";
 
-  slides = [
-    {
-      image: 'path-to-image-1.jpg',
-      title: 'Slide 1 Title',
-      description: 'Slide 1 Description',
-    },
-    {
-      image: 'path-to-image-2.jpg',
-      title: 'Slide 2 Title',
-      description: 'Slide 2 Description',
-    },
-    // Add more slides as needed
-  ];
-
-  // public handleAddressChange(place: google.maps.places.PlaceResult) {
-  //   console.log(place.formatted_address);
-  //   this.choosenLocation = place.formatted_address ?? "";
-
-  // }
-
-  onSubmitRequestForm() {
-    const userId = localStorage.getItem('USER_ID') ?? "";
-    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
-    const data: ServiceRequest = {
-      service_name: this.submitForm.value.servicetype ?? "",
-      service_date: this.submitForm.value.servicedate ?? "",
-      description: this.submitForm.value.description ?? "",
-      // location: this.choosenLocation,
-      location: this.submitForm.value.location ?? "",
-      user_id: userId
-    }
-     this.apiService.sendSubmitRequestData(data,appKey).subscribe((res)=> {
-      console.log(res);
-      if(res['status']) {
-        this.toast.show("Service Request submited Successfully");
-        this.submitForm.reset();
-      } else {
-        this.toast.show("Service Request failed!")
-      }
-     })
   }
 
   onSearchPerson() {
-    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    const location = this.submitForm1.value.location || '';
-    const category = this.submitForm1.value.servicetype || '';
 
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    const location = this.choosenLocation;
+    const category = this.submitForm1.value.servicetype || '';
     this.router.navigate(['/search-person-details'], {
       queryParams: { appKey: appKey, location: location, category: category }
     });
-  }
-
-
-
-
-  ngAfterViewInit() {
-  }
-
-
-
-  toggleForm(formName: string) {
-    if (formName === 'form1') {
-      this.isForm1Visible = true;
-      this.isForm2Visible = false;
-    } else if (formName === 'form2') {
-      this.isForm1Visible = false;
-      this.isForm2Visible = true;
-      console.log('*******')
-    }
-
   }
 
 }

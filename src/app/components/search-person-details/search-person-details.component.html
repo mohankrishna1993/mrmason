@@ -1,48 +1,9 @@
-<!-- <div class="container mt-4" *ngIf="searchResults.length > 0">
-  <h4 class="services-heading p-2 custom-bg">Search Results</h4>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let person of searchResults">
-      <div class="card h-100">
-        <img src="https://placekitten.com/300/200" alt="Profile Pic" class="card-img-top" />
-        <div class="card-body">
-          <h5 class="card-title">Name:{{ person.NAME }}</h5>
-          <p class="card-text">Contact: {{ person.CONTACT_NO }}</p>
-          <p class="card-text">Experience: {{ person.EXPERIENCE }} years</p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="container mt-4" *ngIf="searchResults.length > 0">
-  <h4 class="services-heading p-2 custom-bg">Search Results</h4>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let person of searchResults">
-      <div class="card hovercard">
-        <div class="cardheader"></div>
-        <div class="avatar">
-          <img src="https://placekitten.com/300/200" alt="Profile Pic" class="card-img-top" />
-        </div>
-        <div class="info">
-          <div class="title">
-            <a target="_blank" [href]="person.PROFILE_LINK">{{ person.NAME }}</a>
-          </div>
-          <div class="desc">Contact: {{ person.CONTACT_NO }}</div>
-          <div class="desc">Experience: {{ person.EXPERIENCE }} years</div>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="container mt-4" *ngIf="searchResults.length > 0">
-  <h4 class="services-heading p-2 custom-bg">Search Results</h4>
+  <h4 class="services-heading p-2 custom-bg">Search Results for {{ category }}</h4>
   <div class="row">
-    <div class="col-md-4" *ngFor="let person of searchResults">
-      <div class="card profile-card-3">
+    <div class="col-md-3" *ngFor="let person of searchResults">
+      <div class="card profile-card-3 custom-card-height">
         <div class="background-block">
           <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
         </div>
@@ -53,15 +14,14 @@
           <h2>{{ person.NAME }}<small>Service Person</small></h2>
           <div class="desc contact-info">Contact: {{ person.CONTACT_NO }}</div>
           <div class="desc experience-info">Experience: {{ person.EXPERIENCE }} years</div>
-          <!-- <div class="icon-block">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"> <i class="fa fa-twitter"></i></a>
-            <a href="#"> <i class="fa fa-google-plus"></i></a>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="container mt-4" *ngIf="searchResults.length === 0">
+  <h4 class="services-heading p-2 custom-bg">No Search Results for {{ category }}</h4>
+  <!-- You can add additional content or messages here -->
 </div>
 
 

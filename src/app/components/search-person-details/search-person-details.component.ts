@@ -11,6 +11,7 @@ import { ApiserviceService } from 'src/app/services/apiservice/apiservice.servic
 export class SearchPersonDetailsComponent implements OnInit{
 
   searchResults: any[] = [];
+  category: string = '';
 
   constructor(private route: ActivatedRoute, private apiService: ApiserviceService) {
 
@@ -20,7 +21,9 @@ export class SearchPersonDetailsComponent implements OnInit{
     this.route.queryParams
     .pipe(take(1))
     .subscribe(params => {
-      console.log(params); 
+      
+      this.category = params['category'];
+      console.log(this.category);
       this.searchPersons(params['appKey'], params['location'], params['category']);
 
     }
