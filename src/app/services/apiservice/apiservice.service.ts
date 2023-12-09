@@ -17,7 +17,7 @@ export class ApiserviceService {
   baseUrl = "http://65.1.178.54/app/index.php";
   // baseUrl1 = "http://13.235.76.132";
   baseUrl1= "http://15.207.114.112"
-  // baseUrl1 = "https://adroitcoder.com/projects/api";
+  baseUrl2 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
   constructor(private http:HttpClient,private toast: ToastService) { }
@@ -32,6 +32,20 @@ export class ApiserviceService {
     return this.http.post(`${this.baseUrl1}/login.php`, data,
     { headers: headers, responseType: 'json' }
     );
+  }
+
+  adminLogin(username: string, password: string, appKey: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const data = JSON.stringify({
+      username: username,
+      password: password,
+      appKey: appKey
+    });
+
+    return this.http.post(`${this.baseUrl2}/admin-login`, data, {
+      headers: headers,
+      responseType: 'json'
+    });
   }
 
  register(userData: userData): Observable<any> {

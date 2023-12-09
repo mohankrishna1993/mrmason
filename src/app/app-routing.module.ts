@@ -25,6 +25,7 @@ import { ShowServiceCategoryComponent } from './components/show-service-category
 import { EditServiceCategoryComponent } from './components/edit-service-category/edit-service-category.component';
 import { SearchPersonDetailsComponent } from './components/search-person-details/search-person-details.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent},
   {path: 'search-person-details',component: SearchPersonDetailsComponent},
+  {path: 'admin', component: AdminComponent},
   {
     path: 'dashboard',
     component: DashboardComponent,

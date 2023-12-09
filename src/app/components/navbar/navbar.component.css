@@ -64,4 +64,8 @@
 .nav-link:hover {
   color: #49b8d6; /* Change the color on hover */
 }
+.ddcol {
+  background-color: white;
+  color: black;
+}
 

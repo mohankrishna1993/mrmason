@@ -25,7 +25,7 @@ export class AuthService {
   user$ = this.user.asObservable();
 
   public login(username: string, password: string,appKey: string): void {
-    
+
     this.apiService.login(username, password,appKey).subscribe({
       next :(res) => {
         console.log(res);
@@ -67,6 +67,29 @@ export class AuthService {
       // });
     }
   });
+  }
+
+  public adminLogin(username: string, password: string, appKey: string): void {
+    this.apiService.adminLogin(username, password, appKey).subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res['status']) {
+          const userDetails = {
+            username: username
+          };
+          console.log(res);
+
+          this.userName$.next(res.data.NAME);
+          localStorage.setItem(this.tokenKey, "true");
+          this.router.navigate(['/dashboard']); // Change to the admin dashboard route
+        } else {
+          this.toast.show(res.message);
+        }
+      },
+      error: (error) => {
+        // Handle the error
+      }
+    });
   }
 
   public register(userData: userData): Observable<any> {
