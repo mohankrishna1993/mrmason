@@ -57,6 +57,7 @@
                     class="form-control"
                     id="serviceDate"
                     formControlName="servicedate"
+                    [min]="minServiceDate"
                   />
                 </div>
                 <div class="form-group">
@@ -93,7 +94,7 @@
                   <button
                     type="submit"
                     class="btn btn-success mx-auto mt-3"
-                    [disabled]="!isLoggedIn"
+                    [disabled]="!submitForm.valid"
                   >
                     Submit Request
                   </button>
@@ -104,35 +105,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col-lg-5 col-md-6" *ngIf="selectedIndex !== -1">
-      <div class="container min-height-contiainer">
-        <div class="card shadow-lg p-1 bg-white rounded">
-          <div class="card-header custom-bg">
-            <div class="align-items-center">
-              <div class="btn btn-link mr-3" style="color: #fff">
-                <div>
-                  <i class="fa fa-database" style="font-size: 36px"></i>
-                </div>
-
-                Assit ID details
-              </div>
-            </div>
-          </div>
-          <div>
-
-      <div class="asset-details">Sub-Category :{{assets[selectedIndex].asset_sub_cat}}</div>
-      <div class="asset-details">District: {{assets[selectedIndex].district}}</div>
-      <div class="asset-details">Door-no: {{assets[selectedIndex].door_no}}</div>
-      <div class="asset-details">Location: {{assets[selectedIndex].location}}</div>
-      <div class="asset-details">Pincode: {{assets[selectedIndex].pin_code}}</div>
-      <div class="asset-details">State: {{assets[selectedIndex].state}}</div>
-      <div class="asset-details">Street: {{assets[selectedIndex].street}}</div>
-      <div class="asset-details">Town: {{assets[selectedIndex].town}}</div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Add these classes to the corresponding elements in your HTML -->
 <div class="col-lg-5 col-md-6" *ngIf="selectedIndex !== -1">
   <div class="container min-height-container">
     <div class="card shadow-lg p-1 bg-white rounded">
