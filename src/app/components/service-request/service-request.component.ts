@@ -23,15 +23,17 @@ export class ServiceRequestComponent implements OnInit{
   assetIds: any[] = [];
   minServiceDate: string;
 
+
+
   submitForm = new FormGroup({
     servicetype: new FormControl('', Validators.required),
-    location: new FormControl('', Validators.required),
     servicedate: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     user_id: new FormControl(''),
     assetid: new FormControl('', Validators.required),
-    checkAgree: new FormControl([false, Validators.requiredTrue]),
+    checkAgree: new FormControl(false, Validators.requiredTrue),
   });
+
 
 
   constructor(
@@ -44,11 +46,8 @@ export class ServiceRequestComponent implements OnInit{
     this.minServiceDate = this.calculateMinServiceDate();
   }
 
+
   ngOnInit() {
-    const location = localStorage.getItem('PINCODE_NO');
-    this.submitForm.patchValue({
-      location: location,
-    });
 
     this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
@@ -80,6 +79,8 @@ export class ServiceRequestComponent implements OnInit{
 
   }
 
+
+
   private getIndexOfAssetId(assetId: string): number {
     return this.assetIds.indexOf(assetId);
   }
@@ -103,12 +104,13 @@ export class ServiceRequestComponent implements OnInit{
   onSubmitRequestForm() {
     const userId = localStorage.getItem('USER_ID') ?? '';
     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+
     const data: ServiceRequest = {
       service_name: this.submitForm.value.servicetype ?? '',
       service_date: this.submitForm.value.servicedate ?? '',
       description: this.submitForm.value.description ?? '',
       // location: this.choosenLocation,
-      location: this.submitForm.value.location ?? '',
+      // location: this.submitForm.value.location ?? '',
       user_id: userId,
       asset_id: this.submitForm.value.assetid ?? ''
     };
@@ -122,4 +124,5 @@ export class ServiceRequestComponent implements OnInit{
       }
     });
   }
+
 }

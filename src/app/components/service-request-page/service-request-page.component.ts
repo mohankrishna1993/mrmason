@@ -13,6 +13,7 @@ export class ServiceRequestPageComponent implements OnInit{
   totalLength: any;
   page: number = 1;
   itemsPerPage: number = 2;
+  serviceCategories: string[] = [];
 
   serviceRequestForm = new FormGroup({
     serviceCategory: new FormControl('',Validators.required),
@@ -27,6 +28,7 @@ export class ServiceRequestPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.serviceRequestData();
+    this.getServiceCategories();
  }
 
 
@@ -35,6 +37,14 @@ export class ServiceRequestPageComponent implements OnInit{
   const start = this.page * this.totalLength;
   const end = start + this.totalLength;
   return this.tableData.slice(start, end);
+}
+
+getServiceCategories() {
+  const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+  this.apiService.getScategory(appKey).subscribe((res: any) => {
+    this.serviceCategories = res.data.map((category: any) => category.serviceCategory);
+
+  });
 }
 
 

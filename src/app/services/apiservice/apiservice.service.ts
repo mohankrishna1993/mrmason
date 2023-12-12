@@ -6,6 +6,7 @@ import { ServiceRequest } from 'src/app/interfaces/service.modal';
 import { ToastService } from '../toast/toast.service';
 import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
 import { addAssetsData } from 'src/app/interfaces/addAssets.modal';
+import { SessionTimeoutService } from '../sessionTimeout/session-timeout.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,11 @@ export class ApiserviceService {
   baseUrl2 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
-  constructor(private http:HttpClient,private toast: ToastService) { }
+  constructor(private http:HttpClient,
+              private toast: ToastService,
+              private sessionTimeoutService: SessionTimeoutService) {
+                this.initUserActivityListener();
+              }
 
    login(username: string,password: string,appKey: string):Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
@@ -320,6 +325,16 @@ export class ApiserviceService {
       location: location
     }
       return this.http.get(url, {headers, params})
+  }
+
+  private initUserActivityListener(): void {
+    document.addEventListener('mousemove', () => {
+      this.sessionTimeoutService.onUserActivity();
+    });
+
+    document.addEventListener('keypress', () => {
+      this.sessionTimeoutService.onUserActivity();
+    });
   }
 
 

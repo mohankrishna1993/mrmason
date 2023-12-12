@@ -16,6 +16,7 @@
        <th scope="col">Category</th>
        <th scope="col">Sub-Category</th>
        <th scope="col">Addedby</th>
+       <th scope="col">Asset Model</th>
        <th scope="col">Edit</th>
     </tr>
    </thead>
@@ -27,6 +28,8 @@
   <td>{{ item.assetCategory}}</td>
   <td>{{ item.assetSubCategory}}</td>
   <td>{{ item.addedBy }}</td>
+  <td> need to add</td>
+
   <td>
     <button class="btn btn-primary" (click)="editAssetCategory(item.id)">Edit</button>
   </td>

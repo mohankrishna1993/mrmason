@@ -1,0 +1,41 @@
+<div class="container main-container">
+  <div class="card card-container">
+      <div class="card-header">
+          <h1>Customer Report</h1>
+      </div>
+      <div class="card-body border-right-primary border-left-primary">
+          <form [formGroup]="serviceRequestForm" (ngSubmit)="customerReportData()">
+              <div class="form-row">
+
+
+                  <div class="col-md-2 form-group">
+                    <label for="service-category" style="color: blue;">Location*</label>
+                    <input type="text" class="form-control" id="field3" name="field3" formArrayName="location">
+                </div>
+                  <div class="col-md-2 form-group">
+                      <label for="field2" style="color: blue;">Registration Date*</label>
+                      <input type="text" class="form-control" id="field2" name="field2" formControlName="registrationDate">
+                  </div>
+                  <div class="col-md-2 form-group">
+                      <label for="field3" style="color: blue;">Membership Id*</label>
+                      <input type="text" class="form-control" id="field3" name="field3" formArrayName="membershipId">
+                  </div>
+                  <div class="col-md-2 form-group">
+                      <label for="request-status" style="color: blue;">Phone Number*</label>
+                      <input type="text" class="form-control" id="request-status" name="field3" formControlName="phoneNo">
+                  </div>
+                  <div class="col-md-2 form-group">
+                    <label for="field3" style="color: blue;">Email-ID*</label>
+                    <input type="text" class="form-control" id="field3" name="field3" formControlName="email">
+                </div>
+              </div>
+
+              <div class="form-row mt-3">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+          </form>
+      </div>
+  </div>
+

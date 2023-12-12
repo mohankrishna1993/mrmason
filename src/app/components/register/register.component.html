@@ -26,25 +26,6 @@
             <div class="auctionFormRight" style="margin-top: 0px;">
                 <h3 class="aucformTitle text-center">Register Here For Your Home Services</h3>
                 <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
-                    <!-- Name Field -->
-                    <div class="form-group row mb-3">
-                        <label for="name" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Name<span style="color: red">*</span></label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required formControlName="name">
-                        </div>
-                    </div>
-
-                    <!-- Mobile Number Field -->
-                    <div class="form-group row mb-3">
-                      <label for="mobileNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Mobile<span style="color: red">*</span></label>
-
-                      <div class="col-md-10 d-flex align-items-center">
-                          <input type="text" class="form-control" name="mobileNo" placeholder="Enter Your Mobile_No" pattern="[1-9]{1}[0-9]{9}" title="Enter 10-digit mobile number" maxlength="10" formControlName="mobile" required>
-                      </div>
-
-                    </div>
-
-
 
                     <!-- Email ID Field -->
                     <div class="form-group row mb-3">
@@ -70,6 +51,33 @@
                         </div>
                     </div>
 
+                     <!-- Name Field -->
+                     <div class="form-group row mb-3">
+                      <label for="name" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Name<span style="color: red">*</span></label>
+                      <div class="col-md-10">
+                          <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required formControlName="name">
+                      </div>
+                  </div>
+
+                  <!-- Mobile Number Field -->
+                  <div class="form-group row mb-3">
+                    <label for="mobileNo" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Mobile<span style="color: red">*</span></label>
+
+                    <div class="col-md-10 d-flex align-items-center">
+                        <input type="text" class="form-control" name="mobileNo" placeholder="Enter Your Mobile_No" pattern="[1-9]{1}[0-9]{9}" title="Enter 10-digit mobile number" maxlength="10" formControlName="mobile" required>
+                    </div>
+
+                  </div>
+
+                    <!-- City Field -->
+
+                    <div class="form-group row mb-3">
+                      <label for="city" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">City</label>
+                      <div class="col-md-10">
+                          <input type="text" class="form-control" name="city" placeholder="Enter Your City" required formControlName="city">
+                      </div>
+                  </div>
+
                     <!-- Location Field -->
 
                     <div class="form-group row mb-3">
@@ -81,14 +89,7 @@
 
 
 
-                    <!-- City Field -->
 
-                    <div class="form-group row mb-3">
-                        <label for="city" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">City</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="city" placeholder="Enter Your City" required formControlName="city">
-                        </div>
-                    </div>
 
                     <!-- State Field -->
 

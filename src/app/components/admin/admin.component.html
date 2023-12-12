@@ -1,6 +1,6 @@
-<div class="container mt-4">
-  <div class="row">
-      <div class="col-md-6">
+<div class="container mt-4 d-flex justify-content-center">
+
+      <!-- <div class="col-md-6">
           <img src="assets/images/bu.png" class="img-fluid" alt="Your Image">
           <div class="col-md-12 col-xs-12 col-sm-12 res3">
     <ul class="sellCarInfolist dotted-list">
@@ -20,7 +20,7 @@
        </li>
      </ul>
                 </div>
-      </div>
+      </div> -->
       <div class="auctionMainForm card col-md-6 login-form">
           <h3 class="aucformTitle text-center">ADMIN LOGIN</h3>
           <form [formGroup]="formData" (ngSubmit)="adminLogin()">
@@ -32,10 +32,7 @@
             <input class="form-control" type="text" placeholder="Enter Email Address or Mobile Number" name="email" formControlName="username" required>
 
               </div>
-              <!-- <div class="text-danger mt-2 text-end" *ngIf="formData.get('username')?.errors &&
-              formData.get('username')?.hasError('email')">
-                 Please enter a valid email.
-            </div> -->
+
 
               </div>
             </div>
@@ -59,12 +56,12 @@
 
             </div>
 
-          
+
           </form>
 
       </div>
   </div>
-</div>
+
 
 
 

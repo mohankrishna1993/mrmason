@@ -7,15 +7,12 @@
       <div class="card-body border-right-primary border-left-primary">
           <form [formGroup]="serviceRequestForm" (ngSubmit)="serviceRequestData()">
               <div class="form-row">
-
                   <div class="col-md-2 form-group">
-                      <label for="service-category" style="color: blue;">Service Category*</label>
-                      <select class="form-control" id="service-category" formControlName="serviceCategory">
-                          <option value="category1">Category 1</option>
-                          <option value="category2">Category 2</option>
-                          <option value="category3">Category 3</option>
-                      </select>
-                  </div>
+                    <label for="service-category" style="color: blue;">Service Category*</label>
+                    <select class="form-control" id="service-category" formControlName="serviceCategory">
+                        <option *ngFor="let category of serviceCategories" [value]="category">{{ category }}</option>
+                    </select>
+                </div>
                   <div class="col-md-2 form-group">
                       <label for="field2" style="color: blue;">Service Name*</label>
                       <input type="text" class="form-control" id="field2" name="field2" formControlName="serviceName">

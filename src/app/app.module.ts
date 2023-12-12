@@ -39,6 +39,8 @@ import { EditServiceCategoryComponent } from './components/edit-service-category
 import { SearchPersonDetailsComponent } from './components/search-person-details/search-person-details.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CustomerReportsComponent } from './components/customer-reports/customer-reports.component';
+import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.component';
 
 
 
@@ -73,6 +75,8 @@ import { AdminComponent } from './components/admin/admin.component';
     SearchPersonDetailsComponent,
     ServiceRequestComponent,
     AdminComponent,
+    CustomerReportsComponent,
+    SpDashboardComponent,
   ],
   imports: [
     BrowserModule,

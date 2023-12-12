@@ -14,6 +14,8 @@ import { ToastService } from 'src/app/services/toast/toast.service';
 })
 export class AddAssetsComponent {
 
+  choosenLocation = "";
+
   constructor(private apiService: ApiserviceService,private toast: ToastService) {}
 
   addAssetsForm = new FormGroup({
@@ -29,6 +31,10 @@ export class AddAssetsComponent {
 
   });
 
+  options: any = {
+    componentRestrictions: { country: 'IN' }
+  }
+
   addAssetsSubmit(){
     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
     const userId = localStorage.getItem('USER_ID') ?? "";
@@ -36,7 +42,8 @@ export class AddAssetsComponent {
     const addAssets: addAssetsData = {
       category: this.addAssetsForm.value.assetsCategory ?? "",
       subcategory: this.addAssetsForm.value.assetsSubCategory ?? "",
-      location: this.addAssetsForm.value.location ?? "",
+      // location: this.addAssetsForm.value.location ?? "",
+      location: this.choosenLocation,
       street: this.addAssetsForm.value.street ?? "",
       door_no: this.addAssetsForm.value.doornumber ?? "",
       town: this.addAssetsForm.value.town ?? "",
@@ -58,6 +65,10 @@ export class AddAssetsComponent {
         this.toast.show('An error occurred while adding the asset.');
       }
     );
+  }
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? "";
   }
 
   }

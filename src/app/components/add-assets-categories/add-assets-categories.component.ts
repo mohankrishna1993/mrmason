@@ -10,13 +10,15 @@ import { ToastService } from 'src/app/services/toast/toast.service';
   styleUrls: ['./add-assets-categories.component.css']
 })
 export class AddAssetsCategoriesComponent {
+
   constructor(private apiService: ApiserviceService,private toast: ToastService) {}
 
   addAssetsCategoryForm = new FormGroup({
 
     category: new FormControl('',Validators.required),
     subcategory: new FormControl('',Validators.required),
-    addedby: new FormControl('',Validators.required),
+    assetmodel: new FormControl('',Validators.required)
+
 
   });
 
@@ -26,7 +28,7 @@ export class AddAssetsCategoriesComponent {
     const addAssets: any = {
       category: this.addAssetsCategoryForm.value.category ?? "",
       subcategory: this.addAssetsCategoryForm.value.subcategory ?? "",
-      addedBy: this.addAssetsCategoryForm.value.addedby ?? ""
+      addedBy: "admin",
     }
 
     this.apiService.addAssetsCategory(appKey,addAssets).subscribe(

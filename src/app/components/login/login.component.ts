@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService} from '../../services/apiservice/apiservice.service'
 import { Router } from '@angular/router'
 import { AuthService } from '../../services/auth/auth.service';
+import { SessionTimeoutService } from 'src/app/services/sessionTimeout/session-timeout.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,19 @@ export class LoginComponent implements OnInit{
 
 
   constructor(private apiService: ApiserviceService,
-     private authService: AuthService,
-     private router : Router) {}
+              private authService: AuthService,
+              private router : Router,
+              private sessionTimeoutService: SessionTimeoutService
+             ) {
+
+             }
 
 
 
   ngOnInit(): void{
     this.initForm();
+    this.initSessionTimeoutListener();
+
   }
 
   initForm() {
@@ -38,8 +45,16 @@ export class LoginComponent implements OnInit{
       console.log(this.formData.value);
       const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
       this.authService.login(this.formData.value.username,this.formData.value.password,appKey);
+      this.sessionTimeoutService.onUserActivity();
 
     }
+  }
+  private initSessionTimeoutListener(): void {
+    this.sessionTimeoutService.onTimeout().subscribe(() => {
+      // Perform actions when session times out, e.g., redirect to login page
+      this.authService.logout();
+      this.router.navigate(['/login']);
+    });
   }
 
 

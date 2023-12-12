@@ -26,6 +26,7 @@ import { EditServiceCategoryComponent } from './components/edit-service-category
 import { SearchPersonDetailsComponent } from './components/search-person-details/search-person-details.component';
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CustomerReportsComponent } from './components/customer-reports/customer-reports.component';
 
 
 const routes: Routes = [
@@ -50,7 +51,8 @@ const routes: Routes = [
       { path: 'edit-asset-category/:id',component: EditAssetsCategoriesComponent},
       { path: 'add-service-category',component: AddServiceCategoryComponent},
       { path: 'show-service-category',component: ShowServiceCategoryComponent},
-      { path: 'edit-service-category/:id',component: EditServiceCategoryComponent}
+      { path: 'edit-service-category/:id',component: EditServiceCategoryComponent},
+      { path: 'customer-report',component: CustomerReportsComponent}
 
     ]
   },

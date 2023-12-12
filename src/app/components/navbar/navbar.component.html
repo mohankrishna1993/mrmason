@@ -1,9 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/home">
-      <img ngSrc="assets/images/mainlogo.png" width="200" height="40" alt="Company Logo" class="company-logo">
+      <img
+        ngSrc="assets/images/mainlogo.png"
+        width="200"
+        height="40"
+        alt="Company Logo"
+        class="company-logo"
+      />
     </a>
-    <span class="brand-text collapse navbar-collapse pt-2" *ngIf="!isLoggedIn">All Service workers join with us!</span>
+    <span class="brand-text collapse navbar-collapse pt-2" *ngIf="!isLoggedIn"
+      >All Service Engineers join with us!</span
+    >
 
     <button
       class="navbar-toggler"
@@ -17,52 +25,81 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-
-      <ul class="navbar-nav ml-auto" >
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" *ngIf="isLoggedIn && isAdmin">Dashboard</a>
+          <a
+            class="nav-link"
+            routerLink="/dashboard"
+            *ngIf="isLoggedIn && isAdmin"
+            >Dashboard</a
+          >
         </li>
-        <li class="nav-item" >
-          <a class="nav-link" routerLink="/ec-dashboard" *ngIf="isLoggedIn && !isAdmin">Dashboard</a>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/ec-dashboard"
+            *ngIf="isLoggedIn && !isAdmin"
+            >Dashboard</a
+          >
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard" *ngIf="showDashboardLink">Dashboard</a>
         </li> -->
 
-
         <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link"  routerLink="#">Download Mobile App</a>
+          <a class="nav-link" routerLink="#">Download Mobile App</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="#" (click)="scrollDown()" >Contact us</a>
+          <a class="nav-link" routerLink="#" (click)="scrollDown()"
+            >Contact us</a
+          >
         </li>
         <li class="nav-item">
           <div *ngIf="isLoggedIn">
             <p class="nav-link">Welcome {{ userName }}</p>
           </div>
-
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle ddcol" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLink="/login">
+            <button
+              class="btn btn-secondary dropdown-toggle ddcol"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Login
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#" [routerLink]="['/admin']" routerLinkActive="router-link-active" >Admin login</a>
-              <a class="dropdown-item" >Customer login</a>
-              <a class="dropdown-item" >Service Person</a>
+              <a
+                class="dropdown-item"
+                href="#"
+                [routerLink]="['/admin']"
+                routerLinkActive="router-link-active"
+                >Admin login</a
+              >
+              <a class="dropdown-item" routerLink="/login">Customer login</a>
+              <a class="dropdown-item">Service Person</a>
             </div>
           </div>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <!-- <a class="nav-link" routerLink="/register">Register</a> -->
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle ddcol" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLink="/register">
+            <button
+              class="btn btn-secondary dropdown-toggle ddcol"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+
+            >
               Register
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-              <a class="dropdown-item" >Customer</a>
+              <a class="dropdown-item" routerLink="/register">Customer</a>
               <a class="dropdown-item" >Service Person</a>
             </div>
           </div>

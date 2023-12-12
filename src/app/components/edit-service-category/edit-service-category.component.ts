@@ -35,7 +35,7 @@ export class EditServiceCategoryComponent {
         id: this.assetId,
         category: this.addServiceCategoryForm.value.category,
         subcategory: this.addServiceCategoryForm.value.subcategory,
-        updateBy: this.addServiceCategoryForm.value.addedby
+        updateBy: "admin"
       };
 
       this.apiService.editServiceCategory(this.appKey, editServiceCategory).subscribe(

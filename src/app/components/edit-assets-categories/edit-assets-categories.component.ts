@@ -35,7 +35,7 @@ export class EditAssetsCategoriesComponent implements OnInit{
                   id: this.assetId,
                   category: this.addAssetsCategoryForm.value.category,
                   subcategory: this.addAssetsCategoryForm.value.subcategory,
-                  updateBy: this.addAssetsCategoryForm.value.addedby
+                  updateBy: "admin"
                 };
 
                 this.apiService.editAssetCategory(this.appKey, editAssetCategory).subscribe(

@@ -15,7 +15,6 @@ export class AddServiceCategoryComponent {
 
     category: new FormControl('',Validators.required),
     subcategory: new FormControl('',Validators.required),
-    addedby: new FormControl('',Validators.required),
 
   });
 
@@ -25,7 +24,7 @@ export class AddServiceCategoryComponent {
     const addServices: any = {
       category: this.addServiceCategoryForm.value.category ?? "",
       subcategory: this.addServiceCategoryForm.value.subcategory ?? "",
-      addedBy: this.addServiceCategoryForm.value.addedby ?? ""
+      addedBy: "admin",
     }
 
     this.apiService.addServiceCategory(appKey,addServices).subscribe(

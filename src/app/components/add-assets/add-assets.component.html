@@ -41,7 +41,7 @@
                   <div class="form-group row mb-3">
                       <label for="city" class="col-md-2 control-label" style="font-size: 17px; color: #020202; font-family: sans-serif;">Location</label>
                       <div class="col-md-10">
-                          <input type="text" class="form-control" name="location" placeholder="Enter Your Location" required formControlName="location">
+                          <input type="text" class="form-control" name="location" placeholder="Enter Your Location" required formControlName="location" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)">
                       </div>
                   </div>
 

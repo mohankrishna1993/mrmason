@@ -7,13 +7,18 @@ import { userData } from '../../interfaces/user.modal';
 import { UserDetails } from '../../interfaces/user-details.modal'
 import { ToastService } from '../toast/toast.service';
 import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
+import { SessionTimeoutService } from '../sessionTimeout/session-timeout.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router, private apiService: ApiserviceService, private toast: ToastService) {
+  constructor(private router: Router,
+              private apiService: ApiserviceService,
+              private toast: ToastService,
+              private sessionTimeoutService: SessionTimeoutService) {
     this.isLoggedIn();
+    this.initSessionTimeoutListener();
   }
   private tokenKey = 'token';
   public isLoggedIn$ = new BehaviorSubject(false);
@@ -98,6 +103,13 @@ export class AuthService {
 
   getUserId(){
     return this.user_id;
+  }
+
+  private initSessionTimeoutListener(): void {
+    this.sessionTimeoutService.onTimeout().subscribe(() => {
+      // Perform actions when session times out, e.g., logout the user
+      this.logout();
+    });
   }
 
   public logout() {

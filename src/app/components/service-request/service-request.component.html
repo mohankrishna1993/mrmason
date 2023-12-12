@@ -94,7 +94,9 @@
                   <button
                     type="submit"
                     class="btn btn-success mx-auto mt-3"
-                    [disabled]="!submitForm.valid"
+                    [disabled]="
+                      !submitForm.valid
+                    "
                   >
                     Submit Request
                   </button>
@@ -105,49 +107,49 @@
         </div>
       </div>
     </div>
-<div class="col-lg-5 col-md-6" *ngIf="selectedIndex !== -1">
-  <div class="container min-height-container">
-    <div class="card shadow-lg p-1 bg-white rounded">
-      <div class="card-header custom-bg">
-        <div class="align-items-center">
-          <div class="btn btn-link mr-3" style="color: #fff">
-            <div>
-              <i class="fa fa-database" style="font-size: 36px"></i>
-            </div>
+    <div class="col-lg-5 col-md-6" *ngIf="selectedIndex !== -1">
+      <div class="container min-height-container">
+        <div class="card shadow-lg p-1 bg-white rounded">
+          <div class="card-header custom-bg">
+            <div class="align-items-center">
+              <div class="btn btn-link mr-3" style="color: #fff">
+                <div>
+                  <i class="fa fa-database" style="font-size: 36px"></i>
+                </div>
 
-            Assit ID details
+                Assit ID details
+              </div>
+            </div>
+          </div>
+          <div class="card-details" *ngIf="selectedIndex !== -1">
+            <div class="asset-details">
+              <span>Sub-Category:</span
+              >{{ assets[selectedIndex].asset_sub_cat }}
+            </div>
+            <div class="asset-details">
+              <span>District:</span>{{ assets[selectedIndex].district }}
+            </div>
+            <div class="asset-details">
+              <span>Door-no:</span>{{ assets[selectedIndex].door_no }}
+            </div>
+            <div class="asset-details">
+              <span>Location:</span>{{ assets[selectedIndex].location }}
+            </div>
+            <div class="asset-details">
+              <span>Pincode:</span>{{ assets[selectedIndex].pin_code }}
+            </div>
+            <div class="asset-details">
+              <span>State:</span>{{ assets[selectedIndex].state }}
+            </div>
+            <div class="asset-details">
+              <span>Street:</span>{{ assets[selectedIndex].street }}
+            </div>
+            <div class="asset-details">
+              <span>Town:</span>{{ assets[selectedIndex].town }}
+            </div>
           </div>
         </div>
       </div>
-      <div class="card-details" *ngIf="selectedIndex !== -1">
-        <div class="asset-details">
-          <span>Sub-Category:</span>{{ assets[selectedIndex].asset_sub_cat }}
-        </div>
-        <div class="asset-details">
-          <span>District:</span>{{ assets[selectedIndex].district }}
-        </div>
-        <div class="asset-details">
-          <span>Door-no:</span>{{ assets[selectedIndex].door_no }}
-        </div>
-        <div class="asset-details">
-          <span>Location:</span>{{ assets[selectedIndex].location }}
-        </div>
-        <div class="asset-details">
-          <span>Pincode:</span>{{ assets[selectedIndex].pin_code }}
-        </div>
-        <div class="asset-details">
-          <span>State:</span>{{ assets[selectedIndex].state }}
-        </div>
-        <div class="asset-details">
-          <span>Street:</span>{{ assets[selectedIndex].street }}
-        </div>
-        <div class="asset-details">
-          <span>Town:</span>{{ assets[selectedIndex].town }}
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-
   </div>
 </div>

@@ -24,12 +24,13 @@ export class RegisterComponent implements OnInit {
 
 
   signupForm = new FormGroup({
-    name: new FormControl('',Validators.required),
-    mobile: new FormControl('',[Validators.required]),
+
     email: new FormControl('',[Validators.required, Validators.email]),
     password: new FormControl('',Validators.required),
-    location: new FormControl('',Validators.required),
+    name: new FormControl('',Validators.required),
+    mobile: new FormControl('',[Validators.required]),
     city: new FormControl('',Validators.required),
+    location: new FormControl('',Validators.required),
     state: new FormControl('',Validators.required),
     district: new FormControl('',Validators.required),
 
@@ -80,10 +81,11 @@ export class RegisterComponent implements OnInit {
   signupSubmit() {
     console.log("test")
       const userData: userData = {
-        uName: this.signupForm.value.name ?? "",
-        mobile: this.signupForm.value.mobile ?? "",
+
         email: this.signupForm.value.email ?? "",
         password: this.signupForm.value.password ?? "",
+        uName: this.signupForm.value.name ?? "",
+        mobile: this.signupForm.value.mobile ?? "",
         town: this.signupForm.value.city ?? "",
         state: this.signupForm.value.state ?? "",
         district: this.signupForm.value.district ?? "",
