@@ -27,6 +27,10 @@ import { SearchPersonDetailsComponent } from './components/search-person-details
 import { ServiceRequestComponent } from './components/service-request/service-request.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CustomerReportsComponent } from './components/customer-reports/customer-reports.component';
+import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.component';
+import { SpRegistrationComponent } from './components/sp-registration/sp-registration.component';
+import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.component';
+import { SpLoginComponent } from './components/sp-login/sp-login.component';
 
 
 const routes: Routes = [
@@ -37,6 +41,7 @@ const routes: Routes = [
   {path: 'register',component: RegisterComponent},
   {path: 'search-person-details',component: SearchPersonDetailsComponent},
   {path: 'admin', component: AdminComponent},
+  {path: 'sp-register', component: SpRegistrationComponent},
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -57,6 +62,8 @@ const routes: Routes = [
     ]
   },
   { path: 'verify-otp',component: VerfiyOtpComponent},
+  { path: 'sp-verify-otp',component: SpVerifyOtpComponent},
+  { path: 'sp-login',component: SpLoginComponent},
   { path: 'ec-dashboard',
     component: EcDashboardComponent,
      children: [
@@ -72,6 +79,11 @@ const routes: Routes = [
       // {path: 'show-asset-categories',component: ShowAssetsCategoriesComponent},
       // {path: 'edit-asset-category/:id',component: EditAssetsCategoriesComponent}
      ]},
+
+     { path: 'sp-dashboard', component: SpDashboardComponent,
+    children: [
+
+    ]}
 
 
 ];

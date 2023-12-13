@@ -83,6 +83,8 @@ export class UpdateProfileComponent implements OnInit{
           console.log(response);
           if(response){
             this.toast.show(response.message);
+            console.log(response);
+            localStorage.setItem('PINCODE_NO', this.choosenLocation);
             // this.refreshFormData(user_id);
           }
         },

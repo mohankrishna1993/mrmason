@@ -29,9 +29,10 @@ export class ServiceRequestComponent implements OnInit{
     servicetype: new FormControl('', Validators.required),
     servicedate: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    location: new FormControl('',Validators.required),
     user_id: new FormControl(''),
     assetid: new FormControl('', Validators.required),
-    checkAgree: new FormControl(false, Validators.requiredTrue),
+    // checkAgree: new FormControl(false, Validators.requiredTrue),
   });
 
 
@@ -66,10 +67,13 @@ export class ServiceRequestComponent implements OnInit{
     const userId =  localStorage.getItem('USER_ID') ?? "";
 
     this.apiService.getAssetData(appKey,userId).subscribe((response) => {
+      console.log("*****123");
+      console.log(response);
       if (response.code === 1 && response.status) {
         this.assets = response.data;
         this.assetIds = this.assets.map(obj => obj?.asset_id);
         this.ref.detectChanges();
+
       }
     })
 
@@ -109,8 +113,8 @@ export class ServiceRequestComponent implements OnInit{
       service_name: this.submitForm.value.servicetype ?? '',
       service_date: this.submitForm.value.servicedate ?? '',
       description: this.submitForm.value.description ?? '',
-      // location: this.choosenLocation,
-      // location: this.submitForm.value.location ?? '',
+      // location: localStorage.getItem('PINCODE_NO') ?? "",
+      location: this.assets[this.selectedIndex].location,
       user_id: userId,
       asset_id: this.submitForm.value.assetid ?? ''
     };

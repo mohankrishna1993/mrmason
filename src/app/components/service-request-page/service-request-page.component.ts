@@ -13,7 +13,8 @@ export class ServiceRequestPageComponent implements OnInit{
   totalLength: any;
   page: number = 1;
   itemsPerPage: number = 2;
-  serviceCategories: string[] = [];
+  serviceCategories: any[] = [];
+
 
   serviceRequestForm = new FormGroup({
     serviceCategory: new FormControl('',Validators.required),
@@ -43,6 +44,7 @@ getServiceCategories() {
   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
   this.apiService.getScategory(appKey).subscribe((res: any) => {
     this.serviceCategories = res.data.map((category: any) => category.serviceCategory);
+    console.log(this.serviceCategories);
 
   });
 }

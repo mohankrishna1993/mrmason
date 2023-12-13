@@ -13,6 +13,7 @@ export class ServicePersonPageComponent implements OnInit{
   totalLength: any;
   page: number = 1;
   itemsPerPage: number = 2;
+  serviceCategories: string[] = [];
 
   servicePersonForm = new FormGroup({
     serviceCategory: new FormControl('',Validators.required),
@@ -26,22 +27,32 @@ export class ServicePersonPageComponent implements OnInit{
 
   ngOnInit(): void {
      this.servicePersonData();
+     this.getServiceCategories();
+  }
+
+  getServiceCategories() {
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    this.apiService.getScategory(appKey).subscribe((res: any) => {
+      this.serviceCategories = res.data.map((category: any) => category.serviceCategory);
+      console.log("test");
+      console.log(this.serviceCategories);
+
+    });
   }
 
   servicePersonData() {
+
     const servicePerson = this.servicePersonForm.value.servicePerson;
-    const city = this.servicePersonForm.value.location;
-    // this.apiService.getServicePersonData(servicePerson, city).subscribe((res: any) => {
-    //   console.log(res);
-    //   this.tableData = res.data;
-    // });
-    if (typeof servicePerson === 'string' && typeof city === 'string') {
-      this.apiService.getServicePersonData(servicePerson, city).subscribe((res: any) => {
+    const location = this.servicePersonForm.value.location;
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+
+    if (typeof servicePerson === 'string' && typeof location === 'string') {
+      this.apiService.searchPerson(appKey, location,servicePerson).subscribe((res: any) => {
         console.log(res);
         this.tableData = res.data;
       });
     } else {
-      
+
     }
   }
 

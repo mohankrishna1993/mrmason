@@ -41,6 +41,11 @@ import { ServiceRequestComponent } from './components/service-request/service-re
 import { AdminComponent } from './components/admin/admin.component';
 import { CustomerReportsComponent } from './components/customer-reports/customer-reports.component';
 import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { SpRegistrationComponent } from './components/sp-registration/sp-registration.component';
+import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.component';
+import { SpLoginComponent } from './components/sp-login/sp-login.component';
 
 
 
@@ -77,6 +82,11 @@ import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.com
     AdminComponent,
     CustomerReportsComponent,
     SpDashboardComponent,
+    SpRegistrationComponent,
+    SpVerifyOtpComponent,
+    SpLoginComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -89,7 +99,9 @@ import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.com
     BrowserAnimationsModule,
     MatSnackBarModule,
     NgxPaginationModule,
-    NgxGpAutocompleteModule
+    NgxGpAutocompleteModule,
+    MatSidenavModule,
+    MatListModule,
 
   ],
   providers: [
