@@ -7,11 +7,11 @@
 }
 
 .heading {
-  color: #df1717;
+  color: #18aedf;
   font-size: 50px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   padding-top: 20px;
-  padding-left: 24px;
+  padding-left: 50px;
 }
 
 .services-list {
@@ -37,7 +37,7 @@
 
 /* Optional: Add hover effect */
 .services-list li:hover {
-  color: #18aedf; /* Change color on hover */
+  color: #4caf50; /* Change color on hover  #18aedf*/
   cursor: pointer;
 }
 

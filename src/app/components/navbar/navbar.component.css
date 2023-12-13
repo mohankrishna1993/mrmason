@@ -69,3 +69,6 @@
   color: black;
 }
 
+.navbar {
+  z-index: 3; /* Adjust the value as needed */
+}

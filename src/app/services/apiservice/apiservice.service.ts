@@ -83,9 +83,9 @@ export class ApiserviceService {
     return this.http.get<any[]>(`${this.baseUrl}/ServiceRequest/getFilteredReport?SERVICE_NAME=carpenter&LOCATION=kandu`);
   }
 
-  getServicePersonData(servicePerson: string, city: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/Staff/getFilteredReport?SERVICE_NAME=${servicePerson}&CITY=${city}&AVAILABLE_STATUS`);
-  }
+  // getServicePersonData(servicePerson: string, city: string): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.baseUrl}/Staff/getFilteredReport?SERVICE_NAME=${servicePerson}&CITY=${city}&AVAILABLE_STATUS`);
+  // }
 
   sendPasswordResetEmail(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });

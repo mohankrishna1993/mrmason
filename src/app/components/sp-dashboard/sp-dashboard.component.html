@@ -1,19 +1,59 @@
 
 
-<h1>jhgfjksd</h1>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav" fixedInViewport="true">
 
-    <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard">Dashboard</a>
-      <a mat-list-item routerLink="/my-profile">My Profile</a>
-      <a mat-list-item routerLink="/add-services">Add Services</a>
-      <a mat-list-item routerLink="/update-service-list">Update Service List</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
 
-   
-  </mat-sidenav-content>
+<!-- <div class="dashboard-container">
+
+  <div class="sidebar" style="width:15%;">
+    <div class="accordion" id="sidebarAccordion">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="serviceManagerHeading">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#serviceManagerCollapse" aria-expanded="true" aria-controls="serviceManagerCollapse">
+            Service Person
+          </button>
+        </h2>
+        <div id="serviceManagerCollapse" class="accordion-collapse collapse show" aria-labelledby="serviceManagerHeading">
+          <div class="accordion-body">
+
+
+            <div class="d-block m-2">
+            <a href="/dashboard/service-person" routerLink="service-person-page">My profile</a>
+            </div>
+
+            <div class="d-block m-2">
+            <a href="/dashboard/service-request" routerLink="service-request-page">Add Service</a>
+            </div>
+
+            <div class="d-block m-2">
+              <a href="/dashboard/" routerLink="add-asset-categories">Update Service</a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-content body" >
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+<mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+<p><button mat-button (click)="close('toggle button')">Toggle</button></p>
+</mat-sidenav>
+
+<mat-sidenav-content>
+<p><button mat-button (click)="sidenav.open()">Open</button></p>
+<p>Closed due to: {{reason}}</p>
+</mat-sidenav-content>
 </mat-sidenav-container>
+
+
+
+
 
