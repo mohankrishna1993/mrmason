@@ -1,7 +1,33 @@
-.example-container {
+
+
+.extra {
+  flex: 1 1 auto;
+}
+.logo {
+  margin-left: 20px;
+}
+.sidenav-wrapper {
   position: absolute;
-  top: 0;
+  top: 120px;
   bottom: 0;
   left: 0;
   right: 0;
+  background: #eee;
 }
+.mat-sidenav {
+  width: 200px;
+  padding:20px;
+}
+.mat-sidenav-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.button span {
+  margin: 10px;
+}
+
+
+
+

@@ -1,57 +1,54 @@
 
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="nav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 
+ <div class="logo">DASHBOARD</div>
+ <div class="extra"></div>
+ <mat-icon>share</mat-icon>
+ <mat-icon></mat-icon>
 
+</mat-toolbar>
 
-<!-- <div class="dashboard-container">
+<mat-sidenav-container class="sidenav-wrapper" >
+  <mat-sidenav opened #nav>
+    <a routerLink="/sp-dashboard/sp-profile" color="primary">
+      <button mat-button>
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+    </a>
 
-  <div class="sidebar" style="width:15%;">
-    <div class="accordion" id="sidebarAccordion">
+    <a [routerLink]="['myprofile']" color="primary">
+      <button mat-button>
+        <mat-icon>add_circle</mat-icon>
+        <span>Add Service</span>
+      </button>
+    </a>
 
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="serviceManagerHeading">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#serviceManagerCollapse" aria-expanded="true" aria-controls="serviceManagerCollapse">
-            Service Person
-          </button>
-        </h2>
-        <div id="serviceManagerCollapse" class="accordion-collapse collapse show" aria-labelledby="serviceManagerHeading">
-          <div class="accordion-body">
-
-
-            <div class="d-block m-2">
-            <a href="/dashboard/service-person" routerLink="service-person-page">My profile</a>
-            </div>
-
-            <div class="d-block m-2">
-            <a href="/dashboard/service-request" routerLink="service-request-page">Add Service</a>
-            </div>
-
-            <div class="d-block m-2">
-              <a href="/dashboard/" routerLink="add-asset-categories">Update Service</a>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="main-content body" >
+    <a [routerLink]="['myprofile']" color="primary">
+      <button mat-button>
+        <mat-icon>update</mat-icon>
+        <span>Update Service</span>
+      </button>
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
-  </div>
-</div> -->
-
-<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
-<mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
-<p><button mat-button (click)="close('toggle button')">Toggle</button></p>
-</mat-sidenav>
-
-<mat-sidenav-content>
-<p><button mat-button (click)="sidenav.open()">Open</button></p>
-<p>Closed due to: {{reason}}</p>
-</mat-sidenav-content>
+  </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

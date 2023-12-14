@@ -18,7 +18,7 @@ export class ApiserviceService {
   baseUrl = "http://65.1.178.54/app/index.php";
   // baseUrl1 = "http://13.235.76.132";
   baseUrl1= "http://15.207.114.112"
-  baseUrl2 = "https://adroitcoder.com/projects/api";
+  // baseUrl2 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
   constructor(private http:HttpClient,
@@ -47,7 +47,7 @@ export class ApiserviceService {
       appKey: appKey
     });
 
-    return this.http.post(`${this.baseUrl2}/admin-login`, data, {
+    return this.http.post(`${this.baseUrl1}/admin-login.php`, data, {
       headers: headers,
       responseType: 'json'
     });

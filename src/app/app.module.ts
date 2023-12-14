@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MatInputModule } from '@angular/material/input';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -42,10 +45,17 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CustomerReportsComponent } from './components/customer-reports/customer-reports.component';
 import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 import { SpRegistrationComponent } from './components/sp-registration/sp-registration.component';
 import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.component';
 import { SpLoginComponent } from './components/sp-login/sp-login.component';
+import { SpProfileComponent } from './components/sp-profile/sp-profile.component';
 
 
 
@@ -85,6 +95,7 @@ import { SpLoginComponent } from './components/sp-login/sp-login.component';
     SpRegistrationComponent,
     SpVerifyOtpComponent,
     SpLoginComponent,
+    SpProfileComponent,
 
 
   ],
@@ -98,10 +109,17 @@ import { SpLoginComponent } from './components/sp-login/sp-login.component';
     NgbModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatMenuModule,
     NgxPaginationModule,
     NgxGpAutocompleteModule,
     MatSidenavModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatCardModule,
     MatListModule,
+    MatToolbarModule,
+    MatButtonModule
+
 
   ],
   providers: [

@@ -31,6 +31,7 @@ import { SpDashboardComponent } from './components/sp-dashboard/sp-dashboard.com
 import { SpRegistrationComponent } from './components/sp-registration/sp-registration.component';
 import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.component';
 import { SpLoginComponent } from './components/sp-login/sp-login.component';
+import { SpProfileComponent } from './components/sp-profile/sp-profile.component';
 
 
 const routes: Routes = [
@@ -82,6 +83,8 @@ const routes: Routes = [
 
      { path: 'sp-dashboard', component: SpDashboardComponent,
     children: [
+      {path: '',redirectTo: 'sp-profile', pathMatch: 'full' },
+      {path: 'sp-profile',component: SpProfileComponent},
 
     ]}
 

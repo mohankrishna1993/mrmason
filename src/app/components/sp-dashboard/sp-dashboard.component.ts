@@ -9,14 +9,18 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class SpDashboardComponent {
 
+
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  reason = '';
+  // reason = '';
 
-  close(reason: string) {
-    this.reason = reason;
-    this.sidenav.close();
-  }
+  // close(reason: string) {
+  //   this.reason = reason;
+  //   this.sidenav.close();
+  // }
+  // navigateTo(route: string) {
+  //   console.log(`Navigating to ${route}`);
+  // }
 
 
 }
