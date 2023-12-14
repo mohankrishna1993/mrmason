@@ -56,6 +56,7 @@ import { SpRegistrationComponent } from './components/sp-registration/sp-registr
 import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.component';
 import { SpLoginComponent } from './components/sp-login/sp-login.component';
 import { SpProfileComponent } from './components/sp-profile/sp-profile.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -96,6 +97,7 @@ import { SpProfileComponent } from './components/sp-profile/sp-profile.component
     SpVerifyOtpComponent,
     SpLoginComponent,
     SpProfileComponent,
+    ResetPasswordComponent,
 
 
   ],

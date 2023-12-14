@@ -17,16 +17,8 @@
             >Category</label
           >
           <div class="col-md-10">
-            <select
-              class="form-control"
-              name="category"
-              formControlName="category"
-            >
-              <option value="" disabled selected>Select Category</option>
-              <option value="Residence">Residence</option>
-              <option value="Hotel">Hotel</option>
-              <option value="Apartment">Apartment</option>
-            </select>
+            
+            <input type="text" class="form-control" name="category" placeholder="Enter Category" required formControlName="category">
           </div>
         </div>
 
@@ -39,7 +31,7 @@
             >Sub-Category</label
           >
           <div class="col-md-10">
-            <select
+            <!-- <select
               class="form-control"
               name="assetsSubCategory"
               formControlName="subcategory"
@@ -48,7 +40,8 @@
               <option value="Residence">Residence</option>
               <option value="Hotel">Hotel</option>
               <option value="Apartment">Apartment</option>
-            </select>
+            </select> -->
+            <input type="text" class="form-control" name="subcategory" placeholder="Enter Sub Category" required formControlName="subcategory">
           </div>
         </div>
 

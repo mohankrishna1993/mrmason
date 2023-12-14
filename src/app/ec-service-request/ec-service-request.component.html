@@ -54,6 +54,7 @@
     <tr>
        <th scope="col">Srl._No.</th>
        <th scope="col">Req._Order_No.</th>
+       <th scope="col">Asset ID</th>
        <th scope="col">Service Name</th>
        <th scope="col">Service Request Date</th>
        <th scope="col">Pincode</th>
@@ -68,6 +69,7 @@
 
   <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
   <td>{{ item.REQ_SEQ_ID }}</td>
+  <td>{{ item.ASSETID}}</td>
   <td>{{ item.SERVICE_NAME }}</td>
   <td>{{ item.SERVICE_REQUEST_DATE }}</td>
   <td>{{ item.REQ_PINCODE }}</td>

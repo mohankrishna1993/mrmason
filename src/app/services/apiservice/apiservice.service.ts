@@ -18,8 +18,10 @@ export class ApiserviceService {
   baseUrl = "http://65.1.178.54/app/index.php";
   // baseUrl1 = "http://13.235.76.132";
   baseUrl1= "http://15.207.114.112"
-  // baseUrl2 = "https://adroitcoder.com/projects/api";
+  // baseUrl1 = "https://adroitcoder.com/projects/api";
   user_id = "";
+
+  appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
 
   constructor(private http:HttpClient,
               private toast: ToastService,
@@ -336,6 +338,23 @@ export class ApiserviceService {
       this.sessionTimeoutService.onUserActivity();
     });
   }
+
+  // Inside ApiserviceService
+
+updatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const data = {
+    email: email,
+    oldPwd: oldPassword,
+    newPwd: newPassword,
+    conPwd: confirmPassword,
+    appKey: this.appKey,
+    type: 'user'
+  };
+
+  return this.http.post(`${this.baseUrl1}/changepassword`, data, { headers, responseType: 'json' });
+}
+
 
 
 }

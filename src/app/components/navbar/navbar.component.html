@@ -49,11 +49,7 @@
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="#">Download Mobile App</a>
         </li>
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="#" (click)="scrollDown()"
-            >Contact us</a
-          >
-        </li>
+
         <li class="nav-item">
           <div *ngIf="isLoggedIn">
             <p class="nav-link">Welcome {{ userName }}</p>
@@ -72,14 +68,11 @@
               Login
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <!-- <a
-                class="dropdown-item"
-                href="#"
-                [routerLink]="['/admin']"
-                routerLinkActive="router-link-active"
-                >Admin login</a
-              > -->
-              <a class="dropdown-item" routerLink="/login">Customer login</a>
+
+              <a class="dropdown-item"
+                 routerLink="/login"
+                 >Customer login
+              </a>
               <a class="dropdown-item" routerLink="/sp-login">Service Person</a>
             </div>
           </div>
@@ -103,6 +96,11 @@
               <a class="dropdown-item" routerLink="/sp-register">Service Person</a>
             </div>
           </div>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="#" (click)="scrollDown()"
+            >Contact us</a
+          >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" (click)="logout()">Logout</a>

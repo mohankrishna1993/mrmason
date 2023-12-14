@@ -42,27 +42,27 @@
   color: #18aedf;
 } */
 
-/* Add this CSS in your styles.css or styles.scss file */
+
 
 .nav-item {
-  /* border: 1px solid #ccc; */
+
   border-radius: 5px;
   margin: 5px;
 }
 
 .nav-link {
   display: inline-block;
-  padding: 10px; /* Adjust padding as needed */
+  padding: 10px;
   font-weight: bold;
   font-size: 16px;
-  color: #583838; /* Adjust the color as needed */
-  text-decoration: none; /* Remove underline from links */
+  color: #583838;
+  text-decoration: none;
   transition: color 0.3s ease;
 
 }
 
 .nav-link:hover {
-  color: #49b8d6; /* Change the color on hover */
+  color: #49b8d6;
 }
 .ddcol {
   background-color: white;
@@ -71,4 +71,18 @@
 
 .navbar {
   z-index: 3; /* Adjust the value as needed */
+}
+
+/* .nav-item:hover  {
+  background-color: #3498db;
+} */
+
+.nav-item:hover{
+  color: #ffffff;
+}
+
+
+.dropdown-item:hover {
+  background-color: #3498db;
+  color: #ffffff;
 }
