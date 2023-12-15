@@ -116,7 +116,7 @@ export class ServiceRequestComponent implements OnInit{
       // location: localStorage.getItem('PINCODE_NO') ?? "",
       location: this.assets[this.selectedIndex].location,
       user_id: userId,
-      asset_id: this.submitForm.value.assetid ?? ''
+      assetId: this.submitForm.value.assetid ?? ''
     };
     this.apiService.sendSubmitRequestData(data, appKey).subscribe((res) => {
       console.log(res);

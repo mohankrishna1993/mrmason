@@ -18,7 +18,7 @@ export class ResetPasswordComponent implements OnInit {
 
 
   updateForm = new FormGroup({
-    email: new FormControl('',Validators.required),
+    email: new FormControl(this.getStoredEmail(),Validators.required),
     oldPassword: new FormControl('',Validators.required),
     newPassword: new FormControl('',Validators.required),
     confirmPassword: new FormControl('',Validators.required),
@@ -27,8 +27,12 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(){
 
-
   }
+
+  getStoredEmail(): string {
+    return localStorage.getItem('EMAIL_ID') || '';
+  }
+
 
   updateSubmitForm() {
     const email = this.updateForm.value.email ?? '';

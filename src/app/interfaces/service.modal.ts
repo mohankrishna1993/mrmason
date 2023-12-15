@@ -4,5 +4,5 @@ export interface ServiceRequest {
   description: string,
   service_date: string,
   user_id: string,
-  asset_id: string,
+  assetId: string,
 }
