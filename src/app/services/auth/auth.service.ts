@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, take } from 'rxjs';
 import { ApiserviceService } from '../apiservice/apiservice.service';
 import { userData } from '../../interfaces/user.modal';
 import { UserDetails } from '../../interfaces/user-details.modal'
@@ -18,8 +18,12 @@ export class AuthService {
               private toast: ToastService,
               private sessionTimeoutService: SessionTimeoutService) {
     this.isLoggedIn();
-    this.initSessionTimeoutListener();
+    // this.initSessionTimeoutListener();
   }
+
+  private timeout: number = 30 * 1000;
+  private lastActivity: number = Date.now();
+
   private tokenKey = 'token';
   public isLoggedIn$ = new BehaviorSubject(false);
   public isAdmin$ = new BehaviorSubject(false);
@@ -35,6 +39,12 @@ export class AuthService {
       next :(res) => {
         console.log(res);
         if(res['status']) {
+          this.sessionTimeoutService.initSessionTimeout();
+          this.sessionTimeoutService.onTimeout().subscribe(()=> {
+            this.logout();
+
+          });
+
           const userDetails = {
             username: username
           };
@@ -75,17 +85,26 @@ export class AuthService {
   });
   }
 
+
+
+
   public adminLogin(username: string, password: string, appKey: string): void {
     this.apiService.adminLogin(username, password, appKey).subscribe({
       next: (res) => {
         console.log(res);
         if (res['status']) {
+          localStorage.setItem('username', res.data[0].admin_name);
+          this.sessionTimeoutService.initSessionTimeout();
+          this.sessionTimeoutService.onTimeout().subscribe(()=> {
+            this.logout();
+
+          });
           const userDetails = {
             username: username
           };
           console.log(res);
 
-          this.userName$.next(res.data.NAME);
+          this.userName$.next(res.data[0].admin_name);
           localStorage.setItem(this.tokenKey, "true");
           this.router.navigate(['/dashboard']); // Change to the admin dashboard route
         } else {
@@ -106,15 +125,13 @@ export class AuthService {
     return this.user_id;
   }
 
-  private initSessionTimeoutListener(): void {
-    this.sessionTimeoutService.onTimeout().subscribe(() => {
-      // Perform actions when session times out, e.g., logout the user
-      this.logout();
-    });
-  }
 
   public logout() {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem('username');
+    localStorage.removeItem('USER_ID');
+    localStorage.removeItem('PINCODE_NO');
+    localStorage.removeItem('EMAIL_ID');
     this.router.navigate(['/login']);
     this.isLoggedIn$.next(false);
     this.toast.show("Logout Successfully");

@@ -33,12 +33,16 @@ import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.c
 import { SpLoginComponent } from './components/sp-login/sp-login.component';
 import { SpProfileComponent } from './components/sp-profile/sp-profile.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { Home1Component } from './home1/home1.component';
+import { SpAddServiceComponent } from './components/sp-add-service/sp-add-service.component';
+import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'home',component: HomeComponent},
+  {path: 'home1',component: Home1Component},
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent},
   {path: 'search-person-details',component: SearchPersonDetailsComponent},
@@ -87,6 +91,8 @@ const routes: Routes = [
     children: [
       {path: '',redirectTo: 'sp-profile', pathMatch: 'full' },
       {path: 'sp-profile',component: SpProfileComponent},
+      {path: 'sp-add-service',component: SpAddServiceComponent},
+      {path: 'sp-update-service',component: SpUpdateServiceComponent}
 
     ]}
 

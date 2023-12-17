@@ -1,56 +1,51 @@
+<mat-drawer-container class="example-container mat-typography" >
+  <mat-drawer #drawer mode="side" disableClose="true" opened="true">
+    <button mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
+      <mat-icon aria-label="Menu">menu</mat-icon>
+    </button>
 
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="nav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
+    <mat-nav-list>
 
- <div class="logo">DASHBOARD</div>
- <div class="extra"></div>
- <mat-icon>share</mat-icon>
- <mat-icon></mat-icon>
 
-</mat-toolbar>
+      <mat-list-item>
+        <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-profile">person</mat-icon>
+        <span mat-line
+              *ngIf="isExpanded"
+              routerLink="/sp-dashboard/sp-profile"
+              class="menu-text"
+              >My Profile</span>
+      </mat-list-item>
 
-<mat-sidenav-container class="sidenav-wrapper" >
-  <mat-sidenav opened #nav>
-    <a routerLink="/sp-dashboard/sp-profile" color="primary">
-      <button mat-button>
-        <mat-icon>person</mat-icon>
-        <span>Profile</span>
-      </button>
-    </a>
+      <mat-list-item>
+        <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-add-service">add</mat-icon>
+        <span mat-line
+              *ngIf="isExpanded"
+              routerLink="/sp-dashboard/sp-add-service"
+              class="menu-text"
+              >Add Service</span>
+      </mat-list-item>
 
-    <a [routerLink]="['myprofile']" color="primary">
-      <button mat-button>
-        <mat-icon>add_circle</mat-icon>
-        <span>Add Service</span>
-      </button>
-    </a>
+      <mat-list-item>
+        <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-update-service">update</mat-icon>
+        <span mat-line
+              *ngIf="isExpanded"
+              routerLink="/sp-dashboard/sp-update-service"
+              class="menu-text"
+              >Update Service</span>
+      </mat-list-item>
 
-    <a [routerLink]="['myprofile']" color="primary">
-      <button mat-button>
-        <mat-icon>update</mat-icon>
-        <span>Update Service</span>
-      </button>
-    </a>
-  </mat-sidenav>
-  <mat-sidenav-content>
+
+
+
+    </mat-nav-list>
+  </mat-drawer>
+<mat-drawer-content>
+  <div class="example-sidenav-content">
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  </div>
+</mat-drawer-content>
+</mat-drawer-container>
 
 
 

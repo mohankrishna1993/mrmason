@@ -57,6 +57,10 @@ import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.c
 import { SpLoginComponent } from './components/sp-login/sp-login.component';
 import { SpProfileComponent } from './components/sp-profile/sp-profile.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { Home1Component } from './home1/home1.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { SpAddServiceComponent } from './components/sp-add-service/sp-add-service.component';
+import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
 
 
 
@@ -98,6 +102,10 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     SpLoginComponent,
     SpProfileComponent,
     ResetPasswordComponent,
+    Home1Component,
+    MyProfileComponent,
+    SpAddServiceComponent,
+    SpUpdateServiceComponent,
 
 
   ],

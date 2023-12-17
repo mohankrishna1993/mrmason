@@ -1,0 +1,67 @@
+/* add-service.component.css */
+
+body {
+  font-family:'Times New Roman', Times, serif
+}
+
+.form-container {
+  border: 2px solid #ddd;
+  width: 600px;
+  max-width: 600px;
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  align-items: center;
+
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+}
+
+.btn-primary {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+input[type="checkbox"] {
+  margin-top: 8px;
+}
+
+.aucformTitle {
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+

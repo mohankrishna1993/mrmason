@@ -1,0 +1,244 @@
+
+.services-heading {
+  text-align: center;
+  background-color: #a3d1f6;
+  margin: 0px 28px 0px 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
+
+/* .address-inner {
+  font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+} */
+/* .footer-box {
+  padding: 0 0 20px;
+} */
+
+/* .address {
+    position: relative;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: #fff;
+} */
+
+/* .footer-title {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.extra-sty {
+  transform: rotate(360deg);
+  border-radius: 50%;
+  transform: scale(1.2);
+
+} */
+
+.heading {
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subheading {
+  color: #fff;
+  font-size: 25px;
+  line-height: 26pt;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .hero img {
+      display: none; /* Hide the image on small screens */
+  }
+
+  .hero-content {
+      max-width: 100%;
+      padding: 10px; /* Adjust padding for better spacing on small screens */
+  }
+}
+
+.card-no-border {
+  border: none;
+  transition: border-color 0.3s;
+
+}
+.card:hover {
+  box-shadow: 0 0 20px rgba(24, 174, 223, 0.6);
+  transition: box-shadow 0.3s;
+}
+
+.card-no-border:hover {
+  border: 1px solid #18aedf;
+  cursor: pointer;
+}
+.justify-text {
+  text-align: justify;
+}
+.custom-bg {
+  background-color: #18aedf;
+}
+
+.single-place-image:hover {
+  transform: scale(1.2);
+}
+
+
+.single-place-image {
+  /* transition: 0.5s;
+  transform: scale(1); */
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  position: relative;
+}
+.single-place-content {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 0.5rem;
+  width: 100%;
+  padding: 0 1.875rem;
+  z-index: 10;
+
+}
+
+.single-place-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transform: translateY(30px);
+}
+
+.single-place-title:hover {
+  transform: translateY(-5px); /* Adjust the value as needed for the desired move-up effect */
+}
+
+
+
+@media (max-width: 767px) {
+
+  .text-container {
+    display: none;
+  }
+}
+
+/* ... Your existing CSS code ... */
+
+/* ... Your existing CSS code ... */
+
+@media only screen and (max-width: 600px) {
+  .hero img {
+    display: block;
+    width: 100%;
+    max-height: 300px; /* Set a maximum height for the image on mobile view */
+    object-fit: cover;
+  }
+
+  .hero-content {
+
+    display: none;
+    height: 0; /* Set height to 0 */
+    padding: 0;
+
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .subheading {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  /* Additional styles for better mobile appearance */
+  .services-heading {
+    margin: 10px 10px;
+  }
+
+  .card-no-border {
+    margin-bottom: 15px;
+  }
+
+  .single-place-content {
+    bottom: 0.5rem;
+    left: 0;
+    padding: 0 10px;
+  }
+
+  .single-place-title {
+    font-size: 1.2rem;
+    transform: translateY(20px);
+  }
+}
+
+
+
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.min-height-contiainer {
+  min-height: 468px;
+}
+
+.card {
+
+  overflow: hidden;
+}
+
+
+
+/* new */
+
+/* Reset some default styles */
+body, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+
+.hero {
+
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Hide overflowing content */
+  position: relative;
+}
+
+.hero img {
+
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hero-content {
+  z-index: 1;
+  max-width: 600px;
+}
+
+
+
+
+
+

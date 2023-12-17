@@ -1,0 +1,36 @@
+<!-- add-service.component.html -->
+
+<div class="form-container">
+  <h2 class="aucformTitle text-center">Add Service</h2>
+  <form>
+    <div class="form-group">
+      <label for="serviceDropdown">Select Service:</label>
+      <select id="serviceDropdown" name="service" class="form-control">
+        <option value="plumbing">Plumbing</option>
+        <option value="electrical">Electrical</option>
+        <option value="carpentry">Carpentry</option>
+      
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="experienceInput">Years of Experience:</label>
+      <input type="number" id="experienceInput" name="experience" class="form-control" placeholder="Enter your Experience" />
+    </div>
+
+    <div class="form-group">
+      <label for="chargesInput">Charges:</label>
+      <input type="text" id="chargesInput" name="charges" class="form-control" placeholder="Enter Charges for hour"/>
+    </div>
+
+    <div class="form-group">
+      <label for="availabilityCheckbox">Available Out of Station:</label>
+      <input type="text" id="availability" name="availability" class="form-control" placeholder="Enter Your Availability"/>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+

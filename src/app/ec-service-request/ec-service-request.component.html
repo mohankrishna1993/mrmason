@@ -21,9 +21,13 @@
                       <input type="text" class="form-control" id="field2" name="field2" formControlName="serviceName">
                   </div>
                   <div class="col-md-2 form-group">
-                      <label for="field3" style="color: blue;">Location*</label>
-                      <input type="text" class="form-control" id="field3" name="field3" formArrayName="location">
+                      <label for="location" style="color: blue;">Location*</label>
+                      <input type="text" class="form-control" id="field3" name="field3" formArrayName="location" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)">
                   </div>
+
+
+
+
                   <div class="col-md-2 form-group">
                       <label for="request-status" style="color: blue;">Request Status*</label>
                       <select class="form-control" id="request-status" formArrayName="requestStatus">
@@ -56,7 +60,7 @@
        <th scope="col">Req._Order_No.</th>
        <th scope="col">Asset ID</th>
        <th scope="col">Service Name</th>
-       <th scope="col">Service Request Date</th>
+       <th scope="col">Service Date</th>
        <th scope="col">Pincode</th>
        <th scope="col">Description</th>
        <th scope="col">Status</th>
@@ -65,13 +69,13 @@
    </thead>
 <tbody>
 <!-- Add table data here -->
-<tr *ngFor="let item of tableData | paginate: {itemsPerPage:6,currentPage:page,totalItems:totalLength}; let i = index">
+<tr *ngFor="let item of tableData | paginate: {itemsPerPage: 10,currentPage:page,totalItems:totalLength}; let i = index">
 
   <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
   <td>{{ item.REQ_SEQ_ID }}</td>
   <td>{{ item.ASSETID}}</td>
   <td>{{ item.SERVICE_NAME }}</td>
-  <td>{{ item.SERVICE_REQUEST_DATE | date: 'dd/MM/yyyy' }}</td>
+  <td>{{ item.SERVICE_DATE | date: 'dd/MM/yyyy' }}</td>
   <td>{{ item.REQ_PINCODE }}</td>
   <td>{{ item.DESCRIPTION }}</td>
   <td>{{ item.STATUS}}</td>

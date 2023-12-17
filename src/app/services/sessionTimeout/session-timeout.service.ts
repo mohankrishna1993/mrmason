@@ -6,21 +6,21 @@ import { Observable, Subject } from 'rxjs';
 })
 export class SessionTimeoutService {
 
-  private timeout: number = 5 * 60 * 1000; // Set the timeout duration ( 300 sec)
+  private timeout: number = 5 * 30 * 1000;
   private lastActivity: number = Date.now();
 
   private timeoutSubject: Subject<void> = new Subject<void>();
 
   constructor() {
-    this.initSessionTimeout();
+    // this.initSessionTimeout();
   }
 
-  private initSessionTimeout(): void {
+  public initSessionTimeout(): void {
     setInterval(() => {
       if (Date.now() - this.lastActivity > this.timeout) {
         this.timeoutSubject.next();
       }
-    }, 1000); // Check every second
+    }, 50000);
   }
 
   public onTimeout(): Observable<void> {

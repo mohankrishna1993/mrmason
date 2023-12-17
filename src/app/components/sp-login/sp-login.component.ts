@@ -51,7 +51,7 @@ export class SpLoginComponent implements OnInit{
   }
   private initSessionTimeoutListener(): void {
     this.sessionTimeoutService.onTimeout().subscribe(() => {
-      // Perform actions when session times out, e.g., redirect to login page
+      
       this.authService.logout();
       this.router.navigate(['/login']);
     });

@@ -13,7 +13,8 @@ export class EcServiceRequestComponent implements OnInit{
   tableData: any[] = [];
   totalLength: any;
   page: number = 1;
-  itemsPerPage: number = 6;
+  itemsPerPage: number = 10;
+  choosenLocation = "";
 
 
   serviceRequestForm = new FormGroup({
@@ -33,6 +34,9 @@ export class EcServiceRequestComponent implements OnInit{
   ngOnInit(): void {
     this.serviceRequestData();
  }
+ options: any = {
+  componentRestrictions: { country: 'IN' }
+}
 
 
 
@@ -55,6 +59,11 @@ serviceRequestData() {
     console.log(res.data);
     this.tableData = res.data;
   });
+}
+
+public handleAddressChange(place: google.maps.places.PlaceResult) {
+  console.log(place.formatted_address);
+  this.choosenLocation = place.formatted_address ?? "";
 }
 
 }

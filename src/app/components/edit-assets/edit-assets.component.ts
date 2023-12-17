@@ -17,7 +17,7 @@ export class EditAssetsComponent implements OnInit{
 
   totalLength: any;
   page: number = 1;
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 10;
 
   constructor(private apiService: ApiserviceService, private router: Router) {}
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-service-request-page',
@@ -27,7 +27,7 @@ export class ServiceRequestPageComponent implements OnInit{
   });
 
   constructor(private apiService: ApiserviceService,
-    private datePipe: DatePipe) {}
+    ) {}
 
   ngOnInit(): void {
     this.serviceRequestData();

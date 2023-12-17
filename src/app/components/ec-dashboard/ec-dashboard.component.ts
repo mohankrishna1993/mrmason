@@ -7,10 +7,6 @@ import { Component } from '@angular/core';
 })
 export class EcDashboardComponent {
 
-  isSidebarOpen = false;
-
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
+  isExpanded = true;
 
 }

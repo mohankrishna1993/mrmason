@@ -29,7 +29,7 @@
    </thead>
 <tbody>
 <!-- Add table data here -->
-<tr *ngFor="let item of assetData | paginate: {itemsPerPage:2,currentPage:page,totalItems:totalLength}; let i = index">
+<tr *ngFor="let item of assetData | paginate: {itemsPerPage:10,currentPage:page,totalItems:totalLength}; let i = index">
 
   <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
   <td>{{ item.asset_cat}}</td>
