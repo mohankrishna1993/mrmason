@@ -19,3 +19,26 @@
 mat-drawer-content {
   margin-left: 0px !important;
 }
+
+.example-container {
+
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+.mat-sidenav {
+
+  padding:20px;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+.menu-text {
+  margin-left: 10px;
+}
+
+mat-icon {
+  color: #18aedf !important;
+}

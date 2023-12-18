@@ -34,6 +34,20 @@
               >Update Service</span>
       </mat-list-item>
 
+      <mat-list-item>
+        <mat-icon routerLink="/ec-dashboard/sp-reset-password"
+          >vpn_key</mat-icon
+        >
+        <span
+          mat-line
+          *ngIf="isExpanded"
+          routerLink="/sp-dashboard/sp-reset-password"
+          color="primary"
+          class="menu-text"
+          >Update Password</span
+        >
+      </mat-list-item>
+
 
 
 
@@ -42,7 +56,7 @@
 <mat-drawer-content>
   <div class="example-sidenav-content">
     <router-outlet></router-outlet>
-  
+
   </div>
 </mat-drawer-content>
 </mat-drawer-container>

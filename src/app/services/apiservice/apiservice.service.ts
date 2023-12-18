@@ -7,6 +7,7 @@ import { ToastService } from '../toast/toast.service';
 import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
 import { addAssetsData } from 'src/app/interfaces/addAssets.modal';
 import { SessionTimeoutService } from '../sessionTimeout/session-timeout.service';
+import { ServicePersonRegistration } from 'src/app/interfaces/ServicePersonRegistration.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ApiserviceService {
   baseUrl = "http://65.1.178.54/app/index.php";
   // baseUrl1 = "http://13.235.76.132";
   baseUrl1= "http://15.207.114.112"
-  // baseUrl1 = "https://adroitcoder.com/projects/api";
+  baseUrl2 = "https://adroitcoder.com/projects/api";
   user_id = "";
 
   appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
@@ -55,6 +56,19 @@ export class ApiserviceService {
     });
   }
 
+  spLogin(username: string,password: string,appKey: string):Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const data = JSON.stringify({
+      username: username,
+      password: password,
+      appKey: appKey
+      });
+
+      return this.http.post(`${this.baseUrl2}/splogin.php`, data,
+      { headers: headers, responseType: 'json' }
+      );
+  }
+
  register(userData: userData): Observable<any> {
     const data = {
       "appKey": userData.appKey,
@@ -73,6 +87,25 @@ export class ApiserviceService {
     return this.http.post<any>(`${this.baseUrl1}/register.php`, datanew, {
       headers: headers
     });
+  }
+
+  registerServicePerson(userData: ServicePersonRegistration): Observable<any> {
+    const data = {
+      appKey: userData.appKey,
+      spName: userData.spName,
+      mobile: userData.mobile,
+      email: userData.email,
+      password: userData.password,
+      address: userData.address,
+      city: userData.town,
+      state: userData.state,
+      district: userData.district,
+      pincode: userData.pincode
+    };
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(`${this.baseUrl2}/spregister`, data, { headers });
   }
 
   //gettoken
@@ -127,6 +160,18 @@ export class ApiserviceService {
 
   }
 
+  sendEmailOtpForServicePerson(email: string,appKey: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const datanew = JSON.stringify({email: email,appKey: appKey});
+    return this.http.post(`${this.baseUrl2}/spsendotp`, datanew, { headers });
+  }
+
+  sendMobileOtpForServicePerson(mobile: string,appKey: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const datanew = JSON.stringify({mobile: mobile,appKey: appKey});
+    return this.http.post(`${this.baseUrl2}/spsendotp`, datanew, { headers });
+  }
+
   verifyOtpByMobile(mobile: string, otp: string,appKey: string): Observable<any> {
 
     // const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
@@ -149,6 +194,32 @@ export class ApiserviceService {
     }
     return this.http.post<any>(apiUrl, data);
   }
+
+  verifyOtpByMobileForServicePerson(mobile: string, otp: string,appKey: string): Observable<any> {
+
+    const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
+
+    // const apiUrl = 'http://15.207.114.112/verify-otp.php';
+    const data = {
+      mobile: mobile,
+      otp: otp,
+      appKey: appKey
+    }
+    return this.http.post<any>(apiUrl, data);
+  }
+
+  verifyOtpByEmailForServicePerson(email: string, otp: string,appKey: string): Observable<any> {
+    const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
+    // const apiUrl = 'http://15.207.114.112/verify-otp.php';
+    const data = {
+      email: email,
+      otp: otp,
+      appKey: appKey
+    }
+    return this.http.post<any>(apiUrl, data);
+  }
+
+
 
   getEcServiceRequestData(user_id: string,appKey: string): Observable<any> {
     const url = `${this.baseUrl1}/get-service-request.php?user_id=${user_id}&appKey=${appKey}`;

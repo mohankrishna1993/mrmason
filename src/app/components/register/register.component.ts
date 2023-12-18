@@ -40,38 +40,38 @@ export class RegisterComponent implements OnInit {
   }
 
   options: any = {
-    componentRestrictions: { country: 'IN' }
+    componentRestrictions: { country: 'IN', }
   }
 
-  sendMobileOTP() {
-    console.log(this.signupForm.value.mobile);
-    const mobile = this.signupForm.value.mobile ?? ""; // Get the mobile number from your form
-    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    this.apiService.sendOtpByEmail(mobile,appKey).subscribe(
-      (response) => {
-        console.log('Mobile OTP sent successfully', response);
-      },
-      (error) => {
-        console.error('Failed to send mobile OTP', error);
-      }
-    );
+  // sendMobileOTP() {
+  //   console.log(this.signupForm.value.mobile);
+  //   const mobile = this.signupForm.value.mobile ?? "";
+  //   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+  //   this.apiService.sendOtpByEmail(mobile,appKey).subscribe(
+  //     (response) => {
+  //       console.log('Mobile OTP sent successfully', response);
+  //     },
+  //     (error) => {
+  //       console.error('Failed to send mobile OTP', error);
+  //     }
+  //   );
 
-  }
+  // }
 
-  sendEmailOTP() {
-    console.log(this.signupForm.value.email);
-    const email = this.signupForm.value.email ?? "";
-    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    this.apiService.sendOtpByEmail(email,appKey).subscribe(
-      (response) => {
-        console.log('Email OTP sent successfully', response);
-      },
-      (error) => {
-        console.error('Failed to send email OTP', error);
-      }
-    );
+  // sendEmailOTP() {
+  //   console.log(this.signupForm.value.email);
+  //   const email = this.signupForm.value.email ?? "";
+  //   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+  //   this.apiService.sendOtpByEmail(email,appKey).subscribe(
+  //     (response) => {
+  //       console.log('Email OTP sent successfully', response);
+  //     },
+  //     (error) => {
+  //       console.error('Failed to send email OTP', error);
+  //     }
+  //   );
 
-  }
+  // }
 
   public handleAddressChange(place: google.maps.places.PlaceResult) {
     console.log(place.formatted_address);

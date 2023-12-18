@@ -44,16 +44,16 @@ export class SpLoginComponent implements OnInit{
     if(this.formData?.valid) {
       console.log(this.formData.value);
       const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-      this.authService.login(this.formData.value.username,this.formData.value.password,appKey);
+      this.authService.splogin(this.formData.value.username,this.formData.value.password,appKey);
       this.sessionTimeoutService.onUserActivity();
 
     }
   }
   private initSessionTimeoutListener(): void {
     this.sessionTimeoutService.onTimeout().subscribe(() => {
-      
+
       this.authService.logout();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/sp-login']);
     });
   }
 

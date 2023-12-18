@@ -12,6 +12,13 @@
     <span class="brand-text collapse navbar-collapse pt-2" *ngIf="!isLoggedIn"
       >All Service Engineers join with us!</span
     >
+    <div class="additional-links" *ngIf="!isLoggedIn">
+      <a class="nav-link" routerLink="/civil">Civil</a>
+      <a class="nav-link" routerLink="/electrical">Electrical</a>
+      <a class="nav-link" routerLink="/mechanical">Mechanical</a>
+      <a class="nav-link" routerLink="/electronics">Electronics</a>
+      <a class="nav-link" routerLink="/automobile">Automobile</a>
+    </div>
 
     <button
       class="navbar-toggler"

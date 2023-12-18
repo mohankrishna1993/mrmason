@@ -27,6 +27,7 @@ export class SpRegistrationComponent implements OnInit {
     password: new FormControl('',Validators.required),
     name: new FormControl('',Validators.required),
     mobile: new FormControl('',[Validators.required]),
+    address: new FormControl('',Validators.required),
     city: new FormControl('',Validators.required),
     location: new FormControl('',Validators.required),
     state: new FormControl('',Validators.required),
@@ -41,35 +42,6 @@ export class SpRegistrationComponent implements OnInit {
     componentRestrictions: { country: 'IN' }
   }
 
-  // sendMobileOTP() {
-  //   console.log(this.signupForm.value.mobile);
-  //   const mobile = this.signupForm.value.mobile ?? ""; // Get the mobile number from your form
-  //   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-  //   this.apiService.sendOtpByEmail(mobile,appKey).subscribe(
-  //     (response) => {
-  //       console.log('Mobile OTP sent successfully', response);
-  //     },
-  //     (error) => {
-  //       console.error('Failed to send mobile OTP', error);
-  //     }
-  //   );
-
-  // }
-
-  // sendEmailOTP() {
-  //   console.log(this.signupForm.value.email);
-  //   const email = this.signupForm.value.email ?? "";
-  //   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-  //   this.apiService.sendOtpByEmail(email,appKey).subscribe(
-  //     (response) => {
-  //       console.log('Email OTP sent successfully', response);
-  //     },
-  //     (error) => {
-  //       console.error('Failed to send email OTP', error);
-  //     }
-  //   );
-
-  // }
 
   public handleAddressChange(place: google.maps.places.PlaceResult) {
     console.log(place.formatted_address);
@@ -78,22 +50,26 @@ export class SpRegistrationComponent implements OnInit {
 
   signupSubmit() {
 
-      const userData: any = {
 
+      const userData: any = {
         email: this.signupForm.value.email ?? "",
         password: this.signupForm.value.password ?? "",
-        uName: this.signupForm.value.name ?? "",
+        spName: this.signupForm.value.name ?? "",
         mobile: this.signupForm.value.mobile ?? "",
+        address: this.signupForm.value.address ?? "",
         town: this.signupForm.value.city ?? "",
         state: this.signupForm.value.state ?? "",
         district: this.signupForm.value.district ?? "",
         pincode: this.choosenLocation,
         appKey: 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
-      }
+      };
 
-      this.authService.register(userData).subscribe((res: any) => {
-          if(res['status'])
-          {
+      // Call the new method for service person registration
+      this.apiService.registerServicePerson(userData).subscribe(
+        (response) => {
+          if (response && response.status) {
+            // Registration successful
+            // You can add any additional logic or navigate to a different page
             this.toast.show("Registered Successfully!");
             this.router.navigate(['/sp-verify-otp'], {
               queryParams: {
@@ -101,11 +77,16 @@ export class SpRegistrationComponent implements OnInit {
                 mobile: this.signupForm.value.mobile,
               },
             });
-
           } else {
-            this.toast.show(res['message']);
+            // Registration failed
+            this.toast.show(response['message']);
           }
-        });
+        },
+        (error) => {
+          // Handle error
+          console.error('Error during service person registration:', error);
+        }
+      );
+    }
+}
 
-}
-}

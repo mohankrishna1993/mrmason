@@ -76,11 +76,53 @@ export class AuthService {
     },
    error: (error) => {
 
-      // Handle the error and display a toast message
-      // this.toastr.error('An error occurred while logging in. Please try again.', 'Error', {
-      //   closeButton: true,
-      //   progressBar: true,
-      // });
+    }
+  });
+  }
+
+  public splogin(username: string, password: string,appKey: string): void {
+
+    this.apiService.spLogin(username, password,appKey).subscribe({
+      next :(res) => {
+        console.log(res);
+        if(res['status']) {
+          this.sessionTimeoutService.initSessionTimeout();
+          this.sessionTimeoutService.onTimeout().subscribe(()=> {
+            this.logout();
+
+          });
+
+          const userDetails = {
+            username: username
+          };
+
+          // localStorage.setItem('username', res.data.NAME);
+          // localStorage.setItem(this.tokenKey, 'true');
+          // localStorage.setItem('USER_ID', res.data.USER_ID);
+          // localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
+          // localStorage.setItem('EMAIL_ID',res.data.EMAIL_ID);
+          // console.log("*** populate");
+          // console.log('EMAIL_ID stored in localStorage:', res.data.EMAIL_ID);
+
+          this.userName$.next(res.data.NAME);
+
+          if(res.data.USER_TYPE === 'Developer') {
+            this.isAdmin$.next(false);
+            this.router.navigate(['/sp-dashboard']);
+            this.user.next({ username: username, role: 'user' });
+          } else {
+            this.isAdmin$.next(true);
+            this.router.navigate(['/dashboard']);
+          }
+          this.isLoggedIn$.next(true);
+
+        } else {
+          this.toast.show(res.message);
+        }
+
+    },
+   error: (error) => {
+
     }
   });
   }

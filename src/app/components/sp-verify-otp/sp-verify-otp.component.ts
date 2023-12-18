@@ -48,23 +48,24 @@ export class SpVerifyOtpComponent {
 
   sendMobileOTP() {
     console.log(this.verifyForm.value.mobile);
-    const mobile = this.verifyForm.value.mobile ?? ""; // Get the mobile number from your form
+
+    const mobile = this.verifyForm.value.mobile ?? "";
     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    // this.apiService.sendOtpByMobile(mobile,appKey).subscribe(
-    //   (response) => {
-    //     console.log("status success");
-    //     if(response['sendstatus']){
-    //       this.toast.show("Mobile OTP sent successfully!");
-    //     }else {
-    //       this.toast.show(response.message);
-    //     }
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     console.log("status failed")
-    //     this.toast.show("Failed to send mobile OTP!");
-    //   }
-    // );
+    this.apiService.sendMobileOtpForServicePerson(mobile,appKey).subscribe(
+      (response) => {
+        console.log("status success", response);
+        if(response['sendstatus']){
+          this.toast.show("Mobile OTP sent successfully!");
+        }else {
+          this.toast.show(response.message);
+        }
+      },
+      (error) => {
+        console.log(error);
+        console.log("status failed")
+        this.toast.show("Failed to send mobile OTP!");
+      }
+    );
 
   }
 
@@ -72,73 +73,72 @@ export class SpVerifyOtpComponent {
     console.log(this.verifyForm.value.email);
     const email = this.verifyForm.value.email ?? "";
     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    // this.apiService.sendOtpByEmail(email,appKey).subscribe(
-    //   (response) => {
-    //     if(response['status']){
-    //       this.toast.show("Email OTP sent successfully!");
-    //     }else {
-    //       this.toast.show(response.message);
-    //     }
+    this.apiService.sendEmailOtpForServicePerson(email,appKey).subscribe(
+      (response) => {
+        console.log(response);
+        if(response['status']){
+          this.toast.show("Email OTP sent successfully!");
+        }else {
+          this.toast.show(response.message);
+        }
 
-    //   },
-    //   (error) => {
-    //     this.toast.show("Failed to send email OTP!");
+      },
+      (error) => {
+        this.toast.show("Failed to send email OTP!");
 
-    //   }
-    // );
+      }
+    );
 
   }
 
   verifyMobileOTP() {
 
-    // const enterOTP = this.verifyForm.value.enterMobileOTP;
-    // const mobileData = this.verifyForm.value.mobile ?? '';
-    // const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    // if (!enterOTP) {
-    //   this.toast.show("Please enter the OTP");
-    //   return;
-    // }
+    const enterOTP = this.verifyForm.value.enterMobileOTP;
+    const mobileData = this.verifyForm.value.mobile ?? '';
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    if (!enterOTP) {
+      this.toast.show("Please enter the OTP");
+      return;
+    }
+    this.apiService.verifyOtpByMobileForServicePerson(mobileData, enterOTP,appKey).subscribe(
+      (response) => {
+        if (response['status']){
+          this.isMobileVerified = true;
+          this.toast.show("Mobile OTP verification successful");
+        }else {
+          this.toast.show(response.message);
+        }
 
+      },
+      (error) => {
+        this.toast.show("Failed to verify mobile OTP");
 
-    // this.apiService.verifyOtpByMobile(mobileData, enterOTP,appKey).subscribe(
-    //   (response) => {
-    //     if (response['status']){
-    //       this.isMobileVerified = true;
-    //       this.toast.show("Mobile OTP verification successful");
-    //     }else {
-    //       this.toast.show(response.message);
-    //     }
-
-    //   },
-    //   (error) => {
-    //     this.toast.show("Failed to verify mobile OTP");
-
-    //   }
-    // );
+      }
+    );
 
   }
 
   verifyEmailOTP() {
 
-    // const enterOTP = this.verifyForm.value.enterEmailOTP;
-    // const email = this.verifyForm.value.email ?? '';
-    // const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    // if (!enterOTP) {
-    //   this.toast.show("Please enter the OTP");
-    //   return;
-    // }
-    // this.apiService.verifyOtpByEmail(email, enterOTP,appKey).subscribe(
-    //   (response) => {
-    //     if (response['status']){
-    //       this.isEmailVerified = true;
-    //       this.toast.show("Email OTP verification successful");
-    //     }
+    const enterOTP = this.verifyForm.value.enterEmailOTP;
+    const email = this.verifyForm.value.email ?? '';
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+    if (!enterOTP) {
+      this.toast.show("Please enter the OTP");
+      return;
+    }
+    this.apiService.verifyOtpByEmailForServicePerson(email, enterOTP,appKey).subscribe(
+      (response) => {
+        if (response['status']){
+          this.isEmailVerified = true;
+          this.toast.show("Email OTP verification successful");
+        }
 
-    //   },
-    //   (error) => {
-    //     this.toast.show("Failed to verify email OTP");
-    //   }
-    // );
+      },
+      (error) => {
+        this.toast.show("Failed to verify email OTP");
+      }
+    );
 
   }
 

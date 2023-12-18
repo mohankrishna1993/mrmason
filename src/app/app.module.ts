@@ -61,6 +61,7 @@ import { Home1Component } from './home1/home1.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { SpAddServiceComponent } from './components/sp-add-service/sp-add-service.component';
 import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
+import { SpResetPasswordComponent } from './components/sp-reset-password/sp-reset-password.component';
 
 
 
@@ -106,6 +107,7 @@ import { SpUpdateServiceComponent } from './components/sp-update-service/sp-upda
     MyProfileComponent,
     SpAddServiceComponent,
     SpUpdateServiceComponent,
+    SpResetPasswordComponent,
 
 
   ],

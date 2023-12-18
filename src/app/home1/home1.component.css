@@ -132,6 +132,9 @@
 
 /* ... Your existing CSS code ... */
 
+/* ... Your existing CSS code ... */
+
+/* Add this new media query for small screens */
 @media only screen and (max-width: 600px) {
   .hero img {
     display: block;
@@ -141,11 +144,13 @@
   }
 
   .hero-content {
-
-    display: none;
-    height: 0; /* Set height to 0 */
-    padding: 0;
-
+    max-width: 100%;
+    padding: 10px; /* Adjust padding for better spacing on small screens */
+    text-align: center; /* Center the content */
+    position: absolute;
+    top: 50%; /* Position the content in the middle of the hero */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content horizontally and vertically */
   }
 
   .heading {
@@ -155,7 +160,10 @@
   .subheading {
     font-size: 16px;
     line-height: 18px;
+    color: black !important;
+
   }
+ 
 
   /* Additional styles for better mobile appearance */
   .services-heading {
@@ -177,6 +185,9 @@
     transform: translateY(20px);
   }
 }
+
+/* ... Your existing CSS code ... */
+
 
 
 
