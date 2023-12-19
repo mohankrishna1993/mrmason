@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit,OnDestroy {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
 
   isLoggedIn: boolean = false;
   userName = '';
@@ -22,11 +22,12 @@ export class NavbarComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
      this.authService.isLoggedIn$.subscribe((t) =>{
       this.isLoggedIn = t;
+
      }
 
      );
-     this.authService.isAdmin$.subscribe((t) => this.isAdmin = t);
-     this.authService.userName$.subscribe((r) => this.userName = r);
+      this.authService.isAdmin$.subscribe((t) => this.isAdmin = t);
+      this.authService.userName$.subscribe((r) => this.userName = r);
 
   }
   scrollDown(): void {

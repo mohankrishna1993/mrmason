@@ -1,5 +1,4 @@
 
-/* 3RD ONE */
 
 body {
   font-family:'Times New Roman', Times, serif
@@ -14,17 +13,9 @@ body {
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  /* text-align: center;
-  align-items: center; */
 
-}
-.val {
-  margin-top: 4px;
-  color: red;
-}
+  align-items: center;
 
-.valid {
-  color: green; /* Color for valid messages */
 }
 
 .form-group label {
@@ -56,10 +47,7 @@ label {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 20px;
 }
-
-
 
 .btn-primary:hover {
   background-color: #0056b3;
@@ -75,10 +63,5 @@ input[type="checkbox"] {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
-}
-
-.center-button {
-  display: flex;
-  justify-content: center;
 }
 

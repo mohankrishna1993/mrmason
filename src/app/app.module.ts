@@ -52,6 +52,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { SpRegistrationComponent } from './components/sp-registration/sp-registration.component';
 import { SpVerifyOtpComponent } from './components/sp-verify-otp/sp-verify-otp.component';
 import { SpLoginComponent } from './components/sp-login/sp-login.component';
@@ -62,6 +65,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { SpAddServiceComponent } from './components/sp-add-service/sp-add-service.component';
 import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
 import { SpResetPasswordComponent } from './components/sp-reset-password/sp-reset-password.component';
+import { SpUpdateAvailabilityComponent } from './components/sp-update-availability/sp-update-availability.component';
 
 
 
@@ -108,6 +112,7 @@ import { SpResetPasswordComponent } from './components/sp-reset-password/sp-rese
     SpAddServiceComponent,
     SpUpdateServiceComponent,
     SpResetPasswordComponent,
+    SpUpdateAvailabilityComponent,
 
 
   ],
@@ -130,7 +135,8 @@ import { SpResetPasswordComponent } from './components/sp-reset-password/sp-rese
     MatCardModule,
     MatListModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule
 
 
   ],

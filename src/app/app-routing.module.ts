@@ -36,6 +36,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { Home1Component } from './home1/home1.component';
 import { SpAddServiceComponent } from './components/sp-add-service/sp-add-service.component';
 import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
+import { SpResetPasswordComponent } from './components/sp-reset-password/sp-reset-password.component';
+import { SpUpdateAvailabilityComponent } from './components/sp-update-availability/sp-update-availability.component';
 
 
 const routes: Routes = [
@@ -92,7 +94,10 @@ const routes: Routes = [
       {path: '',redirectTo: 'sp-profile', pathMatch: 'full' },
       {path: 'sp-profile',component: SpProfileComponent},
       {path: 'sp-add-service',component: SpAddServiceComponent},
-      {path: 'sp-update-service',component: SpUpdateServiceComponent}
+      {path: 'sp-update-service',component: SpUpdateServiceComponent},
+      {path: 'sp-reset-password',component: SpResetPasswordComponent},
+      {path: 'sp-update-availability',component: SpUpdateAvailabilityComponent},
+
 
     ]}
 

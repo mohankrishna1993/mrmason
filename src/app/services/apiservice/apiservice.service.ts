@@ -423,6 +423,34 @@ updatePassword(email: string, oldPassword: string, newPassword: string, confirmP
     type: 'user'
   };
 
+  return this.http.post(`${this.baseUrl1}/changepassword.php`, data, { headers, responseType: 'json' });
+}
+
+servicePersonUpdatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const data = {
+    email: email,
+    oldPwd: oldPassword,
+    newPwd: newPassword,
+    conPwd: confirmPassword,
+    appKey: this.appKey,
+    type: 'sp'
+  };
+
+  return this.http.post(`${this.baseUrl2}/changepassword`, data, { headers, responseType: 'json' });
+}
+
+adminUpdatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const data = {
+    email: email,
+    oldPwd: oldPassword,
+    newPwd: newPassword,
+    conPwd: confirmPassword,
+    appKey: this.appKey,
+    type: 'admin'
+  };
+
   return this.http.post(`${this.baseUrl1}/changepassword`, data, { headers, responseType: 'json' });
 }
 

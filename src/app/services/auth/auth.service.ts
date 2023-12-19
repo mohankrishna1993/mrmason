@@ -100,7 +100,7 @@ export class AuthService {
           // localStorage.setItem(this.tokenKey, 'true');
           // localStorage.setItem('USER_ID', res.data.USER_ID);
           // localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
-          // localStorage.setItem('EMAIL_ID',res.data.EMAIL_ID);
+          localStorage.setItem('EMAIL_ID',res.data.EMAIL_ID);
           // console.log("*** populate");
           // console.log('EMAIL_ID stored in localStorage:', res.data.EMAIL_ID);
 
