@@ -97,6 +97,7 @@ const routes: Routes = [
       {path: 'sp-update-service',component: SpUpdateServiceComponent},
       {path: 'sp-reset-password',component: SpResetPasswordComponent},
       {path: 'sp-update-availability',component: SpUpdateAvailabilityComponent},
+      {path: 'ec-service-request', component: EcServiceRequestComponent},
 
 
     ]}

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { passwordMatchValidator } from 'src/app/validators/password-match.validator';
+import { atLeastOneLetterValidator, atLeastOneNumberValidator, atLeastOneSpecialCharacterValidator, passwordMatchValidator } from 'src/app/validators/password-match.validator';
 
 @Component({
   selector: 'app-sp-reset-password',
@@ -22,6 +22,9 @@ export class SpResetPasswordComponent {
     newPassword: new FormControl('',[
       Validators.required,
       Validators.minLength(8),
+      atLeastOneLetterValidator(),
+      atLeastOneNumberValidator(),
+      atLeastOneSpecialCharacterValidator(),
       Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%&*]).{8,}$/),]),
     confirmPassword: new FormControl('', Validators.required),
     }, { validators: passwordMatchValidator });

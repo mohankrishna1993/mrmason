@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-sp-update-availability',
@@ -8,16 +10,60 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SpUpdateAvailabilityComponent {
 
+  constructor(private apiService: ApiserviceService,
+              private toast: ToastService) {
+
+  }
+
+  choosenLocation = "";
+
   updateForm = new FormGroup({
     location: new FormControl('', Validators.required),
     availability: new FormControl(null, Validators.required),
   });
 
-  updateSubmitForm() {
-    const location = this.updateForm.value.location ?? '';
-    const availability = this.updateForm.value.availability ?? null;
+  options: any = {
+    componentRestrictions: { country: 'IN', }
+  }
 
-    // Your API service call or other logic here
+
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? "";
+  }
+
+  updateSubmitForm() {
+    const location = this.choosenLocation;
+    const availability = this.updateForm.value.availability ?? "";
+
+    // const spId = localStorage.getItem('ID');
+    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+
+    if (availability !== null) {
+
+      const spId: string | null = localStorage.getItem('USER_ID') ?? "";
+
+      // Call the API service method
+      this.apiService.updateServicePersonStatus(appKey, spId, availability, location)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            if (response.code === 1 && response.status === true) {
+               this.toast.show('Status successfully updated');
+            } else {
+              this.toast.show('Failed to update status');
+
+            }
+
+          },
+          (error) => {
+            console.error(error);
+            // Handle error, e.g., show an error message
+          }
+        );
+    } else {
+      // Handle the case where availability is null (optional)
+    }
   }
 
 }

@@ -13,11 +13,16 @@ import { SessionTimeoutService } from '../sessionTimeout/session-timeout.service
   providedIn: 'root',
 })
 export class AuthService {
+  private userTypeSubject = new BehaviorSubject<string>('');
+  private USER_TYPE_KEY = 'userType';
+  userType$ = this.userTypeSubject.asObservable();
+
   constructor(private router: Router,
               private apiService: ApiserviceService,
               private toast: ToastService,
               private sessionTimeoutService: SessionTimeoutService) {
     this.isLoggedIn();
+    this.userTypeSubject.next(localStorage.getItem(this.USER_TYPE_KEY) ?? "");
     // this.initSessionTimeoutListener();
   }
 
@@ -58,6 +63,9 @@ export class AuthService {
           console.log('EMAIL_ID stored in localStorage:', res.data.EMAIL_ID);
 
           this.userName$.next(res.data.NAME);
+          this.userTypeSubject.next("EC");
+          localStorage.setItem(this.USER_TYPE_KEY, "EC");
+
 
           if(res.data.USER_TYPE === 'EC') {
             this.isAdmin$.next(false);
@@ -84,8 +92,12 @@ export class AuthService {
 
     this.apiService.spLogin(username, password,appKey).subscribe({
       next :(res) => {
-        console.log(res);
+        console.log('****',res);
+        console.log(res.data.ID);
         if(res['status']) {
+          this.userTypeSubject.next("SP");
+          localStorage.setItem(this.USER_TYPE_KEY, "SP");
+
           this.sessionTimeoutService.initSessionTimeout();
           this.sessionTimeoutService.onTimeout().subscribe(()=> {
             this.logout();
@@ -100,7 +112,10 @@ export class AuthService {
           // localStorage.setItem(this.tokenKey, 'true');
           // localStorage.setItem('USER_ID', res.data.USER_ID);
           // localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
+          localStorage.setItem('USER_ID',res.data.ID);
           localStorage.setItem('EMAIL_ID',res.data.EMAIL_ID);
+          console.log("cheecking the local staorage vale for user id");
+          console.log(res.data.USER_ID);
           // console.log("*** populate");
           // console.log('EMAIL_ID stored in localStorage:', res.data.EMAIL_ID);
 
@@ -136,6 +151,10 @@ export class AuthService {
         console.log(res);
         if (res['status']) {
           localStorage.setItem('username', res.data[0].admin_name);
+
+          this.userTypeSubject.next("ADMIN");
+          localStorage.setItem(this.USER_TYPE_KEY, "ADMIN");
+
           this.sessionTimeoutService.initSessionTimeout();
           this.sessionTimeoutService.onTimeout().subscribe(()=> {
             this.logout();

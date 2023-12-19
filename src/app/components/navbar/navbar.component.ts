@@ -11,6 +11,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit,OnDestroy {
+  userType: any;
   constructor(private authService: AuthService,private router: Router) {}
 
   isLoggedIn: boolean = false;
@@ -19,7 +20,13 @@ export class NavbarComponent implements OnInit,OnDestroy {
 
   private destroy$ = new Subject<void>();
 
+
   ngOnInit(): void {
+
+    this.authService.userType$.subscribe(
+      userType => this.userType = userType
+    );
+    
      this.authService.isLoggedIn$.subscribe((t) =>{
       this.isLoggedIn = t;
 

@@ -456,6 +456,20 @@ adminUpdatePassword(email: string, oldPassword: string, newPassword: string, con
 
 
 
+updateServicePersonStatus(appKey: string, spId: string, status: string, location?: string): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const data = {
+    appKey: appKey,
+    sp_id: spId,
+    status: status,
+    location: location
+  };
+
+  const url = `${this.baseUrl2}/spstatus.php`; // Updated the URL using baseUrl1
+
+  return this.http.post(url, data, { headers, responseType: 'json' });
+}
+
 }
 
 

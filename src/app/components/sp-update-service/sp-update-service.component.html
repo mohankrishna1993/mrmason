@@ -1,51 +1,6 @@
-<!-- <div class="update-service-container">
-  <h1 class="aucformTitle text-center">Service Details</h1>
-  <div class="service-details-card">
-      <div class="detail-item">
-          <strong>Service Type:</strong> Plumbing
-      </div>
-      <div class="detail-item">
-          <strong>Experience:</strong> 5 years
-      </div>
-      <div class="detail-item">
-          <strong>Charges:</strong> $50 per hour
-      </div>
-      <div class="detail-item">
-          <strong>Available Out of Location:</strong> Yes
-      </div>
-
-  </div>
-
-  <button class="update-button">UPDATE</button>
-</div> -->
-
-
-<!-- 2nd modal  -->
-<!-- <div class="update-service-container mat-elevation-z2">
-  <h1 class="mat-h1 service-details-heading">Service Details</h1>
-
-  <mat-card class="service-details-card">
-    <div class="detail-item">
-      <strong>Service Type:</strong> Plumbing
-    </div>
-    <div class="detail-item">
-      <strong>Experience:</strong> 5 years
-    </div>
-    <div class="detail-item">
-      <strong>Charges:</strong> $50 per hour
-    </div>
-    <div class="detail-item">
-      <strong>Available Out of Location:</strong> Yes
-    </div>
-  </mat-card>
-
-  <button mat-raised-button color="primary" class="update-button">Update</button>
-</div> -->
-
-<!-- 3rd one  -->
 
 <div class="form-container">
-  <h2 class="aucformTitle text-center">Update Service</h2>
+  <h2 class="aucformTitle text-center">Add Service</h2>
   <form>
     <div class="form-group">
       <label for="serviceDropdown">Select Service:</label>
@@ -59,17 +14,38 @@
 
     <div class="form-group">
       <label for="experienceInput">Years of Experience:</label>
-      <input type="number" id="experienceInput" name="experience" class="form-control" placeholder="Enter your Experience" />
+      <input type="number" id="experienceInput" name="experience" class="form-control" max="99" placeholder="Enter your Experience" />
     </div>
 
     <div class="form-group">
       <label for="chargesInput">Charges:</label>
-      <input type="text" id="chargesInput" name="charges" class="form-control" placeholder="Enter Charges for hour"/>
+      <input type="text" id="chargesInput" name="charges" class="form-control" maxlength="3" placeholder="Enter Charges for hour"/>
     </div>
 
     <div class="form-group">
-      <label for="availabilityCheckbox">Available Out of Station:</label>
-      <input type="text" id="availability" name="availability" class="form-control" placeholder="Enter Your Availability"/>
+      <label>Available Out of Station:</label>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="availabilityYes"
+          name="availability"
+          class="form-check-input"
+          formControlName="availability"
+          value="yes"
+        />
+        <label class="form-check-label" for="availabilityYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="availabilityNo"
+          name="availability"
+          class="form-check-input"
+          formControlName="availability"
+          value="no"
+        />
+        <label class="form-check-label" for="availabilityNo">No</label>
+      </div>
     </div>
 
 
