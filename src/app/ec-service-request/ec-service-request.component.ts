@@ -15,6 +15,7 @@ export class EcServiceRequestComponent implements OnInit{
   page: number = 1;
   itemsPerPage: number = 10;
   choosenLocation = "";
+  subCategories: string[] = [];
 
 
   serviceRequestForm = new FormGroup({
@@ -33,6 +34,7 @@ export class EcServiceRequestComponent implements OnInit{
 
   ngOnInit(): void {
     this.serviceRequestData();
+    this.getSubCategories();
  }
  options: any = {
   componentRestrictions: { country: 'IN' }
@@ -64,6 +66,20 @@ serviceRequestData() {
 public handleAddressChange(place: google.maps.places.PlaceResult) {
   console.log(place.formatted_address);
   this.choosenLocation = place.formatted_address ?? "";
+}
+
+getSubCategories() {
+  const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'; // Replace with your actual app key
+  this.apiService.getScategory(appKey).subscribe((res: any) => {
+    console.log("**123**")
+    console.log(res);
+    this.subCategories = res.data.map((category: any)=> {
+      return category.serviceSubCategory
+      // console.log("category data",this.subCategories)
+
+    });
+    console.log("category",this.subCategories);
+  });
 }
 
 }

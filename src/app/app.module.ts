@@ -66,6 +66,8 @@ import { SpAddServiceComponent } from './components/sp-add-service/sp-add-servic
 import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
 import { SpResetPasswordComponent } from './components/sp-reset-password/sp-reset-password.component';
 import { SpUpdateAvailabilityComponent } from './components/sp-update-availability/sp-update-availability.component';
+import { AdminServiceNameComponent } from './components/admin-service-name/admin-service-name.component';
+import { AdminUpdateServiceNameComponent } from './components/admin-update-service-name/admin-update-service-name.component';
 
 
 
@@ -113,6 +115,8 @@ import { SpUpdateAvailabilityComponent } from './components/sp-update-availabili
     SpUpdateServiceComponent,
     SpResetPasswordComponent,
     SpUpdateAvailabilityComponent,
+    AdminServiceNameComponent,
+    AdminUpdateServiceNameComponent,
 
 
   ],

@@ -1,36 +1,83 @@
-<!-- add-service.component.html -->
-
 <div class="form-container">
   <h2 class="aucformTitle text-center">Add Service</h2>
-  <form>
+  <form [formGroup]="addServiceForm">
     <div class="form-group">
       <label for="serviceDropdown">Select Service:</label>
-      <select id="serviceDropdown" name="service" class="form-control">
-        <option value="plumbing">Plumbing</option>
-        <option value="electrical">Electrical</option>
-        <option value="carpentry">Carpentry</option>
-      
+      <select
+        id="selectservice"
+        name="addService"
+        class="form-control"
+        formControlName="addService"
+        (change)="onServiceSelectionChange()"
+      >
+        <option value="" disabled selected>Select your service here</option>
+        <option *ngFor="let category of subCategories" [value]="category">
+          {{ category }}
+        </option>
       </select>
+    </div>
+    <div *ngIf="selectedCategoryServices.length > 0">
+      <label>Services for selected category:</label>
+      <ul>
+        <li *ngFor="let service of selectedCategoryServices">
+          {{ service.service_name }}
+        </li>
+      </ul>
     </div>
 
     <div class="form-group">
       <label for="experienceInput">Years of Experience:</label>
-      <input type="number" id="experienceInput" name="experience" class="form-control" placeholder="Enter your Experience" />
+      <input
+        type="number"
+        id="experienceInput"
+        name="experience"
+        class="form-control"
+        placeholder="Enter your Experience"
+      />
     </div>
 
     <div class="form-group">
       <label for="chargesInput">Charges:</label>
-      <input type="text" id="chargesInput" name="charges" class="form-control" placeholder="Enter Charges for hour"/>
+      <input
+        type="text"
+        id="chargesInput"
+        name="charges"
+        class="form-control"
+        placeholder="Enter Charges for hour"
+      />
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="availabilityCheckbox">Available Out of Station:</label>
       <input type="text" id="availability" name="availability" class="form-control" placeholder="Enter Your Availability"/>
+    </div> -->
+
+    <div class="form-group">
+      <label>Available Out of Station:</label>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="availabilityYes"
+          name="availability"
+          class="form-check-input"
+          formControlName="availability"
+          value="yes"
+        />
+        <label class="form-check-label" for="availabilityYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="availabilityNo"
+          name="availability"
+          class="form-check-input"
+          formControlName="availability"
+          value="no"
+        />
+        <label class="form-check-label" for="availabilityNo">No</label>
+      </div>
     </div>
-
-
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-

@@ -64,7 +64,7 @@ export class ApiserviceService {
       appKey: appKey
       });
 
-      return this.http.post(`${this.baseUrl2}/splogin.php`, data,
+      return this.http.post(`${this.baseUrl1}/sp-login.php`, data,
       { headers: headers, responseType: 'json' }
       );
   }
@@ -105,7 +105,7 @@ export class ApiserviceService {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post(`${this.baseUrl2}/spregister`, data, { headers });
+    return this.http.post(`${this.baseUrl1}/sp-register.php`, data, { headers });
   }
 
   //gettoken
@@ -128,7 +128,7 @@ export class ApiserviceService {
       EMAIL_ID: email,
       PASSWORD: password,
       });
-    return this.http.post<any[]>(`${this.baseUrl}/Users/forgotPassword`,
+    return this.http.post<any[]>(`${this.baseUrl}/Users/forgotPassword.php`,
     data, { headers: headers, responseType: 'json' });
   }
 
@@ -163,13 +163,13 @@ export class ApiserviceService {
   sendEmailOtpForServicePerson(email: string,appKey: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const datanew = JSON.stringify({email: email,appKey: appKey});
-    return this.http.post(`${this.baseUrl2}/spsendotp`, datanew, { headers });
+    return this.http.post(`${this.baseUrl1}/sp-send-otp.php`, datanew, { headers });
   }
 
   sendMobileOtpForServicePerson(mobile: string,appKey: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const datanew = JSON.stringify({mobile: mobile,appKey: appKey});
-    return this.http.post(`${this.baseUrl2}/spsendotp`, datanew, { headers });
+    return this.http.post(`${this.baseUrl1}/sp-send-otp.php`, datanew, { headers });
   }
 
   verifyOtpByMobile(mobile: string, otp: string,appKey: string): Observable<any> {
@@ -197,9 +197,9 @@ export class ApiserviceService {
 
   verifyOtpByMobileForServicePerson(mobile: string, otp: string,appKey: string): Observable<any> {
 
-    const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
+    // const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
 
-    // const apiUrl = 'http://15.207.114.112/verify-otp.php';
+    const apiUrl = 'http://15.207.114.112/sp-verify-otp.php';
     const data = {
       mobile: mobile,
       otp: otp,
@@ -209,8 +209,8 @@ export class ApiserviceService {
   }
 
   verifyOtpByEmailForServicePerson(email: string, otp: string,appKey: string): Observable<any> {
-    const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
-    // const apiUrl = 'http://15.207.114.112/verify-otp.php';
+    // const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
+    const apiUrl = 'http://15.207.114.112/sp-verify-otp.php';
     const data = {
       email: email,
       otp: otp,
@@ -437,7 +437,7 @@ servicePersonUpdatePassword(email: string, oldPassword: string, newPassword: str
     type: 'sp'
   };
 
-  return this.http.post(`${this.baseUrl2}/changepassword`, data, { headers, responseType: 'json' });
+  return this.http.post(`${this.baseUrl1}/changepassword.php`, data, { headers, responseType: 'json' });
 }
 
 adminUpdatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
@@ -451,7 +451,7 @@ adminUpdatePassword(email: string, oldPassword: string, newPassword: string, con
     type: 'admin'
   };
 
-  return this.http.post(`${this.baseUrl1}/changepassword`, data, { headers, responseType: 'json' });
+  return this.http.post(`${this.baseUrl1}/changepassword.php`, data, { headers, responseType: 'json' });
 }
 
 
@@ -465,10 +465,47 @@ updateServicePersonStatus(appKey: string, spId: string, status: string, location
     location: location
   };
 
-  const url = `${this.baseUrl2}/spstatus.php`; // Updated the URL using baseUrl1
+  const url = `${this.baseUrl1}/sp-status.php`; // Updated the URL using baseUrl1
 
   return this.http.post(url, data, { headers, responseType: 'json' });
 }
+
+
+addServiceName(appKey: string, serviceId: string, servName: string, addedBy: string, subcategory: string): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const data = {
+    appKey: appKey,
+    serviceId: serviceId,
+    servName: servName,
+    addedBy: addedBy,
+    subcategory: subcategory
+  };
+
+  const url = `${this.baseUrl2}/admSnameAdd.php`;
+
+  return this.http.post(url, data, { headers, responseType: 'json' });
+}
+
+// Inside ApiserviceService
+getServiceNames(appKey: string, servSubCat: string): Observable<any> {
+  const url = `${this.baseUrl2}/admSnameGet.php`;;
+  const params = new HttpParams()
+    .set('appKey', appKey)
+    .set('servSubCat', servSubCat);
+
+  return this.http.get(url, { params });
+}
+
+// Inside ApiserviceService
+
+updateServiceName(data: any): Observable<any> {
+  
+  const url = `${this.baseUrl2}/admSnameUpdate`;
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+  return this.http.put(url, data, { headers });
+}
+
 
 }
 

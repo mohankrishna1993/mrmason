@@ -31,6 +31,16 @@ label {
   margin-bottom: 10px;
 }
 
+.form-check-input {
+  background-color: #d7c4c4;
+}
+
+
+.form-check-input:checked {
+  background-color: #555;
+}
+
+
 .form-control {
   width: 100%;
   padding: 12px;

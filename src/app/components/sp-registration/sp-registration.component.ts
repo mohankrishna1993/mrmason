@@ -64,12 +64,11 @@ export class SpRegistrationComponent implements OnInit {
         appKey: 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
       };
 
-      // Call the new method for service person registration
+      
       this.apiService.registerServicePerson(userData).subscribe(
         (response) => {
           if (response && response.status) {
-            // Registration successful
-            // You can add any additional logic or navigate to a different page
+
             this.toast.show("Registered Successfully!");
             this.router.navigate(['/sp-verify-otp'], {
               queryParams: {
@@ -78,12 +77,12 @@ export class SpRegistrationComponent implements OnInit {
               },
             });
           } else {
-            // Registration failed
+
             this.toast.show(response['message']);
           }
         },
         (error) => {
-          // Handle error
+
           console.error('Error during service person registration:', error);
         }
       );

@@ -109,7 +109,7 @@ export class AuthService {
           };
 
           // localStorage.setItem('username', res.data.NAME);
-          // localStorage.setItem(this.tokenKey, 'true');
+          localStorage.setItem(this.tokenKey, 'true');
           // localStorage.setItem('USER_ID', res.data.USER_ID);
           // localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
           localStorage.setItem('USER_ID',res.data.ID);
@@ -151,6 +151,7 @@ export class AuthService {
         console.log(res);
         if (res['status']) {
           localStorage.setItem('username', res.data[0].admin_name);
+          
 
           this.userTypeSubject.next("ADMIN");
           localStorage.setItem(this.USER_TYPE_KEY, "ADMIN");

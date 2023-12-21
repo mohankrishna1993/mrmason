@@ -11,9 +11,8 @@
                   <div class="col-md-2 form-group">
                       <label for="service-category" style="color: blue;">Service Category*</label>
                       <select class="form-control" id="service-category" formControlName="serviceCategory">
-                          <option value="category1">Category 1</option>
-                          <option value="category2">Category 2</option>
-                          <option value="category3">Category 3</option>
+                        <option value="" disabled selected>Select service </option>
+                        <option *ngFor="let category of subCategories" [value]="category">{{ category }}</option>
                       </select>
                   </div>
                   <div class="col-md-2 form-group">

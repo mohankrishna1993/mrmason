@@ -38,6 +38,8 @@ import { SpAddServiceComponent } from './components/sp-add-service/sp-add-servic
 import { SpUpdateServiceComponent } from './components/sp-update-service/sp-update-service.component';
 import { SpResetPasswordComponent } from './components/sp-reset-password/sp-reset-password.component';
 import { SpUpdateAvailabilityComponent } from './components/sp-update-availability/sp-update-availability.component';
+import { AdminServiceNameComponent } from './components/admin-service-name/admin-service-name.component';
+import { AdminUpdateServiceNameComponent } from './components/admin-update-service-name/admin-update-service-name.component';
 
 
 const routes: Routes = [
@@ -65,8 +67,9 @@ const routes: Routes = [
       { path: 'add-service-category',component: AddServiceCategoryComponent},
       { path: 'show-service-category',component: ShowServiceCategoryComponent},
       { path: 'edit-service-category/:id',component: EditServiceCategoryComponent},
-      { path: 'customer-report',component: CustomerReportsComponent}
-
+      { path: 'customer-report',component: CustomerReportsComponent},
+      { path: 'admin-service-name',component: AdminServiceNameComponent},
+      { path: 'admin-update-service-name',component: AdminUpdateServiceNameComponent}
     ]
   },
   { path: 'verify-otp',component: VerfiyOtpComponent},
@@ -74,6 +77,7 @@ const routes: Routes = [
   { path: 'sp-login',component: SpLoginComponent},
   { path: 'ec-dashboard',
     component: EcDashboardComponent,
+    canActivate: [AuthGuard],
      children: [
       {path: '',redirectTo: 'ec-dashboard-pannel', pathMatch: 'full' },
       {path: 'ec-dashboard-pannel',component: EcDashboardPannelComponent},
@@ -90,7 +94,9 @@ const routes: Routes = [
      ]},
 
      { path: 'sp-dashboard', component: SpDashboardComponent,
+     canActivate: [AuthGuard],
     children: [
+
       {path: '',redirectTo: 'sp-profile', pathMatch: 'full' },
       {path: 'sp-profile',component: SpProfileComponent},
       {path: 'sp-add-service',component: SpAddServiceComponent},
