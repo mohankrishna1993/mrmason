@@ -26,29 +26,43 @@
       </mat-list-item>
 
       <mat-list-item>
+        <mat-icon routerLink="/sp-dashboard/sp-update-availability"
+          >list</mat-icon
+        >
+        <span
+          mat-line
+          *ngIf="isExpanded"
+          routerLink="/sp-dashboard/sp-showmy-services"
+          color="primary"
+          class="menu-text"
+          >Show My Services</span
+        >
+      </mat-list-item>
+
+      <mat-list-item>
         <mat-icon
           color="primary"
           style="margin-right: 8px"
-          routerLink="/sp-dashboard/ec-service-request"
+          routerLink="/sp-dashboard/sp-service-request"
           >list_alt</mat-icon
         >
         <span
           mat-line
           *ngIf="isExpanded"
-          routerLink="/sp-dashboard/ec-service-request"
+          routerLink="/sp-dashboard/sp-service-request"
           class="menu-text"
           >Show Service Request</span
         >
       </mat-list-item>
 
-      <mat-list-item>
+      <!-- <mat-list-item>
         <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-update-service">update</mat-icon>
         <span mat-line
               *ngIf="isExpanded"
               routerLink="/sp-dashboard/sp-update-service"
               class="menu-text"
               >Update Service</span>
-      </mat-list-item>
+      </mat-list-item> -->
 
       <mat-list-item>
         <mat-icon routerLink="/sp-dashboard/sp-reset-password"

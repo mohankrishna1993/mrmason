@@ -121,10 +121,22 @@ body {
   padding: 30px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  margin-left: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-
   align-items: center;
 
+}
+.container {
+  position: relative;
+  display: flex;
+  /* justify-content: space-between; */
+}
+.services-container {
+  position: absolute;
+  margin-left: 10px;
+  top: 0;
+  right: 0;
+  /* Add styling for the services container as needed */
 }
 
 .form-group label {
@@ -148,6 +160,13 @@ body {
 label {
   display: block;
   margin-bottom: 10px;
+}
+
+.showndata {
+  margin-top: 150px;
+  margin-bottom: 100px;
+  height: auto;
+
 }
 
 .form-control {
@@ -183,4 +202,6 @@ input[type="checkbox"] {
   padding: 10px;
   margin-bottom: 20px;
 }
+
+
 

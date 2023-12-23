@@ -6,9 +6,74 @@
         [formGroup]="addServiceNameForm"
         (ngSubmit)="addServiceNameSubmit()"
       >
-        <!-- Service Id Field -->
+        <!-- Service Category Field -->
+        <div class="form-group row mb-3">
+          <label
+            for="serviceId"
+            class="col-md-2 control-label"
+            style="font-size: 17px; color: #020202; font-family: sans-serif"
+          >Service Category</label>
+          <div class="col-md-10">
+            <select
+              class="form-control"
+              name="serviceId"
+              required
+              placeholder="Select Service Id"
+              formControlName="serviceId"
+              (change)="onServiceCategoryChange()"
+            >
+              <option value="" disabled selected>Select Service Category</option>
+              <option *ngFor="let category of serviceCategories" [value]="category">
+                {{ category }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+         <!-- Assets Sub-Category -->
+         <!-- <div class="form-group row mb-3">
+          <label
+            for="SubCategory"
+            class="col-md-2 control-label"
+            style="font-size: 17px; color: #020202; font-family: sans-serif"
+            >Sub-Category</label
+          >
+          <div class="col-md-10">
+            <input
+              type="text"
+              class="form-control"
+              name="subCategory"
+              placeholder="Enter Sub-Category"
+              required
+              formControlName="subCategory"
+            />
+          </div>
+        </div> -->
 
         <div class="form-group row mb-3">
+          <label
+            for="subCategory"
+            class="col-md-2 control-label"
+            style="font-size: 17px; color: #020202; font-family: sans-serif"
+          >Sub-Category</label>
+          <div class="col-md-10">
+            <select
+              class="form-control"
+              name="subCategory"
+              required
+              placeholder="Select Sub-Category"
+              formControlName="subCategory"
+            >
+              <option value="" disabled selected>Select Sub-Category</option>
+              <option *ngFor="let subCategory of serviceSubCategories" [value]="subCategory">
+                {{ subCategory }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Service Id -->
+         <div class="form-group row mb-3">
           <label
             for="serviceId"
             class="col-md-2 control-label"
@@ -20,9 +85,8 @@
               type="text"
               class="form-control"
               name="serviceId"
-              placeholder=""
-              required
               placeholder="Enter Service Id"
+              required
               formControlName="serviceId"
             />
           </div>
@@ -48,25 +112,7 @@
           </div>
         </div>
 
-        <!-- Assets Sub-Category -->
-        <div class="form-group row mb-3">
-          <label
-            for="SubCategory"
-            class="col-md-2 control-label"
-            style="font-size: 17px; color: #020202; font-family: sans-serif"
-            >Sub-Category</label
-          >
-          <div class="col-md-10">
-            <input
-              type="text"
-              class="form-control"
-              name="subCategory"
-              placeholder="Enter Sub-Category"
-              required
-              formControlName="subCategory"
-            />
-          </div>
-        </div>
+
 
         <div class="col-md-10 offset-md-2 d-flex justify-content-center">
           <button

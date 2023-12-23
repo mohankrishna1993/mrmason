@@ -40,6 +40,9 @@ import { SpResetPasswordComponent } from './components/sp-reset-password/sp-rese
 import { SpUpdateAvailabilityComponent } from './components/sp-update-availability/sp-update-availability.component';
 import { AdminServiceNameComponent } from './components/admin-service-name/admin-service-name.component';
 import { AdminUpdateServiceNameComponent } from './components/admin-update-service-name/admin-update-service-name.component';
+import { ShowServiceNameComponent } from './components/show-service-name/show-service-name.component';
+import { SpServiceRequestComponent } from './components/sp-service-request/sp-service-request.component';
+import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
 
 
 const routes: Routes = [
@@ -69,6 +72,7 @@ const routes: Routes = [
       { path: 'edit-service-category/:id',component: EditServiceCategoryComponent},
       { path: 'customer-report',component: CustomerReportsComponent},
       { path: 'admin-service-name',component: AdminServiceNameComponent},
+      { path: 'show-service-names',component: ShowServiceNameComponent},
       { path: 'admin-update-service-name',component: AdminUpdateServiceNameComponent}
     ]
   },
@@ -103,7 +107,9 @@ const routes: Routes = [
       {path: 'sp-update-service',component: SpUpdateServiceComponent},
       {path: 'sp-reset-password',component: SpResetPasswordComponent},
       {path: 'sp-update-availability',component: SpUpdateAvailabilityComponent},
-      {path: 'ec-service-request', component: EcServiceRequestComponent},
+      {path: 'sp-service-request', component: SpServiceRequestComponent},
+      {path: 'sp-showmy-services', component: SpShowmyServicesComponent},
+
 
 
     ]}

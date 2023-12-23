@@ -6,14 +6,14 @@
         [formGroup]="addServiceNameForm"
         (ngSubmit)="updateServiceNameSubmit()"
       >
-        <!-- Service Id Field -->
+        <!-- Service Category Field -->
 
         <div class="form-group row mb-3">
           <label
             for="serviceId"
             class="col-md-2 control-label"
             style="font-size: 17px; color: #020202; font-family: sans-serif"
-            >Service Id</label
+            >Service Category</label
           >
           <div class="col-md-10">
             <input
@@ -24,6 +24,28 @@
               required
               placeholder="Enter Service Id"
               formControlName="serviceId"
+            />
+          </div>
+        </div>
+
+
+
+        <!-- Assets Sub-Category -->
+        <div class="form-group row mb-3">
+          <label
+            for="SubCategory"
+            class="col-md-2 control-label"
+            style="font-size: 17px; color: #020202; font-family: sans-serif"
+            >Sub-Category</label
+          >
+          <div class="col-md-10">
+            <input
+              type="text"
+              class="form-control"
+              name="subCategory"
+              placeholder="Enter Sub-Category"
+              required
+              formControlName="subCategory"
             />
           </div>
         </div>
@@ -44,26 +66,6 @@
               placeholder="Enter service Name"
               required
               formControlName="serviceName"
-            />
-          </div>
-        </div>
-
-        <!-- Assets Sub-Category -->
-        <div class="form-group row mb-3">
-          <label
-            for="SubCategory"
-            class="col-md-2 control-label"
-            style="font-size: 17px; color: #020202; font-family: sans-serif"
-            >Sub-Category</label
-          >
-          <div class="col-md-10">
-            <input
-              type="text"
-              class="form-control"
-              name="subCategory"
-              placeholder="Enter Sub-Category"
-              required
-              formControlName="subCategory"
             />
           </div>
         </div>

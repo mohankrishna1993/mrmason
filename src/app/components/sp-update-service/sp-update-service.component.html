@@ -1,14 +1,13 @@
 <div class="form-container">
   <h2 class="aucformTitle text-center">Update Service</h2>
-  <form [formGroup]="addServiceForm">
+  <form [formGroup]="addServiceForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="serviceDropdown">Select Service:</label>
-
+      <label for="subCategory">Select Service:</label>
       <select
-        id="selectservice"
-        name="addService"
+        id="subCategory"
+        name="subCategory"
         class="form-control"
-        formControlName="addService"
+        formControlName="subCategory"
         (change)="onServiceSelectionChange()"
       >
         <option value="" disabled selected>Select your service here</option>
@@ -17,7 +16,6 @@
         </option>
       </select>
     </div>
-
     <div *ngIf="selectedCategoryServices.length > 0">
       <label>Services for selected category:</label>
       <ul>
@@ -26,34 +24,50 @@
         </li>
       </ul>
     </div>
+    <div class="form-group">
+      <label for="qualification">Qualification:</label>
+      <input
+        type="text"
+        id="qualification"
+        name="qualification"
+        class="form-control"
+        placeholder="Enter Your Qualification"
+        formControlName="qualification"
+      />
+    </div>
+
 
     <div class="form-group">
-      <label for="experienceInput">Years of Experience:</label>
+      <label for="experience">Years of Experience:</label>
       <input
         type="number"
         id="experienceInput"
         name="experience"
         class="form-control"
-        max="99"
-        maxlength="2"
         placeholder="Enter your Experience"
+        formControlName="experience"
       />
     </div>
 
     <div class="form-group">
-      <label for="chargesInput">Charges:</label>
+      <label for="charges">Charges:</label>
       <input
         type="text"
         id="chargesInput"
         name="charges"
         class="form-control"
-        maxlength="3"
         placeholder="Enter Charges for hour"
+        formControlName="charges"
       />
     </div>
 
+    <!-- <div class="form-group">
+      <label for="availabilityCheckbox">Available Out of Station:</label>
+      <input type="text" id="availability" name="availability" class="form-control" placeholder="Enter Your Availability"/>
+    </div> -->
+
     <div class="form-group">
-      <label>Available Out of Station:</label>
+      <label for="availability">Available Out of Station:</label>
       <div class="form-check">
         <input
           type="radio"
@@ -78,6 +92,6 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">UPDATE</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

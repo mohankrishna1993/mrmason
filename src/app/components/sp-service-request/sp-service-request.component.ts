@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
 
-
 @Component({
-  selector: 'app-service-request-page',
-  templateUrl: './service-request-page.component.html',
-  styleUrls: ['./service-request-page.component.css']
+  selector: 'app-sp-service-request',
+  templateUrl: './sp-service-request.component.html',
+  styleUrls: ['./sp-service-request.component.css']
 })
-export class ServiceRequestPageComponent implements OnInit{
+export class SpServiceRequestComponent implements OnInit{
 
   tableData: any[] = [];
   totalLength: any;
@@ -101,3 +100,4 @@ serviceRequestData() {
 }
 
 }
+

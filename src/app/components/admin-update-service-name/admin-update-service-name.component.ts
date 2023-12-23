@@ -14,9 +14,10 @@ export class AdminUpdateServiceNameComponent {
   addServiceNameForm = new FormGroup({
 
     serviceId: new FormControl('',Validators.required),
+    subCategory: new FormControl('',Validators.required),
     serviceName: new FormControl('',Validators.required),
     addedBy: new FormControl('',Validators.required),
-    subCategory: new FormControl('',Validators.required)
+
 
 
   });

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -68,6 +69,11 @@ import { SpResetPasswordComponent } from './components/sp-reset-password/sp-rese
 import { SpUpdateAvailabilityComponent } from './components/sp-update-availability/sp-update-availability.component';
 import { AdminServiceNameComponent } from './components/admin-service-name/admin-service-name.component';
 import { AdminUpdateServiceNameComponent } from './components/admin-update-service-name/admin-update-service-name.component';
+import { ShowServiceNameComponent } from './components/show-service-name/show-service-name.component';
+import { EditServiceNameComponent } from './components/edit-service-name/edit-service-name.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SpServiceRequestComponent } from './components/sp-service-request/sp-service-request.component';
+import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
 
 
 
@@ -117,6 +123,10 @@ import { AdminUpdateServiceNameComponent } from './components/admin-update-servi
     SpUpdateAvailabilityComponent,
     AdminServiceNameComponent,
     AdminUpdateServiceNameComponent,
+    ShowServiceNameComponent,
+    EditServiceNameComponent,
+    SpServiceRequestComponent,
+    SpShowmyServicesComponent,
 
 
   ],
@@ -140,7 +150,9 @@ import { AdminUpdateServiceNameComponent } from './components/admin-update-servi
     MatListModule,
     MatToolbarModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule,
+    
 
 
   ],

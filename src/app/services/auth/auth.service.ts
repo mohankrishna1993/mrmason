@@ -97,6 +97,12 @@ export class AuthService {
         if(res['status']) {
           this.userTypeSubject.next("SP");
           localStorage.setItem(this.USER_TYPE_KEY, "SP");
+          localStorage.setItem('CITY', res.data.CITY);
+          localStorage.setItem(this.tokenKey, 'true');
+          localStorage.setItem('STATUS', res.data.STATUS);
+          localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
+          localStorage.setItem('USER_ID',res.data.ID);
+          localStorage.setItem('EMAIL_ID',res.data.EMAIL_ID);
 
           this.sessionTimeoutService.initSessionTimeout();
           this.sessionTimeoutService.onTimeout().subscribe(()=> {
@@ -108,12 +114,8 @@ export class AuthService {
             username: username
           };
 
-          // localStorage.setItem('username', res.data.NAME);
-          localStorage.setItem(this.tokenKey, 'true');
-          // localStorage.setItem('USER_ID', res.data.USER_ID);
-          // localStorage.setItem('PINCODE_NO', res.data.PINCODE_NO);
-          localStorage.setItem('USER_ID',res.data.ID);
-          localStorage.setItem('EMAIL_ID',res.data.EMAIL_ID);
+
+
           console.log("cheecking the local staorage vale for user id");
           console.log(res.data.USER_ID);
           // console.log("*** populate");
@@ -151,7 +153,7 @@ export class AuthService {
         console.log(res);
         if (res['status']) {
           localStorage.setItem('username', res.data[0].admin_name);
-          
+
 
           this.userTypeSubject.next("ADMIN");
           localStorage.setItem(this.USER_TYPE_KEY, "ADMIN");

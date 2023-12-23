@@ -1,0 +1,55 @@
+
+
+<div class="container main-container">
+  <div class="card card-container">
+      <div class="card-header">
+          <h1>My Services</h1>
+      </div>
+  </div>
+   <!-- table -->
+   <div class="table-container">
+
+  <table class="table table-bordered table-striped mt-3">
+   <thead>
+    <tr>
+       <th scope="col">Srl._No.</th>
+       <th scope="col">USER_SERVICES_ID</th>
+       <th scope="col">SERVICE_TYPE</th>
+       <th scope="col">QUALIFICATION</th>
+       <th scope="col">EXPERIENCE</th>
+       <th scope="col">AVAILABLE_WITHIN_RANGE</th>
+       <th scope="col">LOCATION</th>
+       <th scope="col">CITY</th>
+       <th scope="col">EDIT</th>
+    </tr>
+   </thead>
+<tbody>
+
+<tr *ngFor="let item of myServices | paginate: {itemsPerPage:2,currentPage:page,totalItems:totalLength}; let i = index">
+
+  <td>{{ i + 1 + (page - 1) * itemsPerPage }}</td>
+  <td>{{ item.USER_SERVICES_ID }}</td>
+  <td>{{ item.SERVICE_TYPE }}</td>
+  <td>{{ item.QUALIFICATION }}</td>
+  <td>{{ item.EXPERIENCE }}</td>
+  <td>{{ item.AVAILABLE_WITHIN_RANGE }}</td>
+  <td>{{ item.PINCODE }}</td>
+  <td>{{ item.CITY }}</td>
+  <td><button (click)="onEdit(i)">Edit</button></td>
+
+
+
+
+</tr>
+</tbody>
+
+      </table>
+
+      <div class="pagination">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+
+   </div>
+</div>
+
+
