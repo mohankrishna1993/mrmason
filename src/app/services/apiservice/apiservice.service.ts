@@ -481,7 +481,7 @@ updateServicePersonStatus(appKey: string, spId: string, status: string, location
 }
 
 
-addServiceName(appKey: string, serviceId: string, servName: string, addedBy: string, subcategory: string): Observable<any> {
+addServiceName(appKey: string, serviceId: string,subcategory: string, servName: string, addedBy: string, ): Observable<any> {
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   const data = {
     appKey: appKey,
