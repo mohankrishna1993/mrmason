@@ -43,6 +43,7 @@ import { AdminUpdateServiceNameComponent } from './components/admin-update-servi
 import { ShowServiceNameComponent } from './components/show-service-name/show-service-name.component';
 import { SpServiceRequestComponent } from './components/sp-service-request/sp-service-request.component';
 import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
+import { EcProfileComponent } from './components/ec-profile/ec-profile.component';
 
 
 const routes: Routes = [
@@ -91,7 +92,8 @@ const routes: Routes = [
       {path: 'edit-assets',component: EditAssetsComponent},
       {path: 'edit-asset/:id', component: EditAssetsPageComponent},
       {path: 'service-request',component: ServiceRequestComponent},
-      {path: 'reset-password',component: ResetPasswordComponent}
+      {path: 'reset-password',component: ResetPasswordComponent},
+      {path: 'ec-profile',component: EcProfileComponent}
       // {path: 'add-asset-categories',component: AddAssetsCategoriesComponent},
       // {path: 'show-asset-categories',component: ShowAssetsCategoriesComponent},
       // {path: 'edit-asset-category/:id',component: EditAssetsCategoriesComponent}

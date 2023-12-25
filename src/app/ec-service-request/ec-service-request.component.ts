@@ -22,6 +22,7 @@ export class EcServiceRequestComponent implements OnInit{
     serviceCategory: new FormControl('',Validators.required),
     serviceName: new FormControl('',[Validators.required]),
     location: new FormControl('',[Validators.required]),
+    email: new FormControl('',Validators.required),
     requestStatus: new FormControl('',Validators.required),
     phoneNo: new FormControl('',Validators.required),
 
@@ -33,7 +34,7 @@ export class EcServiceRequestComponent implements OnInit{
               ) {}
 
   ngOnInit(): void {
-    this.serviceRequestData();
+    // this.serviceRequestData();
     this.getSubCategories();
  }
  options: any = {
@@ -51,15 +52,17 @@ export class EcServiceRequestComponent implements OnInit{
 
 
 serviceRequestData() {
-  const user_id = localStorage.getItem('USER_ID') || '';
-  const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
 
+  this.tableData = [];
 
-  console.log(user_id);
-  this.apiService.getEcServiceRequestData(user_id,appKey).subscribe((res: any) => {
+  const ServiceName = this.serviceRequestForm.value.serviceCategory ?? "";
+  const serviceStatus = this.serviceRequestForm.value.requestStatus ?? "";
+
+  this.apiService.getEcServiceRequestData(ServiceName,serviceStatus).subscribe((res: any) => {
     console.log("***",res);
     console.log(res.data);
     this.tableData = res.data;
+
   });
 }
 

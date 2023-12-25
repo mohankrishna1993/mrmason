@@ -41,6 +41,7 @@ getUserServices() {
     this.totalLength = this.myServices.length;
   });
 }
+
 onEdit(id: number) {
   console.log(id);
 

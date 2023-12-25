@@ -74,6 +74,7 @@ import { EditServiceNameComponent } from './components/edit-service-name/edit-se
 import { MatDialogModule } from '@angular/material/dialog';
 import { SpServiceRequestComponent } from './components/sp-service-request/sp-service-request.component';
 import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
+import { EcProfileComponent } from './components/ec-profile/ec-profile.component';
 
 
 
@@ -127,6 +128,7 @@ import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-sh
     EditServiceNameComponent,
     SpServiceRequestComponent,
     SpShowmyServicesComponent,
+    EcProfileComponent,
 
 
   ],

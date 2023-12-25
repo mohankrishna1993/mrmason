@@ -14,12 +14,18 @@ export class ServicePersonPageComponent implements OnInit{
   page: number = 1;
   itemsPerPage: number = 2;
   serviceCategories: string[] = [];
+  choosenLocation = '';
 
   servicePersonForm = new FormGroup({
     serviceCategory: new FormControl('',Validators.required),
     servicePerson: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required]),
+    mobile: new FormControl('',[Validators.required]),
+    registrationFromDate: new FormControl('',[Validators.required]),
+    registrationToDate: new FormControl('',[Validators.required]),
     location: new FormControl('',[Validators.required]),
     requestStatus: new FormControl('',Validators.required),
+
 
   });
 
@@ -39,15 +45,23 @@ export class ServicePersonPageComponent implements OnInit{
 
     });
   }
+  options: any = {
+    componentRestrictions: { country: 'IN' },
+  };
+
+  public handleAddressChange(place: google.maps.places.PlaceResult) {
+    console.log(place.formatted_address);
+    this.choosenLocation = place.formatted_address ?? '';
+  }
 
   servicePersonData() {
 
-    const servicePerson = this.servicePersonForm.value.servicePerson;
+    const serviceCategory = this.servicePersonForm.value.serviceCategory;
     const location = this.servicePersonForm.value.location;
     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
 
-    if (typeof servicePerson === 'string' && typeof location === 'string') {
-      this.apiService.searchPerson(appKey, location,servicePerson).subscribe((res: any) => {
+    if (typeof serviceCategory === 'string' && typeof location === 'string') {
+      this.apiService.searchPerson(appKey, location,serviceCategory).subscribe((res: any) => {
         console.log(res);
         this.tableData = res.data;
       });

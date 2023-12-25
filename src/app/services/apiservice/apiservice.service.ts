@@ -64,7 +64,7 @@ export class ApiserviceService {
       appKey: appKey
       });
 
-      return this.http.post(`${this.baseUrl1}/sp-login.php`, data,
+      return this.http.post(`${this.baseUrl2}/sp-login.php`, data,
       { headers: headers, responseType: 'json' }
       );
   }
@@ -221,17 +221,38 @@ export class ApiserviceService {
 
 
 
-  getEcServiceRequestData(user_id: string,appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/get-service-request.php?user_id=${user_id}&appKey=${appKey}`;
-    return this.http.get<any[]>(url);
+  getEcServiceRequestData(serviceName: string,serviceStatus: string): Observable<any> {
+
+    const url = `${this.baseUrl2}/get-service-request.php`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const userId = localStorage.getItem("USER_ID") ?? "";
+    const appKey = this.appKey;
+    console.log("343543645");
+    console.log(serviceStatus);
+
+    const params = { appKey: appKey, servName: serviceName,servStatus: serviceStatus, userId: userId };
+
+    return this.http.get<any[]>(url,{ params,headers });
   }
 
   getadminServiceRequestData(appKey: string,serviceStatus: string,serviceName: string): Observable<any> {
 
-    const url = `${this.baseUrl2}/get-service-request`;
+    const url = `${this.baseUrl2}/get-service-request.php`;
 
 
     const params = { appKey: appKey, servStatus: serviceStatus, servName: serviceName  };
+
+    return this.http.get<any[]>(url, {params});
+  }
+
+  getSpServiceRequestData(appKey: string,serviceName: string): Observable<any> {
+
+    const url = `${this.baseUrl2}/get-service-request.php`;
+
+
+    const params = { appKey: appKey, servName: serviceName  };
 
     return this.http.get<any[]>(url, {params});
   }
@@ -330,7 +351,7 @@ export class ApiserviceService {
   }
 
   getScategory(appKey: string): Observable<any> {
-    const url = `${this.baseUrl2}/get-serv-cat.php`;
+    const url = `${this.baseUrl1}/get-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -563,6 +584,17 @@ showMyServices(appKey: string,userId: string): Observable<any> {
 
   return this.http.get(url, { params });
 }
+// Inside ApiserviceService
+
+getEcUserProfileData(user_id: string, appKey: string): Observable<any> {
+  const url = `${this.baseUrl2}/profile.php`;
+  const params = new HttpParams()
+    .set('user_id', user_id)
+    .set('appKey', appKey);
+
+  return this.http.get(url, { params });
+}
+
 
 }
 

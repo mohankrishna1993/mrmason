@@ -8,26 +8,30 @@
           <form [formGroup]="serviceRequestForm" (ngSubmit)="serviceRequestData()">
               <div class="form-row">
 
-                  <div class="col-md-2 form-group">
+                  <div class="col-md-3 form-group">
                       <label for="service-category" style="color: blue;">Service Category*</label>
                       <select class="form-control" id="service-category" formControlName="serviceCategory">
                         <option value="" disabled selected>Select service </option>
                         <option *ngFor="let category of subCategories" [value]="category">{{ category }}</option>
                       </select>
                   </div>
-                  <div class="col-md-2 form-group">
+                  <!-- <div class="col-md-3 form-group">
                       <label for="field2" style="color: blue;">Service Name*</label>
                       <input type="text" class="form-control" id="field2" name="field2" formControlName="serviceName">
-                  </div>
-                  <div class="col-md-2 form-group">
-                      <label for="location" style="color: blue;">Location*</label>
+                  </div> -->
+                  <div class="col-md-3 form-group">
+                      <label for="location" style="color: blue;">Location</label>
                       <input type="text" class="form-control" id="field3" name="field3" formArrayName="location" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)">
                   </div>
+                  <div class="col-md-3 form-group">
+                    <label for="email" style="color: blue;">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" formArrayName="email" >
+                  </div>
 
 
 
 
-                  <div class="col-md-2 form-group">
+                  <div class="col-md-3 form-group">
                       <label for="request-status" style="color: blue;">Request Status*</label>
                       <select class="form-control" id="request-status" formArrayName="requestStatus">
                           <option value="pending">Pending</option>
@@ -35,7 +39,7 @@
                           <option value="rejected">Rejected</option>
                       </select>
                   </div>
-                  <div class="col-md-2 form-group">
+                  <div class="col-md-3 form-group">
                     <label for="field3" style="color: blue;">Phone Number*</label>
                     <input type="text" class="form-control" id="field3" name="field3" formControlName="phoneNo">
                 </div>

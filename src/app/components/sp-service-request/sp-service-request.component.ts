@@ -13,16 +13,20 @@ export class SpServiceRequestComponent implements OnInit{
   totalLength: any;
   page: number = 1;
   itemsPerPage: number = 2;
-  serviceCategories: any[] = [];
+  serviceType: any[] = [];
   selectedCategoryServices: any[] = [];
 
 
   serviceRequestForm = new FormGroup({
     serviceCategory: new FormControl('',Validators.required),
-    serviceName: new FormControl('',[Validators.required]),
+    // serviceName: new FormControl('',[Validators.required]),
+    requestFromDate: new FormControl('',Validators.required),
+    requestToDate: new FormControl('',Validators.required),
     location: new FormControl('',[Validators.required]),
     requestStatus: new FormControl('',Validators.required),
     phoneNo: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    mobile: new FormControl('',Validators.required),
 
   });
 
@@ -31,7 +35,8 @@ export class SpServiceRequestComponent implements OnInit{
 
   ngOnInit(): void {
     // this.serviceRequestData();
-    this.getServiceCategories();
+    // this.getServiceCategories();
+      this.getUserServices()
  }
 
 
@@ -42,35 +47,58 @@ export class SpServiceRequestComponent implements OnInit{
   return this.tableData.slice(start, end);
 }
 
-getServiceCategories() {
+// getServiceCategories() {
+//   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+//   this.apiService.getScategory(appKey).subscribe((res: any) => {
+//     this.serviceCategories = res.data.map((category: any) => category.serviceSubCategory);
+//     console.log(this.serviceCategories);
+
+//   });
+// }
+
+getServiceType () {
+
+}
+
+getUserServices() {
+  const userId = localStorage.getItem("USER_ID") ?? "";
   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-  this.apiService.getScategory(appKey).subscribe((res: any) => {
-    this.serviceCategories = res.data.map((category: any) => category.serviceSubCategory);
-    console.log(this.serviceCategories);
+  this.apiService.showMyServices(appKey,userId).subscribe((response: any) => {
+
+    if (Array.isArray(response.data)) {
+
+      this.serviceType = response.data.map((obj: any) => obj.SERVICE_TYPE);
+      console.log(this.serviceType);
+    } else {
+      console.error("Invalid response format. Expected an array.");
+      
+      this.serviceType = [];
+    }
+
 
   });
 }
 
-onServiceSelectionChange() {
+// onServiceSelectionChange() {
 
-  const selectedCategory = this.serviceRequestForm.get('serviceCategory')?.value;
-  console.log(selectedCategory);
+//   const selectedCategory = this.serviceRequestForm.get('serviceCategory')?.value;
+//   console.log(selectedCategory);
 
-  if (selectedCategory) {
-    this.selectedCategoryServices = [];
+//   if (selectedCategory) {
+//     this.selectedCategoryServices = [];
 
-    const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-    const servSubCat = selectedCategory;
+//     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
+//     const servSubCat = selectedCategory;
 
-    this.apiService.getServiceNames(appKey, servSubCat).subscribe((res: any) => {
-      if(res.status) {
-      this.selectedCategoryServices = res.data.map((x: any) => x.service_name);
-      }
-    });
-  } else {
-    this.selectedCategoryServices = [];
-  }
-}
+//     this.apiService.getServiceNames(appKey, servSubCat).subscribe((res: any) => {
+//       if(res.status) {
+//       this.selectedCategoryServices = res.data.map((x: any) => x.service_name);
+//       }
+//     });
+//   } else {
+//     this.selectedCategoryServices = [];
+//   }
+// }
 
 
 
@@ -79,10 +107,10 @@ serviceRequestData() {
   const user_id = localStorage.getItem('username') ?? "";
   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
 
-  const serviceStatus = this.serviceRequestForm.value.requestStatus ?? "";
+  // const serviceStatus = this.serviceRequestForm.value.requestStatus ?? "";
   const serviceName = this.serviceRequestForm.value.serviceCategory ?? ""
 
-  this.apiService.getadminServiceRequestData(appKey,serviceStatus,serviceName).subscribe(
+  this.apiService.getSpServiceRequestData(appKey,serviceName).subscribe(
     (response: any) => {
 
       console.log(response);

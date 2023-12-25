@@ -6,7 +6,7 @@
     <div class="card-body border-right-primary border-left-primary">
       <form [formGroup]="serviceRequestForm" (ngSubmit)="serviceRequestData()">
         <div class="form-row">
-          <div class="col-md-2 form-group">
+          <div class="col-md-3 form-group">
             <label for="service-category" style="color: blue"
               >Service Category*</label
             >
@@ -24,7 +24,7 @@
               </option>
             </select>
           </div>
-          <div class="col-md-2 form-group">
+          <!-- <div class="col-md-2 form-group">
             <label for="field2" style="color: blue">Service Name*</label>
 
             <select
@@ -41,8 +41,53 @@
                 {{ serviceName }}
               </option>
             </select>
+          </div> -->
+
+          <div class="col-md-3 form-group">
+            <label for="email" style="color: blue">Email*</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              formControlName="email"
+            />
           </div>
-          <div class="col-md-2 form-group">
+          <div class="col-md-3 form-group">
+            <label for="mobile" style="color: blue">Mobile*</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mobile"
+              name="mobile"
+              formControlName="mobile"
+            />
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="registrationFromDate" style="color: blue"
+              >Registration From Date*</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="registrationFromDate"
+              name="registrationFromDate"
+              formControlName="registrationFromDate"
+            />
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="registrationToDate" style="color: blue"
+              >Registration To Date*</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="registrationToDate"
+              name="registrationToDate"
+              formControlName="registrationToDate"
+            />
+          </div>
+          <div class="col-md-3 form-group">
             <label for="field3" style="color: blue">Location*</label>
             <input
               type="text"
@@ -50,9 +95,13 @@
               id="field3"
               name="field3"
               formArrayName="location"
+              #placesRef="ngx-places"
+              ngx-gp-autocomplete
+              [options]='options'
+              (onAddressChange)="handleAddressChange($event)"
             />
           </div>
-          <div class="col-md-2 form-group">
+          <div class="col-md-3 form-group">
             <label for="requestStatus" style="color: blue"
               >Request Status*</label
             >
@@ -67,7 +116,7 @@
               <option value="rejected">Closed</option>
             </select>
           </div>
-          <div class="col-md-2 form-group">
+          <div class="col-md-3 form-group">
             <label for="field3" style="color: blue">Phone Number*</label>
             <input
               type="text"

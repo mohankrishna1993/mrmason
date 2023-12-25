@@ -16,11 +16,16 @@ export class ServiceRequestPageComponent implements OnInit{
   itemsPerPage: number = 2;
   serviceCategories: any[] = [];
   selectedCategoryServices: any[] = [];
+  choosenLocation = "";
 
 
   serviceRequestForm = new FormGroup({
     serviceCategory: new FormControl('',Validators.required),
-    serviceName: new FormControl('',[Validators.required]),
+    // serviceName: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required]),
+    mobile: new FormControl('',[Validators.required]),
+    registrationFromDate: new FormControl('',[Validators.required]),
+    registrationToDate: new FormControl('',[Validators.required]),
     location: new FormControl('',[Validators.required]),
     requestStatus: new FormControl('',Validators.required),
     phoneNo: new FormControl('',Validators.required),
@@ -34,6 +39,15 @@ export class ServiceRequestPageComponent implements OnInit{
     // this.serviceRequestData();
     this.getServiceCategories();
  }
+
+ options: any = {
+  componentRestrictions: { country: 'IN', }
+}
+public handleAddressChange(place: google.maps.places.PlaceResult) {
+  console.log(place.formatted_address);
+  this.choosenLocation = place.formatted_address ?? "";
+}
+
 
 
 

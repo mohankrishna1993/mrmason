@@ -89,8 +89,16 @@
           >Dashboard</span
         >
       </mat-list-item>
-
       <mat-list-item>
+        <mat-icon mat-list-icon routerLink="/ec-dashboard/ec-profile">person</mat-icon>
+        <span mat-line
+              *ngIf="isExpanded"
+              routerLink="/ec-dashboard/ec-profile"
+              class="menu-text"
+              >My Profile</span>
+      </mat-list-item>
+
+      <!-- <mat-list-item>
         <mat-icon color="primary" routerLink="/ec-dashboard/update-profile"
           >person</mat-icon
         >
@@ -101,7 +109,7 @@
           class="menu-text"
           >Update Profile</span
         >
-      </mat-list-item>
+      </mat-list-item> -->
 
       <mat-list-item>
         <mat-icon color="primary" routerLink="/ec-dashboard/service-request"
