@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogRef } from '@angular/material/dialog';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -75,6 +71,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SpServiceRequestComponent } from './components/sp-service-request/sp-service-request.component';
 import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
 import { EcProfileComponent } from './components/ec-profile/ec-profile.component';
+import { SpUpdateProfileComponent } from './components/sp-update-profile/sp-update-profile.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 
@@ -129,6 +128,7 @@ import { EcProfileComponent } from './components/ec-profile/ec-profile.component
     SpServiceRequestComponent,
     SpShowmyServicesComponent,
     EcProfileComponent,
+    SpUpdateProfileComponent,
 
 
   ],
@@ -154,8 +154,8 @@ import { EcProfileComponent } from './components/ec-profile/ec-profile.component
     MatButtonModule,
     MatFormFieldModule,
     MatDialogModule,
-    
-
+    MatCheckboxModule,
+    ScrollingModule,
 
   ],
   providers: [

@@ -44,6 +44,7 @@ import { ShowServiceNameComponent } from './components/show-service-name/show-se
 import { SpServiceRequestComponent } from './components/sp-service-request/sp-service-request.component';
 import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
 import { EcProfileComponent } from './components/ec-profile/ec-profile.component';
+import { SpUpdateProfileComponent } from './components/sp-update-profile/sp-update-profile.component';
 
 
 const routes: Routes = [
@@ -111,6 +112,8 @@ const routes: Routes = [
       {path: 'sp-update-availability',component: SpUpdateAvailabilityComponent},
       {path: 'sp-service-request', component: SpServiceRequestComponent},
       {path: 'sp-showmy-services', component: SpShowmyServicesComponent},
+      {path: 'sp-update-profile', component: SpUpdateProfileComponent},
+
 
 
 

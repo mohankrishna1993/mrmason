@@ -17,6 +17,15 @@
       </mat-list-item>
 
       <mat-list-item>
+        <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-update-profile">person</mat-icon>
+        <span mat-line
+              *ngIf="isExpanded"
+              routerLink="/sp-dashboard/sp-update-profile"
+              class="menu-text"
+              >Update Profile</span>
+      </mat-list-item>
+
+      <mat-list-item>
         <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-add-service">add</mat-icon>
         <span mat-line
               *ngIf="isExpanded"
@@ -55,14 +64,14 @@
         >
       </mat-list-item>
 
-      <!-- <mat-list-item>
+      <mat-list-item>
         <mat-icon mat-list-icon routerLink="/sp-dashboard/sp-update-service">update</mat-icon>
         <span mat-line
               *ngIf="isExpanded"
               routerLink="/sp-dashboard/sp-update-service"
               class="menu-text"
               >Update Service</span>
-      </mat-list-item> -->
+      </mat-list-item>
 
       <mat-list-item>
         <mat-icon routerLink="/sp-dashboard/sp-reset-password"

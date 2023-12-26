@@ -8,6 +8,7 @@ import { updateProfile } from 'src/app/interfaces/updateProfile.modal';
 import { addAssetsData } from 'src/app/interfaces/addAssets.modal';
 import { SessionTimeoutService } from '../sessionTimeout/session-timeout.service';
 import { ServicePersonRegistration } from 'src/app/interfaces/ServicePersonRegistration.modal';
+import { SpUpdatedProfile } from 'src/app/interfaces/spUpdateProfile.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -263,7 +264,7 @@ export class ApiserviceService {
   }
 
   updateUserProfile(user_id: string, updatedProfile: updateProfile,appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/update-profile.php?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
+    const url = `${this.baseUrl}/update-profile.php?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
     return this.http.put(url, updatedProfile);
   }
 
@@ -594,6 +595,36 @@ getEcUserProfileData(user_id: string, appKey: string): Observable<any> {
 
   return this.http.get(url, { params });
 }
+
+// Inside ApiserviceService
+
+getSpUserProfile(userId: string, appKey: string): Observable<any> {
+  const url = `${this.baseUrl2}/spUserReport.php`;
+  const params = new HttpParams()
+    .set('userId', userId)
+    .set('appKey', appKey);
+
+  return this.http.get(url, { params });
+}
+
+// Inside ApiserviceService
+
+spUpdateUserProfile(user_id: string, updatedProfile: SpUpdatedProfile, appKey: string): Observable<any> {
+  const url = `${this.baseUrl2}/spUpProfile.php`;
+
+
+  return this.http.put(url, {
+    userId: user_id,
+    appKey: appKey,
+    spName: updatedProfile.spName,
+    address: updatedProfile.address,
+    city: updatedProfile.city,
+    state: updatedProfile.state,
+    district: updatedProfile.district,
+    pincode: updatedProfile.pincode,
+  });
+}
+
 
 
 }
