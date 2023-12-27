@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -13,8 +14,11 @@ export class SpUpdateServiceComponent implements OnInit{
 
   subCategories:string[] = [];
   selectedCategoryServices: any[] = [];
+
   addServiceForm!: FormGroup;
   serviceId: string = '';
+
+  selection = new SelectionModel<any>(true,[])
 
 
   constructor(private apiService: ApiserviceService, private toast: ToastService, private fb: FormBuilder, private route: ActivatedRoute) {
@@ -48,49 +52,95 @@ export class SpUpdateServiceComponent implements OnInit{
     });
   }
 
-  fetchServiceDetails() {
+  // onSubmit() {
+  //   console.log(this.addServiceForm);
+  //   if (this.addServiceForm.valid) {
+
+  //     const data = {
+  //       availableRange: this.addServiceForm.value.availability,
+
+  //       experience: this.addServiceForm.value.experience,
+  //       qualification: this.addServiceForm.value.qualification,
+  //       servType: this.addServiceForm.value.subCategory,
+  //       userServId: this.serviceId
+  //     }
 
 
-  }
+  //     this.apiService.putSpServicesData(data).subscribe(
+  //       (response) => {
+  //         if(response.status){
+  //           this.toast.show("Service Updated Successfully!");
 
+
+  //         } else {
+  //           this.toast.show("Updating Service Failed !");
+  //         }
+  //         console.log('API response:', response);
+  //       },
+  //       (error) => {
+
+  //         console.error('API error:', error);
+  //       }
+  //     );
+  //   }
+  // }
   onSubmit() {
-    console.log(this.addServiceForm);
     if (this.addServiceForm.valid) {
-      // const formData = this.addServiceForm.value;
+      const selectedServices = this.getSelectedServices();
+
+
+      console.log('Selected Services:', selectedServices);
+
+      // Continue with your existing onSubmit logic
       const data = {
         availableRange: this.addServiceForm.value.availability,
-        // charges: this.addServiceForm.value.charges,
         experience: this.addServiceForm.value.experience,
         qualification: this.addServiceForm.value.qualification,
         servType: this.addServiceForm.value.subCategory,
         userServId: this.serviceId
-      }
-
+      };
 
       this.apiService.putSpServicesData(data).subscribe(
         (response) => {
-          if(response.status){
+          if (response.status) {
             this.toast.show("Service Updated Successfully!");
-            // this.addServiceForm.reset();
-
+            this.callSecondApi(selectedServices);
           } else {
             this.toast.show("Updating Service Failed !");
           }
-          // Handle success response
-          console.log('API response:', response);
         },
         (error) => {
-          // Handle error response
           console.error('API error:', error);
         }
       );
     }
   }
 
+  private callSecondApi(selectedServices: string[]) {
+
+    const subCategory = this.addServiceForm.value.subCategory;
+
+
+    this.apiService
+      .updateSpUserServices(selectedServices, subCategory)
+      .subscribe(
+        (response) => {
+          console.log('API response for updateSpUserServices:', response);
+          // Your existing code...
+        },
+        (error) => {
+          console.error('API error for updateSpUserServices:', error);
+        }
+      );
+  }
+  
+  getSelectedServices(): string[] {
+    return this.selection.selected.map((item) => item.service_id);
+  }
 
 
   onServiceSelectionChange() {
-    const selectedCategory = this.addServiceForm.get('addService')?.value;
+    const selectedCategory = this.addServiceForm.get('subCategory')?.value;
 
     if (selectedCategory) {
 
@@ -107,4 +157,18 @@ export class SpUpdateServiceComponent implements OnInit{
       this.selectedCategoryServices = [];
     }
   }
+
+
+  get allSelected(): boolean {
+    return this.selection.selected.length === this.selectedCategoryServices.length;
+  }
+
+  toggleMasterSelection() {
+   if(this.allSelected) {
+    this.selection.clear();
+   } else {
+    this.selection.select(...this.selectedCategoryServices);
+   }
+  }
+
 }

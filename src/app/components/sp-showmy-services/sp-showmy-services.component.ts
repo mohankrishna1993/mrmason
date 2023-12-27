@@ -45,14 +45,6 @@ getUserServices() {
 onEdit(id: number) {
   console.log(id);
 
-  // <td>{{ item.USER_SERVICES_ID }}</td>
-  // <td>{{ item.SERVICE_TYPE }}</td>
-  // <td>{{ item.QUALIFICATION }}</td>
-  // <td>{{ item.EXPERIENCE }}</td>
-  // <td>{{ item.AVAILABLE_WITHIN_RANGE }}</td>
-  // <td>{{ item.PINCODE }}</td>
-  // <td>{{ item.CITY }}</td>
-
   const data = {
     availableRange: this.myServices[id].AVAILABLE_WITHIN_RANGE,
     charges: 0,

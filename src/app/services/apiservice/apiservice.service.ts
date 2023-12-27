@@ -11,82 +11,86 @@ import { ServicePersonRegistration } from 'src/app/interfaces/ServicePersonRegis
 import { SpUpdatedProfile } from 'src/app/interfaces/spUpdateProfile.modal';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiserviceService {
-
-
-
-  baseUrl = "http://65.1.178.54/app/index.php";
+  baseUrl = 'http://65.1.178.54/app/index.php';
   // baseUrl1 = "http://13.235.76.132";
-  baseUrl1= "http://15.207.114.112"
-  baseUrl2 = "https://adroitcoder.com/projects/api";
-  user_id = "";
+  baseUrl1 = 'http://15.207.114.112';
+  baseUrl2 = 'https://adroitcoder.com/projects/api';
+  user_id = '';
 
   appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
 
-  constructor(private http:HttpClient,
-              private toast: ToastService,
-              private sessionTimeoutService: SessionTimeoutService) {
-                this.initUserActivityListener();
-              }
-
-   login(username: string,password: string,appKey: string):Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-    const data = JSON.stringify({
-      username: username,
-      password: password,
-      appKey: appKey
-      });
-    return this.http.post(`${this.baseUrl1}/login.php`, data,
-    { headers: headers, responseType: 'json' }
-    );
+  constructor(
+    private http: HttpClient,
+    private toast: ToastService,
+    private sessionTimeoutService: SessionTimeoutService
+  ) {
+    this.initUserActivityListener();
   }
 
-  adminLogin(username: string, password: string, appKey: string): Observable<any> {
+  login(username: string, password: string, appKey: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify({
       username: username,
       password: password,
-      appKey: appKey
+      appKey: appKey,
+    });
+    return this.http.post(`${this.baseUrl1}/login.php`, data, {
+      headers: headers,
+      responseType: 'json',
+    });
+  }
+
+  adminLogin(
+    username: string,
+    password: string,
+    appKey: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const data = JSON.stringify({
+      username: username,
+      password: password,
+      appKey: appKey,
     });
 
     return this.http.post(`${this.baseUrl1}/admin-login.php`, data, {
       headers: headers,
-      responseType: 'json'
+      responseType: 'json',
     });
   }
 
-  spLogin(username: string,password: string,appKey: string):Observable<any> {
+  spLogin(username: string, password: string, appKey: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify({
       username: username,
       password: password,
-      appKey: appKey
-      });
+      appKey: appKey,
+    });
 
-      return this.http.post(`${this.baseUrl2}/sp-login.php`, data,
-      { headers: headers, responseType: 'json' }
-      );
+    return this.http.post(`${this.baseUrl2}/sp-login.php`, data, {
+      headers: headers,
+      responseType: 'json',
+    });
   }
 
- register(userData: userData): Observable<any> {
+  register(userData: userData): Observable<any> {
     const data = {
-      "appKey": userData.appKey,
-      "email": userData.email,
-      "mobile": userData.mobile,
-      "password": userData.password,
-      "uName": userData.uName,
-      "town": userData.town,
-      "district": userData.district,
-      "state": userData.state,
-      "pincode": userData.pincode
-
-    }
+      appKey: userData.appKey,
+      email: userData.email,
+      mobile: userData.mobile,
+      password: userData.password,
+      uName: userData.uName,
+      town: userData.town,
+      district: userData.district,
+      state: userData.state,
+      pincode: userData.pincode,
+    };
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const datanew = JSON.stringify(data);
     return this.http.post<any>(`${this.baseUrl1}/register.php`, datanew, {
-      headers: headers
+      headers: headers,
     });
   }
 
@@ -101,12 +105,14 @@ export class ApiserviceService {
       city: userData.town,
       state: userData.state,
       district: userData.district,
-      pincode: userData.pincode
+      pincode: userData.pincode,
     };
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post(`${this.baseUrl1}/sp-register.php`, data, { headers });
+    return this.http.post(`${this.baseUrl1}/sp-register.php`, data, {
+      headers,
+    });
   }
 
   //gettoken
@@ -116,7 +122,9 @@ export class ApiserviceService {
   }
 
   getServiceRequestData(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/ServiceRequest/getFilteredReport?SERVICE_NAME=carpenter&LOCATION=kandu`);
+    return this.http.get<any[]>(
+      `${this.baseUrl}/ServiceRequest/getFilteredReport?SERVICE_NAME=carpenter&LOCATION=kandu`
+    );
   }
 
   // getServicePersonData(servicePerson: string, city: string): Observable<any[]> {
@@ -128,147 +136,191 @@ export class ApiserviceService {
     const data = JSON.stringify({
       EMAIL_ID: email,
       PASSWORD: password,
-      });
-    return this.http.post<any[]>(`${this.baseUrl}/Users/forgotPassword.php`,
-    data, { headers: headers, responseType: 'json' });
+    });
+    return this.http.post<any[]>(
+      `${this.baseUrl}/Users/forgotPassword.php`,
+      data,
+      { headers: headers, responseType: 'json' }
+    );
   }
 
-  sendSubmitRequestData(serviceRequest: ServiceRequest,appKey: string): Observable<any>{
+  sendSubmitRequestData(
+    serviceRequest: ServiceRequest,
+    appKey: string
+  ): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     const data = JSON.stringify({ ...serviceRequest, appKey: appKey });
-      return this.http.post<any[]>(`${this.baseUrl1}/service-request.php`,
-      data, { headers: headers, responseType: 'json' });
-  }
-
-  sendOtpByEmail(email: string,appKey: string): Observable<any> {
-
-    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-    const datanew = JSON.stringify({email: email,appKey: appKey});
-    return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
-      headers: headers
+    return this.http.post<any[]>(`${this.baseUrl1}/service-request.php`, data, {
+      headers: headers,
+      responseType: 'json',
     });
-
   }
 
-
-
-  sendOtpByMobile(mobile: string,appKey: string): Observable<any>{
+  sendOtpByEmail(email: string, appKey: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-    const datanew = JSON.stringify({mobile: mobile,appKey: appKey});
+    const datanew = JSON.stringify({ email: email, appKey: appKey });
     return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
-      headers: headers
+      headers: headers,
     });
-
   }
 
-  sendEmailOtpForServicePerson(email: string,appKey: string): Observable<any> {
+  sendOtpByMobile(mobile: string, appKey: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const datanew = JSON.stringify({ mobile: mobile, appKey: appKey });
+    return this.http.post<any>(`${this.baseUrl1}/send-otp.php`, datanew, {
+      headers: headers,
+    });
+  }
+
+  sendEmailOtpForServicePerson(email: string, appKey: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const datanew = JSON.stringify({email: email,appKey: appKey});
-    return this.http.post(`${this.baseUrl1}/sp-send-otp.php`, datanew, { headers });
+    const datanew = JSON.stringify({ email: email, appKey: appKey });
+    return this.http.post(`${this.baseUrl1}/sp-send-otp.php`, datanew, {
+      headers,
+    });
   }
 
-  sendMobileOtpForServicePerson(mobile: string,appKey: string): Observable<any> {
+  sendMobileOtpForServicePerson(
+    mobile: string,
+    appKey: string
+  ): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const datanew = JSON.stringify({mobile: mobile,appKey: appKey});
-    return this.http.post(`${this.baseUrl1}/sp-send-otp.php`, datanew, { headers });
+    const datanew = JSON.stringify({ mobile: mobile, appKey: appKey });
+    return this.http.post(`${this.baseUrl1}/sp-send-otp.php`, datanew, {
+      headers,
+    });
   }
 
-  verifyOtpByMobile(mobile: string, otp: string,appKey: string): Observable<any> {
-
+  verifyOtpByMobile(
+    mobile: string,
+    otp: string,
+    appKey: string
+  ): Observable<any> {
     // const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
     const apiUrl = 'http://15.207.114.112/verify-otp.php';
     const data = {
       mobile: mobile,
       otp: otp,
-      appKey: appKey
-    }
+      appKey: appKey,
+    };
     return this.http.post<any>(apiUrl, data);
   }
 
-  verifyOtpByEmail(email: string, otp: string,appKey: string): Observable<any> {
+  verifyOtpByEmail(
+    email: string,
+    otp: string,
+    appKey: string
+  ): Observable<any> {
     // const apiUrl = 'https://adroitcoder.com/projects/api/verify-otp.php';
     const apiUrl = 'http://15.207.114.112/verify-otp.php';
     const data = {
       email: email,
       otp: otp,
-      appKey: appKey
-    }
+      appKey: appKey,
+    };
     return this.http.post<any>(apiUrl, data);
   }
 
-  verifyOtpByMobileForServicePerson(mobile: string, otp: string,appKey: string): Observable<any> {
-
+  verifyOtpByMobileForServicePerson(
+    mobile: string,
+    otp: string,
+    appKey: string
+  ): Observable<any> {
     // const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
 
     const apiUrl = 'http://15.207.114.112/sp-verify-otp.php';
     const data = {
       mobile: mobile,
       otp: otp,
-      appKey: appKey
-    }
+      appKey: appKey,
+    };
     return this.http.post<any>(apiUrl, data);
   }
 
-  verifyOtpByEmailForServicePerson(email: string, otp: string,appKey: string): Observable<any> {
+  verifyOtpByEmailForServicePerson(
+    email: string,
+    otp: string,
+    appKey: string
+  ): Observable<any> {
     // const apiUrl = 'https://adroitcoder.com/projects/api/spverifyotp';
     const apiUrl = 'http://15.207.114.112/sp-verify-otp.php';
     const data = {
       email: email,
       otp: otp,
-      appKey: appKey
-    }
+      appKey: appKey,
+    };
     return this.http.post<any>(apiUrl, data);
   }
 
-
-
-  getEcServiceRequestData(serviceName: string,serviceStatus: string): Observable<any> {
-
+  getEcServiceRequestData(
+    serviceName: string,
+    serviceStatus: string
+  ): Observable<any> {
     const url = `${this.baseUrl2}/get-service-request.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    const userId = localStorage.getItem("USER_ID") ?? "";
+    const userId = localStorage.getItem('USER_ID') ?? '';
     const appKey = this.appKey;
-    console.log("343543645");
+    console.log('343543645');
     console.log(serviceStatus);
 
-    const params = { appKey: appKey, servName: serviceName,servStatus: serviceStatus, userId: userId };
+    const params = {
+      appKey: appKey,
+      servName: serviceName,
+      servStatus: serviceStatus,
+      userId: userId,
+    };
 
-    return this.http.get<any[]>(url,{ params,headers });
+    return this.http.get<any[]>(url, { params, headers });
   }
 
-  getadminServiceRequestData(appKey: string,serviceStatus: string,serviceName: string): Observable<any> {
-
+  getadminServiceRequestData(
+    appKey: string,
+    serviceStatus: string,
+    serviceName: string
+  ): Observable<any> {
     const url = `${this.baseUrl2}/get-service-request.php`;
 
+    const params = {
+      appKey: appKey,
+      servStatus: serviceStatus,
+      servName: serviceName,
+    };
 
-    const params = { appKey: appKey, servStatus: serviceStatus, servName: serviceName  };
-
-    return this.http.get<any[]>(url, {params});
+    return this.http.get<any[]>(url, { params });
   }
 
-  getSpServiceRequestData(appKey: string,serviceName: string): Observable<any> {
-
+  getSpServiceRequestData(
+    appKey: string,
+    serviceName: string
+  ): Observable<any> {
     const url = `${this.baseUrl2}/get-service-request.php`;
 
+    const params = { appKey: appKey, servName: serviceName };
 
-    const params = { appKey: appKey, servName: serviceName  };
-
-    return this.http.get<any[]>(url, {params});
+    return this.http.get<any[]>(url, { params });
   }
 
-  getUserProfile(userId: string,appKey: string): Observable<any> {
+  getUserProfile(userId: string, appKey: string): Observable<any> {
     const url = `${this.baseUrl1}/profile.php?user_id=${userId}&appKey=${appKey}`;
     return this.http.get(url);
   }
 
-  updateUserProfile(user_id: string, updatedProfile: updateProfile,appKey: string): Observable<any> {
+  updateUserProfile(
+    user_id: string,
+    updatedProfile: updateProfile,
+    appKey: string
+  ): Observable<any> {
     const url = `${this.baseUrl}/update-profile.php?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
     return this.http.put(url, updatedProfile);
   }
 
-  addAsset(appKey: string, userId: string, data: addAssetsData): Observable<any> {
+  addAsset(
+    appKey: string,
+    userId: string,
+    data: addAssetsData
+  ): Observable<any> {
     const url = `${this.baseUrl1}/add-asset.php`;
     const requestBody = {
       appKey: appKey,
@@ -282,25 +334,33 @@ export class ApiserviceService {
   getAssetData(appKey: string, userId: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.get<any>(`${this.baseUrl1}/get-asset.php?appKey=${appKey}&user_id=${userId}`, {
-      headers: headers,
-    });
+    return this.http.get<any>(
+      `${this.baseUrl1}/get-asset.php?appKey=${appKey}&user_id=${userId}`,
+      {
+        headers: headers,
+      }
+    );
   }
 
-  getAssetDataById(appKey: string, userId: string,assetId: string) {
+  getAssetDataById(appKey: string, userId: string, assetId: string) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get<any>(`${this.baseUrl1}/get-asset.php?appKey=${appKey}&user_id=${userId}&asset_id=${assetId}`, {
-      headers: headers,
-    });
+    return this.http.get<any>(
+      `${this.baseUrl1}/get-asset.php?appKey=${appKey}&user_id=${userId}&asset_id=${assetId}`,
+      {
+        headers: headers,
+      }
+    );
   }
 
-
-  editAsset(appkey: string,assetId: string,data: addAssetsData):Observable<any> {
-
+  editAsset(
+    appkey: string,
+    assetId: string,
+    data: addAssetsData
+  ): Observable<any> {
     // const url = `${this.baseUrl1}/update-profile?appKey=${appkey}&&asset_id=${assetId}&&category=${data.category}&&subcategory=${data.subcategory}&&location=${data.location}&&street=${data.street}&&door_no=${data.door_no}&&town=${data.town}&&district=${data.district}&&state=${data.state}&&pin_code=${data.pin_code}`
 
     const url = `${this.baseUrl1}/update-asset.php`;
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const payload = {
       appKey: appkey,
       asset_id: assetId,
@@ -309,11 +369,10 @@ export class ApiserviceService {
 
     console.log(payload);
 
-     return this.http.put(url,payload, {headers});
+    return this.http.put(url, payload, { headers });
   }
 
   addAssetsCategory(appKey: string, data: any): Observable<any> {
-
     const url = `${this.baseUrl1}/add-asset-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -321,12 +380,11 @@ export class ApiserviceService {
 
     const payload = {
       appKey: appKey,
-      ...data
+      ...data,
     };
     return this.http.post(url, payload, { headers });
   }
   addServiceCategory(appKey: string, data: any): Observable<any> {
-
     const url = `${this.baseUrl1}/add-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -334,12 +392,10 @@ export class ApiserviceService {
 
     const payload = {
       appKey: appKey,
-      ...data
+      ...data,
     };
     return this.http.post(url, payload, { headers });
   }
-
-
 
   getAcategory(appKey: string): Observable<any> {
     const url = `${this.baseUrl1}/get-asset-cat.php`;
@@ -361,7 +417,6 @@ export class ApiserviceService {
     return this.http.get(url, { headers, params });
   }
 
-
   getAssetCategoryDetails(appKey: string, assetId: string): Observable<any> {
     const url = `${this.baseUrl1}/get-asset-cat.php`;
     const headers = new HttpHeaders({
@@ -370,7 +425,7 @@ export class ApiserviceService {
 
     const params = {
       appKey: appKey,
-      id: assetId
+      id: assetId,
     };
 
     return this.http.get(url, { headers, params });
@@ -384,7 +439,7 @@ export class ApiserviceService {
 
     const params = {
       appKey: appKey,
-      id: assetId
+      id: assetId,
     };
 
     return this.http.get(url, { headers, params });
@@ -418,7 +473,11 @@ export class ApiserviceService {
     return this.http.put(url, payload, { headers });
   }
 
-  searchPerson(appKey: string,location: string,category: string ): Observable<any> {
+  searchPerson(
+    appKey: string,
+    location: string,
+    category: string
+  ): Observable<any> {
     const url = `${this.baseUrl1}/get-service-person.php`;
 
     const headers = new HttpHeaders({
@@ -427,9 +486,9 @@ export class ApiserviceService {
     const params = {
       appKey: appKey,
       category: category,
-      location: location
-    }
-      return this.http.get(url, {headers, params})
+      location: location,
+    };
+    return this.http.get(url, { headers, params });
   }
 
   private initUserActivityListener(): void {
@@ -444,194 +503,300 @@ export class ApiserviceService {
 
   // Inside ApiserviceService
 
-updatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const data = {
-    email: email,
-    oldPwd: oldPassword,
-    newPwd: newPassword,
-    conPwd: confirmPassword,
-    appKey: this.appKey,
-    type: 'user'
-  };
+  updatePassword(
+    email: string,
+    oldPassword: string,
+    newPassword: string,
+    confirmPassword: string,
+    appKey: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const data = {
+      email: email,
+      oldPwd: oldPassword,
+      newPwd: newPassword,
+      conPwd: confirmPassword,
+      appKey: this.appKey,
+      type: 'user',
+    };
 
-  return this.http.post(`${this.baseUrl1}/changepassword.php`, data, { headers, responseType: 'json' });
+    return this.http.post(`${this.baseUrl1}/changepassword.php`, data, {
+      headers,
+      responseType: 'json',
+    });
+  }
+
+  servicePersonUpdatePassword(
+    email: string,
+    oldPassword: string,
+    newPassword: string,
+    confirmPassword: string,
+    appKey: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const data = {
+      email: email,
+      oldPwd: oldPassword,
+      newPwd: newPassword,
+      conPwd: confirmPassword,
+      appKey: this.appKey,
+      type: 'sp',
+    };
+
+    return this.http.post(`${this.baseUrl1}/changepassword.php`, data, {
+      headers,
+      responseType: 'json',
+    });
+  }
+
+  adminUpdatePassword(
+    email: string,
+    oldPassword: string,
+    newPassword: string,
+    confirmPassword: string,
+    appKey: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const data = {
+      email: email,
+      oldPwd: oldPassword,
+      newPwd: newPassword,
+      conPwd: confirmPassword,
+      appKey: this.appKey,
+      type: 'admin',
+    };
+
+    return this.http.post(`${this.baseUrl1}/changepassword.php`, data, {
+      headers,
+      responseType: 'json',
+    });
+  }
+
+  updateServicePersonStatus(
+    appKey: string,
+    spId: string,
+    status: string,
+    location?: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const data = {
+      appKey: appKey,
+      sp_id: spId,
+      status: status,
+      location: location,
+    };
+
+    const url = `${this.baseUrl1}/sp-status.php`; // Updated the URL using baseUrl1
+
+    return this.http.post(url, data, { headers, responseType: 'json' });
+  }
+
+  addServiceName(
+    appKey: string,
+    serviceId: string,
+    subcategory: string,
+    servName: string,
+    addedBy: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const data = {
+      appKey: appKey,
+      serviceId: serviceId,
+      servName: servName,
+      addedBy: addedBy,
+      subcategory: subcategory,
+    };
+
+    const url = `${this.baseUrl2}/admSnameAdd.php`;
+
+    return this.http.post(url, data, { headers, responseType: 'json' });
+  }
+
+  // Inside ApiserviceService
+  getServiceNames(appKey: string, servSubCat: string): Observable<any> {
+    const url = `${this.baseUrl2}/admSnameGet.php`;
+    const params = new HttpParams()
+      .set('appKey', appKey)
+      .set('servSubCat', servSubCat);
+
+    return this.http.get(url, { params });
+  }
+
+  // Inside ApiserviceService
+
+  updateServiceName(data: any): Observable<any> {
+    const url = `${this.baseUrl2}/admSnameUpdate`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.put(url, data, { headers });
+  }
+
+  getServiceData(appKey: string): Observable<any> {
+    const url = `${this.baseUrl2}/admSnameGet`;
+    const params = new HttpParams().set('appKey', appKey);
+
+    return this.http.get(`${url}`, { params });
+  }
+
+  // Inside ApiserviceService
+  postSpServiceData(data: any): Observable<any> {
+    const url = `${this.baseUrl2}/userServicesAdd`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const addData = {
+      appKey: this.appKey,
+      userId: localStorage.getItem('USER_ID'),
+      status: localStorage.getItem('STATUS'),
+      pinCode: localStorage.getItem('PINCODE_NO'),
+      city: localStorage.getItem('CITY'),
+    };
+    return this.http.post(url, { ...data, ...addData }, { headers });
+  }
+
+  putSpServicesData(data: any): Observable<any> {
+    const url = `${this.baseUrl2}/userServicesUpdate`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const updateData = {
+      appKey: this.appKey,
+      userId: localStorage.getItem('USER_ID'),
+      status: localStorage.getItem('STATUS'),
+      pinCode: localStorage.getItem('PINCODE_NO'),
+      city: localStorage.getItem('CITY'),
+    };
+
+    return this.http.put(url, { ...data, ...updateData }, { headers });
+  }
+
+  showMyServices(appKey: string, userId: string): Observable<any> {
+    const url = `${this.baseUrl2}/userServicesGet.php`;
+    const params = new HttpParams().set('appKey', appKey).set('userId', userId);
+
+    return this.http.get(url, { params });
+  }
+  // Inside ApiserviceService
+
+  getEcUserProfileData(user_id: string, appKey: string): Observable<any> {
+    const url = `${this.baseUrl2}/profile.php`;
+    const params = new HttpParams()
+      .set('user_id', user_id)
+      .set('appKey', appKey);
+
+    return this.http.get(url, { params });
+  }
+
+  // Inside ApiserviceService
+
+  getSpUserProfile(userId: string, appKey: string): Observable<any> {
+    const url = `${this.baseUrl2}/spUserReport.php`;
+    const params = new HttpParams().set('userId', userId).set('appKey', appKey);
+
+    return this.http.get(url, { params });
+  }
+
+  // Inside ApiserviceService
+
+  spUpdateUserProfile(
+    user_id: string,
+    updatedProfile: SpUpdatedProfile,
+    appKey: string
+  ): Observable<any> {
+    const url = `${this.baseUrl2}/spUpProfile.php`;
+
+    return this.http.put(url, {
+      userId: user_id,
+      appKey: appKey,
+      spName: updatedProfile.spName,
+      address: updatedProfile.address,
+      city: updatedProfile.city,
+      state: updatedProfile.state,
+      district: updatedProfile.district,
+      pincode: updatedProfile.pincode,
+    });
+  }
+
+  addSpUserServices(
+    serviceIds: string[],
+    subCategory: string,
+    updated_by: string
+  ): Observable<any> {
+    // const appKey = this.appKey;
+
+    const url = `${this.baseUrl2}/addSpUserServices`;
+    const data = {
+      appKey: this.appKey,
+      userId: localStorage.getItem('USER_ID'),
+      subcategory: subCategory,
+      service_id: serviceIds,
+      updated_by: updated_by,
+    };
+
+    return this.http.post(url, data);
+  }
+
+  updateSpUserServices(
+    selectedServices: string[],
+    subCategory: string
+  ): Observable<any> {
+    const url = `${this.baseUrl2}/updateSpUserServices`;
+    const data = {
+      appKey: this.appKey,
+      userId: localStorage.getItem('USER_ID'),
+      subcategory: subCategory,
+      service_id: selectedServices,
+    };
+
+    return this.http.put(url, data);
+  }
+
+  searchCustomer(
+    appKey: string,
+    email?: string | null,
+    mobile?: string | null,
+    location?: string | null,
+    regDate?: string | null
+  ): Observable<any> {
+    const url = `${this.baseUrl2}/cUserSearch`;
+
+    // Set up headers
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    // Set up params
+    const params = new HttpParams()
+      .set('appKey', appKey)
+      .set('email', email || '')
+      .set('mobile', mobile || '')
+      .set('location', location || '')
+      .set('regDate', regDate || '');
+
+    return this.http.get(url, { headers, params });
+  }
+
+  searchCustomerAssets(
+    appKey: string,
+    userId?: string | null,
+    category?: string | null,
+    subCategory?: string | null,
+    location?: string | null,
+
+  ): Observable<any> {
+    const url = `${this.baseUrl2}/cAssetSearch`;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    // Set up params
+    const params = new HttpParams()
+      .set('appKey', appKey)
+      .set('category', category || '')
+      .set('sub_cat', subCategory || '')
+      .set('location', location || '')
+      .set('user_id', userId || '');
+
+    // Make the GET request
+    return this.http.get(url, { headers, params });
+  }
+
+  // ...
 }
-
-servicePersonUpdatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const data = {
-    email: email,
-    oldPwd: oldPassword,
-    newPwd: newPassword,
-    conPwd: confirmPassword,
-    appKey: this.appKey,
-    type: 'sp'
-  };
-
-  return this.http.post(`${this.baseUrl1}/changepassword.php`, data, { headers, responseType: 'json' });
-}
-
-adminUpdatePassword(email: string, oldPassword: string, newPassword: string, confirmPassword: string,appKey: string): Observable<any> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const data = {
-    email: email,
-    oldPwd: oldPassword,
-    newPwd: newPassword,
-    conPwd: confirmPassword,
-    appKey: this.appKey,
-    type: 'admin'
-  };
-
-  return this.http.post(`${this.baseUrl1}/changepassword.php`, data, { headers, responseType: 'json' });
-}
-
-
-
-updateServicePersonStatus(appKey: string, spId: string, status: string, location?: string): Observable<any> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const data = {
-    appKey: appKey,
-    sp_id: spId,
-    status: status,
-    location: location
-  };
-
-  const url = `${this.baseUrl1}/sp-status.php`; // Updated the URL using baseUrl1
-
-  return this.http.post(url, data, { headers, responseType: 'json' });
-}
-
-
-addServiceName(appKey: string, serviceId: string,subcategory: string, servName: string, addedBy: string, ): Observable<any> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const data = {
-    appKey: appKey,
-    serviceId: serviceId,
-    servName: servName,
-    addedBy: addedBy,
-    subcategory: subcategory
-  };
-
-  const url = `${this.baseUrl2}/admSnameAdd.php`;
-
-  return this.http.post(url, data, { headers, responseType: 'json' });
-}
-
-// Inside ApiserviceService
-getServiceNames(appKey: string, servSubCat: string): Observable<any> {
-  const url = `${this.baseUrl2}/admSnameGet.php`;;
-  const params = new HttpParams()
-    .set('appKey', appKey)
-    .set('servSubCat', servSubCat);
-
-  return this.http.get(url, { params });
-}
-
-// Inside ApiserviceService
-
-updateServiceName(data: any): Observable<any> {
-
-  const url = `${this.baseUrl2}/admSnameUpdate`;
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-  return this.http.put(url, data, { headers });
-}
-
-getServiceData(appKey: string): Observable<any> {
-  const url = `${this.baseUrl2}/admSnameGet`;
-  const params = new HttpParams()
-    .set('appKey', appKey);
-
-  return this.http.get(`${url}`, { params });
-}
-
-
-// Inside ApiserviceService
-postSpServiceData(data: any): Observable<any> {
-  const url = `${this.baseUrl2}/userServicesAdd`;
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const addData = {
-    appKey: this.appKey,
-    userId: localStorage.getItem("USER_ID"),
-    status: localStorage.getItem('STATUS'),
-    pinCode: localStorage.getItem("PINCODE_NO"),
-    city: localStorage.getItem("CITY")
-  };
-  return this.http.post(url, {...data,...addData}, { headers });
-}
-
-
-putSpServicesData(data: any): Observable<any> {
-
-  const url = `${this.baseUrl2}/userServicesUpdate`;
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  const updateData = {
-    appKey: this.appKey,
-    userId: localStorage.getItem("USER_ID"),
-    status: localStorage.getItem('STATUS'),
-    pinCode: localStorage.getItem("PINCODE_NO"),
-    city: localStorage.getItem("CITY")
-  };
-
-  return this.http.put(url, {...data,...updateData}, { headers });
-}
-
-showMyServices(appKey: string,userId: string): Observable<any> {
-  const url = `${this.baseUrl2}/userServicesGet.php`;;
-  const params = new HttpParams()
-    .set('appKey', appKey)
-    .set('userId', userId);
-
-  return this.http.get(url, { params });
-}
-// Inside ApiserviceService
-
-getEcUserProfileData(user_id: string, appKey: string): Observable<any> {
-  const url = `${this.baseUrl2}/profile.php`;
-  const params = new HttpParams()
-    .set('user_id', user_id)
-    .set('appKey', appKey);
-
-  return this.http.get(url, { params });
-}
-
-// Inside ApiserviceService
-
-getSpUserProfile(userId: string, appKey: string): Observable<any> {
-  const url = `${this.baseUrl2}/spUserReport.php`;
-  const params = new HttpParams()
-    .set('userId', userId)
-    .set('appKey', appKey);
-
-  return this.http.get(url, { params });
-}
-
-// Inside ApiserviceService
-
-spUpdateUserProfile(user_id: string, updatedProfile: SpUpdatedProfile, appKey: string): Observable<any> {
-  const url = `${this.baseUrl2}/spUpProfile.php`;
-
-
-  return this.http.put(url, {
-    userId: user_id,
-    appKey: appKey,
-    spName: updatedProfile.spName,
-    address: updatedProfile.address,
-    city: updatedProfile.city,
-    state: updatedProfile.state,
-    district: updatedProfile.district,
-    pincode: updatedProfile.pincode,
-  });
-}
-
-
-
-}
-
-
-
-
-
-
-

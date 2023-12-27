@@ -1,3 +1,4 @@
+<div class="form-and-services-container">
 <div class="form-container">
   <h2 class="aucformTitle text-center">Update Service</h2>
   <form [formGroup]="addServiceForm" (ngSubmit)="onSubmit()">
@@ -16,14 +17,7 @@
         </option>
       </select>
     </div>
-    <div *ngIf="selectedCategoryServices.length > 0">
-      <label>Services for selected category:</label>
-      <ul>
-        <li *ngFor="let service of selectedCategoryServices">
-          {{ service.service_name }}
-        </li>
-      </ul>
-    </div>
+
     <div class="form-group">
       <label for="qualification">Qualification:</label>
       <input
@@ -94,4 +88,32 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div>
+
+
+<div class="form-container" *ngIf="selectedCategoryServices.length > 0">
+  <h2 class="aucformTitle text-center">Select Service Names</h2>
+  <div class="selected-services" *ngIf="selectedCategoryServices.length > 0">
+    <label>Services for selected category:</label>
+    <div class="header">
+       <mat-checkbox [checked]="allSelected"
+       [indeterminate]="selection.selected.length !== 0 && !allSelected"
+       (change)="toggleMasterSelection()"
+       ></mat-checkbox>
+      <span>
+        Select All
+      </span>
+    </div>
+      <cdk-virtual-scroll-viewport  itemSize="50"  style="height: 100vh;">
+        <mat-list>
+          <mat-list-item *cdkVirtualFor="let item of selectedCategoryServices">
+            <mat-checkbox [checked]="selection.isSelected(item)" (change)="selection.toggle(item)"></mat-checkbox>
+              {{item.service_name}}
+          </mat-list-item>
+      </mat-list>
+      </cdk-virtual-scroll-viewport>
+
+  </div>
+
+</div>
 </div>

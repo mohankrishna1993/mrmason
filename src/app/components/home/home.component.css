@@ -1,23 +1,4 @@
-.carousel {
-  height: 400px; /* Adjust the desired height */
-}
-.home-container {
-  margin-bottom: -400px;
-}
 
-.carousel-inner img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-
-.request-container {
-  position: relative;
-  top: -400px;
-  margin: 20px;
-
-}
 
 .line-1{
   position: relative;
@@ -32,19 +13,7 @@
   transform: translateY(-50%);
 }
 
-/* Animation */
-.anim-typewriter{
-animation: typewriter 4s steps(44) 1s 1 normal both,
-           blinkTextCursor 500ms steps(44) infinite normal;
-}
-@keyframes typewriter{
-from{width: 0;}
-to{width: 24em;}
-}
-@keyframes blinkTextCursor{
-from{border-right-color: rgba(255,255,255,.75);}
-to{border-right-color: transparent;}
-}
+
 
 
 .bg-skyblue {
@@ -97,11 +66,11 @@ ul {
   transform: scale(1.2); /* Zoom effect */
 
 }
-.heading {
+/* .heading {
   color: #fff;
   font-size: 50px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+} */
 
 
 
@@ -177,7 +146,7 @@ ul {
 
 
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
 
   .text-container {
     display: none; /* Hide the text content on small screens */
@@ -199,4 +168,32 @@ ul {
 .card {
   /* Your existing card styles */
   overflow: hidden; /* Add this line to clip content that overflows */
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+
+}
+.bottom-right {
+  position: absolute;
+  bottom: 10%;
+  right: 16px;
+}
+
+.heading {
+  text-shadow: 3px 3px 20px green,
+    -2px 1px 30px green;
+    font-size:4vw;
+}
+
+.subheading {
+  text-shadow:
+    1px 1px 2px black,
+    0 0 1em black,
+    0 0 0.2em black;
+  color: white;
+  font-size:1.5vw;
+
 }

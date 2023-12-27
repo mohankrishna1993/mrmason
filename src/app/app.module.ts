@@ -74,6 +74,7 @@ import { EcProfileComponent } from './components/ec-profile/ec-profile.component
 import { SpUpdateProfileComponent } from './components/sp-update-profile/sp-update-profile.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { AssetsCategoryReportComponent } from './components/assets-category-report/assets-category-report.component';
 
 
 
@@ -129,6 +130,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     SpShowmyServicesComponent,
     EcProfileComponent,
     SpUpdateProfileComponent,
+    AssetsCategoryReportComponent,
 
 
   ],

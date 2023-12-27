@@ -115,7 +115,9 @@ body {
 
 .form-container {
   border: 2px solid #ddd;
-  width: 600px;
+  width: 50%; /* Adjust width as needed */
+  margin-right: 20px; /* Adjust margin as needed */
+  /* width: 600px; */
   max-width: 600px;
   margin: 0 auto; /* Center the form horizontally */
   padding: 30px;
@@ -125,6 +127,9 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   align-items: center;
 
+}
+.selected-services {
+  flex: 1;
 }
 .container {
   position: relative;
@@ -203,5 +208,19 @@ input[type="checkbox"] {
   margin-bottom: 20px;
 }
 
+.form-and-services-container {
+  display: flex;
+}
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  /* background: indigo; */
+  color: black;
+}
+
+mat-checkbox {
+  margin-right: 10px;
+}
 
 

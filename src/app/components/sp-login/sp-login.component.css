@@ -8,14 +8,11 @@
 
 .heading {
   color: #18aedf;
-  font-size: 50px;
+  font-size:4vw;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  padding-top: 20px;
-  padding-left: 50px;
 }
 
 .services-list {
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -26,12 +23,8 @@
 }
 
 .services-list li {
-  font-size: 16px;
   color: #333;
-  margin-bottom: 8px;
-  padding-right: 60px;
-  margin-top: 50px;
-  font-size: xx-large;
+  font-size: 2.5vw;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 

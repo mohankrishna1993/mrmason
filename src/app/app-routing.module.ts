@@ -45,6 +45,7 @@ import { SpServiceRequestComponent } from './components/sp-service-request/sp-se
 import { SpShowmyServicesComponent } from './components/sp-showmy-services/sp-showmy-services.component';
 import { EcProfileComponent } from './components/ec-profile/ec-profile.component';
 import { SpUpdateProfileComponent } from './components/sp-update-profile/sp-update-profile.component';
+import { AssetsCategoryReportComponent } from './components/assets-category-report/assets-category-report.component';
 
 
 const routes: Routes = [
@@ -75,7 +76,8 @@ const routes: Routes = [
       { path: 'customer-report',component: CustomerReportsComponent},
       { path: 'admin-service-name',component: AdminServiceNameComponent},
       { path: 'show-service-names',component: ShowServiceNameComponent},
-      { path: 'admin-update-service-name',component: AdminUpdateServiceNameComponent}
+      { path: 'admin-update-service-name',component: AdminUpdateServiceNameComponent},
+      { path: 'assets-category-report',component: AssetsCategoryReportComponent},
     ]
   },
   { path: 'verify-otp',component: VerfiyOtpComponent},
