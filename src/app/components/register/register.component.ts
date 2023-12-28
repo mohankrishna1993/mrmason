@@ -5,6 +5,8 @@ import { Router } from '@angular/router'
 import { AuthService } from '../../services/auth/auth.service';
 import { userData } from '../../interfaces/user.modal';
 import { ToastService } from 'src/app/services/toast/toast.service';
+// import { gmailValidator } from 'src/app/validators/password-match.validator';
+import { gmailValidator, numericValidator } from '../../validators/password-match.validator';
 
 
 @Component({
@@ -25,10 +27,10 @@ export class RegisterComponent implements OnInit {
 
   signupForm = new FormGroup({
 
-    email: new FormControl('',[Validators.required, Validators.email]),
+    email: new FormControl('',[Validators.required, Validators.email, gmailValidator()]),
     password: new FormControl('',Validators.required),
     name: new FormControl('',Validators.required),
-    mobile: new FormControl('',[Validators.required]),
+    mobile: new FormControl('',[Validators.required,numericValidator()]),
     city: new FormControl('',Validators.required),
     location: new FormControl('',Validators.required),
     state: new FormControl('',Validators.required),

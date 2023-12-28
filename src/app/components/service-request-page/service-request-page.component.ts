@@ -95,9 +95,14 @@ serviceRequestData() {
   const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
 
   const serviceStatus = this.serviceRequestForm.value.requestStatus ?? "";
-  const serviceName = this.serviceRequestForm.value.serviceCategory ?? ""
+  const serviceName = this.serviceRequestForm.value.serviceCategory ?? "";
+  const requestedDate = this.serviceRequestForm.value.registrationFromDate ?? "";
+  const serviceDate = this.serviceRequestForm.value.registrationToDate ?? "";
+  const location = this.choosenLocation;
 
-  this.apiService.getadminServiceRequestData(appKey,serviceStatus,serviceName).subscribe(
+
+
+  this.apiService.getadminServiceRequestData(appKey,serviceStatus,serviceName,requestedDate,serviceDate,location,user_id).subscribe(
     (response: any) => {
 
       console.log(response);

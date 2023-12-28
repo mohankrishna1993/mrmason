@@ -27,3 +27,25 @@ export function atLeastOneSpecialCharacterValidator(): ValidatorFn {
     return hasSpecialCharacter ? null : { atLeastOneSpecialCharacter: true };
   };
 }
+
+
+export function gmailValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const email: string = control.value;
+    if (email && !email.toLowerCase().endsWith('@gmail.com')) {
+      return { 'gmail': true };
+    }
+    return null;
+  };
+}
+
+export function numericValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value: string = control.value;
+    if (value && !/^[0-9]+$/.test(value)) {
+      return { 'numeric': true };
+    }
+    return null;
+  };
+}
+

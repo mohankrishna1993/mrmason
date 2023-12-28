@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/services/apiservice/apiservice.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { gmailValidator, numericValidator } from 'src/app/validators/password-match.validator';
 
 @Component({
   selector: 'app-sp-registration',
@@ -23,10 +24,11 @@ export class SpRegistrationComponent implements OnInit {
 
   signupForm = new FormGroup({
 
-    email: new FormControl('',[Validators.required, Validators.email]),
+    email: new FormControl('',[Validators.required, Validators.email,gmailValidator()]),
     password: new FormControl('',Validators.required),
     name: new FormControl('',Validators.required),
-    mobile: new FormControl('',[Validators.required]),
+    // mobile: new FormControl('',[Validators.required]),
+    mobile: new FormControl('', [Validators.required, numericValidator()]),
     address: new FormControl('',Validators.required),
     city: new FormControl('',Validators.required),
     location: new FormControl('',Validators.required),
@@ -64,7 +66,7 @@ export class SpRegistrationComponent implements OnInit {
         appKey: 'a0a7822c9b485c9a84ebcc2bae8c9ff4S'
       };
 
-      
+
       this.apiService.registerServicePerson(userData).subscribe(
         (response) => {
           if (response && response.status) {

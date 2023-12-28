@@ -8,12 +8,14 @@
 .nav-link {
   display: inline-block;
   padding: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  color: #583838;
+  /* font-weight: bold; */
+  font-size: 17px;
+  font-weight: 400;
+  /* color: #583838; */
+  color: #333;
   text-decoration: none;
   transition: color 0.3s ease;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Roboto,sans-serif;
 
 }
 
@@ -26,7 +28,7 @@
 }
 
 .navbar {
-  z-index: 3; /* Adjust the value as needed */
+  z-index: 3;
 }
 
 
@@ -48,15 +50,34 @@
 }
 
 .additional-links a {
-  color: black;
+
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  transition: background-color 0.3s ease;
 }
 
 .additional-links a:hover {
   background-color: #b9b1b1; /* Background color on hover */
 }
+
+/* navbar.component.css */
+/*
+.navbar-nav .nav-item .nav-link {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 16px;
+} */
+
+/* Example styles for the dropdown menu items */
+.dropdown-menu .dropdown-item {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 14px;
+
+}
+
+
+
+
+
 

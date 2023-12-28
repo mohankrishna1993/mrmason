@@ -197,3 +197,15 @@ ul {
   font-size:1.5vw;
 
 }
+
+marquee {
+  font-size: 18px;
+  color: #333;
+  margin-top: 30px;
+  /* background-color: #f8f9fa; */
+  padding: 10px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}

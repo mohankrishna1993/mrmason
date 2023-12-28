@@ -112,7 +112,7 @@ export class SpAddServiceComponent implements OnInit {
   // }
 
   onSubmit() {
-    
+
 
     if (this.addServiceForm.valid) {
       const data = {
@@ -140,10 +140,6 @@ export class SpAddServiceComponent implements OnInit {
         )
         .subscribe(
           ([postSpServiceDataResponse, addSpUserServicesResponse]) => {
-            console.log('Response for postSpServiceData:', postSpServiceDataResponse);
-            console.log('Response for addSpUserServices:', addSpUserServicesResponse);
-
-
             if (postSpServiceDataResponse.status) {
               this.toast.show('Service Added Successfully!');
               this.addServiceForm.reset();
@@ -166,7 +162,6 @@ export class SpAddServiceComponent implements OnInit {
     return this.apiService.addSpUserServices(
       selectedServices,
       subCategory,
-      'updated_by_value'
     );
   }
 

@@ -278,7 +278,11 @@ export class ApiserviceService {
   getadminServiceRequestData(
     appKey: string,
     serviceStatus: string,
-    serviceName: string
+    serviceName: string,
+    requestDate: string,
+    serviceDate: string,
+    location: string,
+    user_Id: string
   ): Observable<any> {
     const url = `${this.baseUrl2}/get-service-request.php`;
 
@@ -286,6 +290,10 @@ export class ApiserviceService {
       appKey: appKey,
       servStatus: serviceStatus,
       servName: serviceName,
+      requestDate: requestDate,
+      servDate: serviceDate,
+      servPin: location,
+      userId: user_Id
     };
 
     return this.http.get<any[]>(url, { params });
@@ -716,7 +724,7 @@ export class ApiserviceService {
   addSpUserServices(
     serviceIds: string[],
     subCategory: string,
-    updated_by: string
+
   ): Observable<any> {
     // const appKey = this.appKey;
 
@@ -726,7 +734,7 @@ export class ApiserviceService {
       userId: localStorage.getItem('USER_ID'),
       subcategory: subCategory,
       service_id: serviceIds,
-      updated_by: updated_by,
+      updated_by: localStorage.getItem('USER_ID'),
     };
 
     return this.http.post(url, data);
