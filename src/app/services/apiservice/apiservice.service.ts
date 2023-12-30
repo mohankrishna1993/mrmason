@@ -416,7 +416,7 @@ export class ApiserviceService {
   }
 
   getScategory(appKey: string): Observable<any> {
-    const url = `${this.baseUrl2}/getScategory.php`;
+    const url = `${this.baseUrl1}/get-serv-cat.php`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -624,7 +624,7 @@ export class ApiserviceService {
   getServiceNames(servSubCat: string): Observable<any> {
     const appKey = this.appKey;
     // const url1 = `${this.baseUrl1}/admin-service-name-get.php`;
-    const url = `${this.baseUrl2}/admSnameGet`;
+    const url = `${this.baseUrl1}/admin-service-name-get.php`;
     // const url = `${this.baseUrl2}/test.php`;
 
 
@@ -653,8 +653,8 @@ export class ApiserviceService {
 
   // Inside ApiserviceService
   postSpServiceData(data: any): Observable<any> {
-    const url = `${this.baseUrl2}/userServicesAdd`;
-    const url1 = `${this.baseUrl1}/user-services-add.php`;
+    // const url = `${this.baseUrl2}/userServicesAdd`;
+    const url = `${this.baseUrl1}/user-services-add.php`;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const addData = {
@@ -668,8 +668,8 @@ export class ApiserviceService {
   }
 
   putSpServicesData(data: any, USER_SERVICES_ID: string): Observable<any> {
-    const url = `${this.baseUrl2}/userServicesUpdate`;
-    const url1 = `${this.baseUrl1}/user-services-update.php`;
+    // const url = `${this.baseUrl2}/userServicesUpdate`;
+    const url = `${this.baseUrl1}/user-services-update.php`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const updateData = {
       appKey: this.appKey,
@@ -684,14 +684,14 @@ export class ApiserviceService {
   }
 
   showMyServices(appKey: string, userId: string): Observable<any> {
-    const url = `${this.baseUrl2}/userServicesGet.php`;
+    const url = `${this.baseUrl1}/user-services-get.php`;
     const params = new HttpParams().set('appKey', appKey).set('user_id', userId);
 
     return this.http.get(url, { params });
   }
 
   showMyServicesBySubCategory( category: string): Observable<any> {
-    const url = `${this.baseUrl2}/userServicesGet.php`;
+    const url = `${this.baseUrl1}/user-services-get.php`;
     const appKey = this.appKey;
     const userId = localStorage.getItem('USER_ID') ?? "";
     const params = new HttpParams().set('appKey', appKey).set('user_id', userId).set('category',category);
@@ -703,7 +703,7 @@ export class ApiserviceService {
     const appKey = this.appKey;
     const userId =  localStorage.getItem('USER_ID') ?? "";
 
-    const url = `${this.baseUrl2}/getSpUserServices.php`;
+    const url = `${this.baseUrl1}/sp-user-services-get.php`;
     const params = new HttpParams()
     .set('appKey', appKey)
     .set('user_id', userId)
@@ -714,7 +714,7 @@ export class ApiserviceService {
   // Inside ApiserviceService
 
   getEcUserProfileData(user_id: string, appKey: string): Observable<any> {
-    const url = `${this.baseUrl2}/profile.php`;
+    const url = `${this.baseUrl1}/profile.php`;
     const params = new HttpParams()
       .set('user_id', user_id)
       .set('appKey', appKey);
@@ -725,7 +725,7 @@ export class ApiserviceService {
   // Inside ApiserviceService
 
   getSpUserProfile(userId: string, appKey: string): Observable<any> {
-    const url = `${this.baseUrl2}/spUserReport.php`;
+    const url = `${this.baseUrl1}/sp-user-report.php`;
     const params = new HttpParams().set('userId', userId).set('appKey', appKey);
 
     return this.http.get(url, { params });
@@ -738,7 +738,7 @@ export class ApiserviceService {
     updatedProfile: SpUpdatedProfile,
     appKey: string
   ): Observable<any> {
-    const url = `${this.baseUrl2}/spUpProfile.php`;
+    const url = `${this.baseUrl1}/sp-update-profile.php`;
 
     return this.http.put(url, {
       userId: user_id,
@@ -759,7 +759,7 @@ export class ApiserviceService {
   ): Observable<any> {
     // const appKey = this.appKey;
 
-    const url = `${this.baseUrl2}/addSpUserServices`;
+    const url = `${this.baseUrl1}/sp-user-services-add.php`;
     const data = {
       appKey: this.appKey,
       userId: localStorage.getItem('USER_ID'),
@@ -775,7 +775,7 @@ export class ApiserviceService {
     selectedServices: string[],
     subCategory: string
   ): Observable<any> {
-    const url = `${this.baseUrl2}/updateSpUserServices`;
+    const url = `${this.baseUrl1}/sp-user-services-update.php`;
     const data = {
       appKey: this.appKey,
       userId: localStorage.getItem('USER_ID'),
@@ -793,7 +793,7 @@ export class ApiserviceService {
     location?: string | null,
     regDate?: string | null
   ): Observable<any> {
-    const url = `${this.baseUrl2}/cUserSearch`;
+    const url = `${this.baseUrl1}/c_user_search.php`;
 
     // Set up headers
     const headers = new HttpHeaders({
@@ -819,7 +819,7 @@ export class ApiserviceService {
     location?: string | null,
 
   ): Observable<any> {
-    const url = `${this.baseUrl2}/cAssetSearch`;
+    const url = `${this.baseUrl1}/c_asset_search.php`;
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
