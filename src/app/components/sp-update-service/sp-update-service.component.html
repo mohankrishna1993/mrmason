@@ -9,7 +9,8 @@
         name="subCategory"
         class="form-control"
         formControlName="subCategory"
-        (change)="onServiceSelectionChange()"
+        readonly
+
       >
         <option value="" disabled selected>Select your service here</option>
         <option *ngFor="let category of subCategories" [value]="category">

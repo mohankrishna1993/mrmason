@@ -43,18 +43,20 @@ getUserServices() {
 }
 
 onEdit(id: number) {
-  console.log(id);
+  // console.log(id);
+  // console.log(this.myServices[id]);
 
-  const data = {
-    availableRange: this.myServices[id].AVAILABLE_WITHIN_RANGE,
-    charges: 0,
-    experience: this.myServices[id].EXPERIENCE,
-    qualification: this.myServices[id].QUALIFICATION,
-    servType: this.myServices[id].SERVICE_TYPE,
-    serviceId: this.myServices[id].USER_SERVICES_ID
-  };
-  this.router.navigateByUrl('/sp-dashboard/sp-update-service', { state: data });
-
+  // const data = {
+  //   availableRange: this.myServices[id].AVAILABLE_WITHIN_RANGE,
+  //   charges: 0,
+  //   experience: this.myServices[id].EXPERIENCE,
+  //   qualification: this.myServices[id].QUALIFICATION,
+  //   servType: this.myServices[id].SERVICE_TYPE,
+  //   serviceId: this.myServices[id].USER_SERVICES_ID
+  // };
+  // this.router.navigateByUrl('/sp-dashboard/sp-update-service', { state: data });
+   const category = this.myServices[id].SERVICE_TYPE
+   this.router.navigate(['/sp-dashboard/sp-update-service',category])
 
 }
 

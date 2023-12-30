@@ -109,7 +109,7 @@ const routes: Routes = [
       {path: '',redirectTo: 'sp-profile', pathMatch: 'full' },
       {path: 'sp-profile',component: SpProfileComponent},
       {path: 'sp-add-service',component: SpAddServiceComponent},
-      {path: 'sp-update-service',component: SpUpdateServiceComponent},
+      {path: 'sp-update-service/:category',component: SpUpdateServiceComponent},
       {path: 'sp-reset-password',component: SpResetPasswordComponent},
       {path: 'sp-update-availability',component: SpUpdateAvailabilityComponent},
       {path: 'sp-service-request', component: SpServiceRequestComponent},

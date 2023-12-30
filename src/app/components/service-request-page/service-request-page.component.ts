@@ -77,7 +77,7 @@ onServiceSelectionChange() {
     const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
     const servSubCat = selectedCategory;
 
-    this.apiService.getServiceNames(appKey, servSubCat).subscribe((res: any) => {
+    this.apiService.getServiceNames(servSubCat).subscribe((res: any) => {
       if(res.status) {
       this.selectedCategoryServices = res.data.map((x: any) => x.service_name);
       }

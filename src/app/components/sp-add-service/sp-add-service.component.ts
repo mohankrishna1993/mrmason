@@ -124,7 +124,7 @@ export class SpAddServiceComponent implements OnInit {
       };
 
       const postSpServiceData$ = this.apiService.postSpServiceData(data);
-      const addSpUserServices$ = this.callSecondApi();
+      const addSpUserServices$ = this.spUserServices();
 
       forkJoin([postSpServiceData$, addSpUserServices$])
         .pipe(
@@ -140,18 +140,23 @@ export class SpAddServiceComponent implements OnInit {
         )
         .subscribe(
           ([postSpServiceDataResponse, addSpUserServicesResponse]) => {
-            if (postSpServiceDataResponse.status) {
+            if (postSpServiceDataResponse.status && addSpUserServicesResponse.status) {
               this.toast.show('Service Added Successfully!');
               this.addServiceForm.reset();
             } else {
-              this.toast.show('Adding Service Failed!');
+
+              if (!postSpServiceDataResponse.status) {
+                this.toast.show('Adding Service Failed: ' + postSpServiceDataResponse.message);
+              } else if (!addSpUserServicesResponse.status) {
+                this.toast.show('Adding Service Failed: ' + addSpUserServicesResponse.message);
+              }
             }
           }
         );
     }
   }
 
-  private callSecondApi() {
+  private spUserServices() {
     const selectedServices = this.selection.selected.map(
       (item) => item.service_id
     );
@@ -167,6 +172,8 @@ export class SpAddServiceComponent implements OnInit {
 
 
   onServiceSelectionChange() {
+    this.selection.clear();
+    this.selectedCategoryServices = [];
     const selectedCategory = this.addServiceForm.get('subCategory')?.value ?? "";
     console.log('selected value : ', selectedCategory);
 
@@ -175,7 +182,7 @@ export class SpAddServiceComponent implements OnInit {
       const servSubCat = selectedCategory;
 
       this.apiService
-        .getServiceNames(appKey, servSubCat)
+        .getServiceNames(servSubCat)
         .subscribe((res: any) => {
           console.log(res);
           this.selectedCategoryServices = res.data ? res.data : [];
