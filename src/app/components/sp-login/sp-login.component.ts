@@ -27,7 +27,7 @@ export class SpLoginComponent implements OnInit{
 
   ngOnInit(): void{
     this.initForm();
-    this.initSessionTimeoutListener();
+    // this.initSessionTimeoutListener();
 
   }
 

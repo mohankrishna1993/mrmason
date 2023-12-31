@@ -198,7 +198,7 @@ export class AuthService {
     localStorage.removeItem('EMAIL_ID');
     this.router.navigate(['/login']);
     this.isLoggedIn$.next(false);
-    this.toast.show("Logout Successfully");
+    // this.toast.show("Logout Successfully");
 
   }
 

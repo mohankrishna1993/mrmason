@@ -16,7 +16,7 @@ export class SessionTimeoutService {
   }
 
   public initSessionTimeout(): void {
-    setTimeout(() => {
+    setInterval(() => {
       if (Date.now() - this.lastActivity > this.timeout) {
         this.timeoutSubject.next();
       }
