@@ -285,7 +285,7 @@ export class ApiserviceService {
     user_Id: string
   ): Observable<any> {
     const url = `${this.baseUrl1}/get-service-request.php`;
-
+   
     const params = {
       appKey: appKey,
       servStatus: serviceStatus,
@@ -320,7 +320,7 @@ export class ApiserviceService {
     updatedProfile: updateProfile,
     appKey: string
   ): Observable<any> {
-    const url = `${this.baseUrl}/update-profile.php?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
+    const url = `${this.baseUrl1}/update-profile.php?user_id=${user_id}&&state=${updatedProfile.state}&&town=${updatedProfile.town}&&district=${updatedProfile.district}&&uName=${updatedProfile.uName}&&pincode=${updatedProfile.location}&appKey=${appKey}`;
     return this.http.put(url, updatedProfile);
   }
 
@@ -528,7 +528,7 @@ export class ApiserviceService {
       type: 'user',
     };
 
-    return this.http.post(`${this.baseUrl1}/changepassword.php`, data, {
+    return this.http.post(`${this.baseUrl1}/change-password.php`, data, {
       headers,
       responseType: 'json',
     });
@@ -684,7 +684,7 @@ export class ApiserviceService {
   }
 
   showMyServices(appKey: string, userId: string): Observable<any> {
-    const url = `${this.baseUrl1}/user-services-get.php`;
+    const url = `${this.baseUrl2}/user-services-get.php`;
     const params = new HttpParams().set('appKey', appKey).set('user_id', userId);
 
     return this.http.get(url, { params });
@@ -725,7 +725,7 @@ export class ApiserviceService {
   // Inside ApiserviceService
 
   getSpUserProfile(userId: string, appKey: string): Observable<any> {
-    const url = `${this.baseUrl1}/sp-user-report.php`;
+    const url = `${this.baseUrl2}/sp-user-report.php`;
     const params = new HttpParams().set('userId', userId).set('appKey', appKey);
 
     return this.http.get(url, { params });

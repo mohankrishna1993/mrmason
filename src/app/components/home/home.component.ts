@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class HomeComponent implements AfterViewInit,OnInit {
+export class HomeComponent implements OnInit {
 
   isLoggedIn = false;
   userId = "";
@@ -34,9 +34,6 @@ export class HomeComponent implements AfterViewInit,OnInit {
               private authService: AuthService,
               private router: Router
               ){}
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
               ngOnInit() {
 

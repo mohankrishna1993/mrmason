@@ -10,9 +10,12 @@ import { SessionTimeoutService } from 'src/app/services/sessionTimeout/session-t
   templateUrl: './sp-login.component.html',
   styleUrls: ['./sp-login.component.css']
 })
-export class SpLoginComponent implements OnInit{
+export class SpLoginComponent{
 
-  formData!: FormGroup;
+  formData = new FormGroup({
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('',Validators.required),
+  });
 
 
   constructor(private apiService: ApiserviceService,
@@ -25,26 +28,14 @@ export class SpLoginComponent implements OnInit{
 
 
 
-  ngOnInit(): void{
-    this.initForm();
-    // this.initSessionTimeoutListener();
 
-  }
-
-  initForm() {
-    this.formData = new FormGroup({
-    username: new FormControl('',[Validators.required]),
-    password: new FormControl('',Validators.required),
-  });
-
-  }
 
   loginProcess() {
     console.log("*****");
     if(this.formData?.valid) {
       console.log(this.formData.value);
       const appKey = 'a0a7822c9b485c9a84ebcc2bae8c9ff4S';
-      this.authService.splogin(this.formData.value.username,this.formData.value.password,appKey);
+      this.authService.splogin(this.formData.value.username ?? "",this.formData.value.password ?? "",appKey);
       this.sessionTimeoutService.onUserActivity();
 
     }

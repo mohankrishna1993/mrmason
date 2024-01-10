@@ -92,8 +92,7 @@ export class AuthService {
 
     this.apiService.spLogin(username, password,appKey).subscribe({
       next :(res) => {
-        console.log('****',res);
-        console.log(res.data.ID);
+        
         if(res['status']) {
           this.userTypeSubject.next("SP");
           localStorage.setItem(this.USER_TYPE_KEY, "SP");

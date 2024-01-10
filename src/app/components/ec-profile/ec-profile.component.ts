@@ -11,6 +11,7 @@ export class EcProfileComponent implements OnInit{
 
   profileData: any = {};
 
+
   constructor(
     private apiService: ApiserviceService,
     private route: ActivatedRoute
@@ -30,5 +31,7 @@ export class EcProfileComponent implements OnInit{
         });
     ;
   }
+
+ 
 
 }

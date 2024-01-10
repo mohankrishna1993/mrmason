@@ -15,6 +15,7 @@ export class SpServiceRequestComponent implements OnInit{
   itemsPerPage: number = 2;
   serviceType: any[] = [];
   selectedCategoryServices: any[] = [];
+  choosenLocation = "";
 
 
   serviceRequestForm = new FormGroup({
@@ -38,6 +39,15 @@ export class SpServiceRequestComponent implements OnInit{
     // this.getServiceCategories();
       this.getUserServices()
  }
+ options: any = {
+  componentRestrictions: { country: 'IN' }
+}
+
+
+public handleAddressChange(place: google.maps.places.PlaceResult) {
+  console.log(place.formatted_address);
+  this.choosenLocation = place.formatted_address ?? "";
+}
 
 
 
@@ -71,7 +81,7 @@ getUserServices() {
       console.log(this.serviceType);
     } else {
       console.error("Invalid response format. Expected an array.");
-      
+
       this.serviceType = [];
     }
 

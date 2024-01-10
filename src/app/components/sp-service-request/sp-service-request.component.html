@@ -65,13 +65,7 @@
           </div>
           <div class="col-md-3 form-group">
             <label for="field3" style="color: blue">Location*</label>
-            <input
-              type="text"
-              class="form-control"
-              id="location"
-              name="location"
-              formArrayName="location"
-            />
+            <input type="text" class="form-control" name="pincodeNo" placeholder="Enter Your Location" title="Enter 6-digit pincode number" maxlength="6" required formControlName="location" #placesRef="ngx-places" ngx-gp-autocomplete [options]='options' (onAddressChange)="handleAddressChange($event)">
           </div>
           <div class="col-md-3 form-group">
             <label for="requestStatus" style="color: blue"

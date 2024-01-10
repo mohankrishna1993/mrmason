@@ -16,7 +16,7 @@
       <div class="col-md-6">
         <div class="profile-head">
           <h1>
-            {{ profileData.regData[0].NAME }}
+            {{ profileData?.regData[0]?.NAME }}
           </h1>
 
           <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -40,7 +40,7 @@
                     <label>Email</label>
                   </div>
                   <div class="col-md-6">
-                    <p> {{ profileData.regData[0].EMAIL_ID }} </p>
+                    <p> {{ profileData?.regData[0]?.EMAIL_ID }} </p>
                   </div>
                 </div>
                 <div class="row">
@@ -48,7 +48,7 @@
                     <label>Address</label>
                   </div>
                   <div class="col-md-6">
-                    <p> {{ profileData.regData[0].ADDRESS }} </p>
+                    <p> {{ profileData?.regData[0]?.ADDRESS }} </p>
                   </div>
                 </div>
                 <div class="row">
@@ -56,7 +56,7 @@
                     <label>Phone</label>
                   </div>
                   <div class="col-md-6">
-                    <p> {{ profileData.regData[0].MOBILE_NO }} </p>
+                    <p> {{ profileData?.regData[0]?.MOBILE_NO }} </p>
                   </div>
                 </div>
                 <div class="row">
@@ -64,7 +64,7 @@
                     <label>Town</label>
                   </div>
                   <div class="col-md-6">
-                    <p> {{profileData.regData[0].CITY }}</p>
+                    <p> {{profileData?.regData[0]?.CITY }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -72,7 +72,7 @@
                     <label>Location</label>
                   </div>
                   <div class="col-md-6">
-                    <p>  {{ profileData.regData[0].PINCODE_NO }}</p>
+                    <p>  {{ profileData?.regData[0]?.PINCODE_NO }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -80,7 +80,7 @@
                     <label>District</label>
                   </div>
                   <div class="col-md-6">
-                    <p>{{ profileData.regData[0].DISTRICT }} </p>
+                    <p>{{ profileData?.regData[0]?.DISTRICT }} </p>
                   </div>
                 </div>
                 <div class="row">
@@ -88,7 +88,7 @@
                     <label>State</label>
                   </div>
                   <div class="col-md-6">
-                    <p>{{ profileData.regData[0].STATE }} </p>
+                    <p>{{ profileData?.regData[0]?.STATE }} </p>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@
           class="btn btn-primary"
           name="btnAddMore"
           value="Edit Profile"
-          routerLink="/ec-dashboard/update-profile"
+          routerLink="/sp-dashboard/sp-update-profile"
         />
       </div>
     </div>
